@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap"); //serif
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"); //sans
+
+$main-color: #f1574b;
+$white-color: #ffffff;
+$black-color: #272c2f;
+$lightSky-color: #e1eaf4;
+$mustard-color: #edd596;
+$beige-color: #f6f1ed;
+$navy-color: #2e394d;
+$dimGray-color: #6e737b;
+$green-color: #44b149;
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
