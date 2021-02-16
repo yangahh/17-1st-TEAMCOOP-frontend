@@ -11,7 +11,7 @@
   font-family: 'Lato', sans-serif;
 
   .nav-container {
-    width: 1200px;
+    width: 1000px;
     span {
       display: inline-block;
       height: 100%;
@@ -25,6 +25,7 @@
         font-weight: 400;
         text-transform: uppercase;
         cursor: default;
+        padding-left: 0;
       }
     }
 

@@ -1,1 +1,19 @@
 @import '../../Styles/common.scss';
+
+.productList {
+  width: 100%;
+
+  section {
+    @extend %flex-center;
+
+    .wrapper {
+      @extend %flex-center;
+      align-items: start;
+      width: 1000px;
+
+      .productCards {
+        flex-grow: 1;
+      }
+    }
+  }
+}

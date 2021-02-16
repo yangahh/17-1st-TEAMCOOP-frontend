@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "category": "vitamins",
+    "subcategories": [
+      {
+        "id": 1,
+        "subcategory": "Letter Vitamins"
+      },
+      {
+        "id": 2,
+        "subcategory": "Minerals"
+      },
+      {
+        "id": 3,
+        "subcategory": "Herbs"
+      },
+      {
+        "id": 4,
+        "subcategory": "Probiotics"
+      },
+      {
+        "id": 5,
+        "subcategory": "Specialty"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "powders",
+    "subcategories": [
+      {
+        "id": 1,
+        "subcategory": "Collagen"
+      },
+      {
+        "id": 2,
+        "subcategory": "Protein"
+      },
+      {
+        "id": 3,
+        "subcategory": "Boosts"
+      }
+    ]
+  }
+]
