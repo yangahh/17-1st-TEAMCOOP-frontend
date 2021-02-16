@@ -30,7 +30,11 @@
       width: 100%;
       height: 100%;
       padding: 0 1.125rem;
-      margin: 0 18;
+      margin: 0 32px;
+
+      a {
+        text-decoration: none;
+      }
 
       .nav-left-container,
       .nav-right-container {
@@ -53,10 +57,17 @@
         }
       }
       .nav-left-container {
+        a {
+          color: $black-color;
+          text-decoration: none;
+        }
+        
+        .shop-dropdown:hover .dropdown-menu {
+          display: block;
+        }
+        
         .nav-item {
           margin-right: 2.5rem;
-          // background-color: aqua;
-          cursor: pointer;
 
           &:hover {
             span {
@@ -65,36 +76,46 @@
           }
 
           .dropdown-menu {
-            display: flex;
+            display: none;
             position: absolute;
             top: calc(100% - 0.625rem);
             padding: 40px 0 40px 40px;
             border-radius: 10px;
             background: $white-color;
+              
 
-            .dropdown-link-column {
-              letter-spacing: 0.125rem;
-              margin-right: 40px;
+            .dropdown-menu-wrap {
+              display: flex;
 
-              h4 {
-                margin-bottom: 1.25rem;
-                font-size: 0.75rem;
-                text-align: left;
-              }
+              .dropdown-link-column {
+                letter-spacing: 0.125rem;
+                margin-right: 40px;
 
-              li {
-                margin-bottom: 0.25rem;
-
-                a {
-                  color: $black-color;
-                  font-size: 1rem;
-                  line-height: 2rem;
-                  font-weight: normal;
-                  text-decoration: none;
+                h4 {
+                  margin-bottom: 1.25rem;
+                  font-size: 0.75rem;
+                  text-align: left;
                 }
 
-                &:last-child {
-                  color: $main-color;
+                a {
+                  .main-color {
+                    color: $main-color;
+                  }
+
+                  li {
+                    margin-bottom: 0.25rem;
+                    color: $black-color;
+                    font-size: 1rem;
+                    line-height: 2rem;
+                    font-weight: normal;
+                    text-decoration: none;
+                  }
+
+                  &:hover {
+                    li {
+                      color: $main-color;
+                    }
+                  }
                 }
               }
             }
@@ -107,9 +128,10 @@
 
       .nav-right-container {
         justify-content: flex-end;
+
         li {
-          margin: 0px 0.75rem;
-          cursor: pointer;
+          color: $black-color;
+          margin: 0px 12px;
 
           &:hover {
             color: $main-color;
@@ -143,6 +165,10 @@
   .nav-transparent {
     transition: background-color 0.3s linear 0s, box-shadow 0.3s linear 0s;
     background-color: transparent;
+
+    .logo {
+      color: $black-color;
+    }
   }
 
   .nav-white {

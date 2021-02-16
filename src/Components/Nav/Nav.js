@@ -11,72 +11,86 @@ class Nav extends Component {
         <nav className={scrollValue ? 'nav-white' : 'nav-transparent'}>
           <div className="nav-container">
             <ul className="nav-left-container">
-              <li className="nav-item">
+              <li className="nav-item shop-dropdown">
                 <span>SHOP</span>
                 <section className="dropdown-menu">
+                  <div className="dropdown-menu-wrap">
                   <div className="dropdown-link-column">
                     <h4>VITAMINS</h4>
                     <ul>
-                      <li className="product-items">
-                        <Link to="/productList">Letter Vitamins</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">Minerals</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">Herbs</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">Probiotics</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">Specialty</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">See all</Link>
-                      </li>
+                      <Link to="/productList">
+                        <li className="product-items">Letter Vitamins</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li>Minerals</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li>Herbs</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li>Probiotics</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li>Specialty</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li className="main-color">See all</li>
+                      </Link>
                     </ul>
                   </div>
                   <div className="dropdown-link-column">
                     <h4>POWDERS</h4>
                     <ul>
-                      <li>
-                        <Link to="/productList">Collagen</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">Protein</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">Boosts</Link>
-                      </li>
-                      <li>
-                        <Link to="/productList">See All</Link>
-                      </li>
+                      <Link to="/productList">
+                        <li>Collagen</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li>Protein</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li>Boosts</li>
+                      </Link>
+                      <Link to="/productList">
+                        <li className="main-color">See All</li>
+                      </Link>
                     </ul>
+                  </div>
                   </div>
                 </section>
               </li>
-              <li>
-                <span>REVIEW</span>
-              </li>
+              <Link to="/review">
+                <li className="nav-item">
+                  <span>REVIEW</span>
+                </li>
+              </Link>
             </ul>
-            <div className="logo">core/of</div>
+            <Link to="/">
+              <div className="logo">core/of</div>
+            </Link>
             <ul className="nav-right-container">
-              <li>SIGN IN</li>
+              <Link to="/signup">
+                <li>SIGN IN</li>
+              </Link>
+              <Link to="/signup">
+                <li>
+                  <img
+                    alt="user_icon"
+                    src="https://www.flaticon.com/svg/vstatic/svg/633/633779.svg?token=exp=1613489175~hmac=19085fa5a5aafa26259c66426dbf5fe3"
+                  />
+                </li>
+              </Link>
+              <Link to="/cart">
+                <li>
+                  <img
+                    alt="cart_icon"
+                    src="https://www.flaticon.com/svg/vstatic/svg/1524/1524676.svg?token=exp=1613489103~hmac=7194d4559841d15b5043fc8718cc3b05"
+                  />
+                </li>
+              </Link>
               <li>
-                <img
-                  alt="user_icon"
-                  src="https://www.flaticon.com/svg/vstatic/svg/633/633779.svg?token=exp=1613461834~hmac=347842e2efa7c2db1f43caff23b7df96"
-                />
-              </li>
-              <li>
-                <img
-                  alt="cart_icon"
-                  src="https://www.flaticon.com/svg/vstatic/svg/685/685370.svg?token=exp=1613466029~hmac=c80aa4d64a80d25a482b121b896f549f"
-                />
-              </li>
-              <li>
-                <button>Take the quiz</button>
+                <Link to="/quiz">
+                  <button>Take the quiz</button>
+                </Link>
               </li>
             </ul>
           </div>
