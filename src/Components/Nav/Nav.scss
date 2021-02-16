@@ -53,9 +53,52 @@
         }
       }
       .nav-left-container {
-        li {
+        .nav-item {
           margin-right: 2.5rem;
+          // background-color: aqua;
           cursor: pointer;
+
+          &:hover {
+            span {
+              color: $main-color;
+            }
+          }
+
+          .dropdown-menu {
+            display: flex;
+            position: absolute;
+            top: calc(100% - 0.625rem);
+            padding: 40px 0 40px 40px;
+            border-radius: 10px;
+            background: $white-color;
+
+            .dropdown-link-column {
+              letter-spacing: 0.125rem;
+              margin-right: 40px;
+
+              h4 {
+                margin-bottom: 1.25rem;
+                font-size: 0.75rem;
+                text-align: left;
+              }
+
+              li {
+                margin-bottom: 0.25rem;
+
+                a {
+                  color: $black-color;
+                  font-size: 1rem;
+                  line-height: 2rem;
+                  font-weight: normal;
+                  text-decoration: none;
+                }
+
+                &:last-child {
+                  color: $main-color;
+                }
+              }
+            }
+          }
         }
         &:first-child {
           flex: 4 1 0%;
@@ -67,6 +110,10 @@
         li {
           margin: 0px 0.75rem;
           cursor: pointer;
+
+          &:hover {
+            color: $main-color;
+          }
 
           img {
             width: 32px;
