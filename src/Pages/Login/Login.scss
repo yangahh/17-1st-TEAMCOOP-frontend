@@ -1,1 +1,95 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+  width: 570px;
+  height: 450px;
+
+  .existing_customer {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    height: 46px;
+    span {
+      font-size: 12.5px;
+      font-family: 'Lato', sans-serif;
+      border-bottom: 2px solid red;
+      letter-spacing: 1px;
+    }
+  }
+  .login_form {
+    .id_form {
+      margin-top: 30px;
+      font-size: 12px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 1px;
+      label {
+        float: left;
+      }
+
+      .id_box {
+        margin-top: 3px;
+        border: 3px solid #f5f1ed;
+        width: 570px;
+        height: 45px;
+        font-size: 17px;
+      }
+    }
+    .pw_form {
+      margin-top: 30px;
+      font-size: 12px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 1px;
+      label {
+        float: left;
+      }
+      .pw_box {
+        margin-top: 3px;
+        border: 3px solid #f5f1ed;
+        width: 570px;
+        height: 45px;
+        font-size: 17px;
+      }
+    }
+    .check_box {
+      margin-top: 15px;
+      font-size: 12px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 1px;
+      float: left;
+    }
+  }
+  .login_btn {
+    margin-top: 25px;
+    width: 570px;
+    height: 54px;
+    border: 2px solid $main-color;
+    border-radius: 25px;
+    background-color: $main-color;
+    all: reset;
+    &:hover {
+      background-color: white;
+      span {
+        color: $main-color;
+      }
+    }
+    span {
+      font-size: 16px;
+      color: white;
+      letter-spacing: 1px;
+    }
+  }
+  .forget_pw {
+    margin-top: 25px;
+    a {
+      text-decoration: none;
+      span {
+        color: $main-color;
+        font-size: 20px;
+      }
+    }
+  }
+}
