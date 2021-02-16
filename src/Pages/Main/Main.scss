@@ -1,1 +1,12 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+.Main {
+  .layout-content {
+    .main-content {
+      width: 100%;
+      height: 1074px;
+      background-color: $lightSky-color;
+      background-repeat: no-repeat;
+    }
+  }
+}
