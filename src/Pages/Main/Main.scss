@@ -2,39 +2,33 @@
 
 .Main {
   font-family: 'Lato';
-  .main-view-content {
+  .main-view-container {
     width: 100%;
-    height: 900px;
-    background-color: $lightSky-color;
+    height: 1000px;
     background-image: url('https://images.unsplash.com/photo-1463927982149-8c6a3020594e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80');
-    background-repeat: no-repeat;
+    background-color: $lightSky-color;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 
     .main-view-text {
-      @extend %flex-center;
-      flex-direction: row;
-      display: block;
-      width: 100%;
-      // background-color: red;
       padding-top: 100px;
       text-align: center;
 
       .main-view-header {
         width: 500px;
+        margin: 0px auto 20px;
         font-family: 'Newsreader', serif;
         font-size: 50px;
-        // font-weight: bold;
         line-height: 55px;
-        margin: 0px auto 20px;
       }
 
       .main-view-subheader {
         width: 450px;
+        margin: 0px auto 30px;
         font-size: 20px;
         font-weight: 400;
         line-height: 1.5;
-        margin: 0px auto 30px;
       }
 
       .quiz-button {
@@ -42,14 +36,14 @@
         margin-bottom: 25px;
         border: 0;
         border-radius: 40px;
-        background-color: black;
         color: $white-color;
+        background-color: black;
         font-size: 18px;
         transition: color 0.4s ease 0s, background-color 0.4s ease 0s;
 
         &:hover {
-          background-color: $white-color;
           color: black;
+          background-color: $white-color;
           transition: color 0.4s ease 0s, background-color 0.4s ease 0s;
         }
       }
@@ -57,10 +51,38 @@
       .product-link {
         display: block;
         color: black;
-        font-size: 14px;
+        font-size: 15px;
         text-decoration: none;
         text-align: center;
+        transition: color 0.1s ease 0s, border-color 0.1s ease 0s;
+        overflow: hidden;
+
+        &:hover {
+          color: $main-color;
+          animation: 0.3s linear 0s 1 normal none running slide;
+        }
       }
+    }
+  }
+
+  .main-point-container {
+    width: 100%;
+    padding: 100px 0;
+    background-color: $white-color;
+    text-align: center;
+
+    .main-point-header {
+      width: 500px;
+      margin: 0 auto 60px;
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    .point-content {
+      @extend %flex-center;
+      justify-content: space-around;
+      width: 1200px;
+      margin: 0 auto;
     }
   }
 }
