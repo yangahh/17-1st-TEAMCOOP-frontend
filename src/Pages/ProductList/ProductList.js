@@ -93,6 +93,9 @@ class ProductList extends Component {
             <ProductCardsGroup
               productDatas={productDatas}
               powderDatas={powderDatas}
+              selectedCategory={
+                currentCategory === 'category' ? 'category' : 'healthGoal'
+              }
             />
           </div>
         </section>
