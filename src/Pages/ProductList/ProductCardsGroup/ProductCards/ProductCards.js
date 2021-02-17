@@ -19,6 +19,7 @@ class ProductCards extends Component {
               onClick={() => console.log(item)}
             >
               <div className="productCard__header">
+                {item.isNew && <span className="new">NEW</span>}
                 <img src={item.imageUrl} alt="product image" />
                 <div className="symbols">
                   {item.symbolUrl.map(symbolSrc => {
@@ -37,11 +38,20 @@ class ProductCards extends Component {
               </div>
               <div className="productCard__bottom">
                 <p>${item.displayPrice}</p>
-                {typeof item.displayPrice === 'string' ? (
+                {item.stock === 0 ? (
+                  <button disabled type="button">
+                    Out of stock
+                  </button>
+                ) : typeof item.displayPrice === 'string' ? (
                   <button type="button">Select</button>
                 ) : (
                   <button type="button">Add</button>
                 )}
+                {/* {typeof item.displayPrice === 'string' ? (
+                  <button type="button">Select</button>
+                ) : (
+                  <button type="button">Add</button>
+                )} */}
               </div>
             </div>
           );

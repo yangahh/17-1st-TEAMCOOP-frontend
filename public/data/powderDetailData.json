@@ -21,7 +21,8 @@
           "Helps strengthen nails*",
           "Seamlessly blends in coffee, tea, and smoothies"
         ],
-        "displayPrice": "14-24"
+        "displayPrice": "14-24",
+        "isNew": false
       },
       {
         "id": 2,
@@ -37,7 +38,8 @@
           "Helps strengthen nails*",
           "Lemon and passion fruit flavor"
         ],
-        "displayPrice": "16-32"
+        "displayPrice": "16-32",
+        "isNew": false
       },
       {
         "id": 3,
@@ -53,7 +55,8 @@
           "Helps strengthen nails*",
           "Made with premium Japanese matcha powder"
         ],
-        "displayPrice": "16-32"
+        "displayPrice": "16-32",
+        "isNew": false
       },
       {
         "id": 4,
@@ -68,7 +71,8 @@
           "Supports hydration and elasticity in skin*",
           "Helps strengthen nails*"
         ],
-        "displayPrice": "16-32"
+        "displayPrice": "16-32",
+        "isNew": true
       }
     ]
   },
@@ -92,7 +96,8 @@
           "18g of protein per serving",
           "15-serving tub"
         ],
-        "displayPrice": "15-28"
+        "displayPrice": "15-28",
+        "isNew": true
       },
       {
         "id": 2,
@@ -107,7 +112,8 @@
           "18g of protein per serving",
           "15-serving tub"
         ],
-        "displayPrice": "15-28"
+        "displayPrice": "15-28",
+        "isNew": true
       }
     ]
   },
@@ -133,7 +139,8 @@
           "Contains acerola cherry, acai, goii berries, and more",
           "Helps stimulate collagen production*"
         ],
-        "displayPrice": 26
+        "displayPrice": 26,
+        "isNew": false
       },
       {
         "id": 2,
@@ -150,7 +157,8 @@
           "Mix with protein in water or in water alone"
         ],
         "displayPrice": 7,
-        "stock": 0
+        "stock": 0,
+        "isNew": false
       },
       {
         "id": 3,
@@ -167,7 +175,8 @@
           "Tastes like coconut water"
         ],
         "displayPrice": 7,
-        "stock": 0
+        "stock": 0,
+        "isNew": false
       },
       {
         "id": 4,
@@ -183,7 +192,8 @@
           "Sourced from Peru",
           "Supports energy and fitness performance*"
         ],
-        "displayPrice": 7
+        "displayPrice": 7,
+        "isNew": false
       }
     ]
   }
