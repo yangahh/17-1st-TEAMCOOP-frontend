@@ -25,7 +25,7 @@ class ProductCardsGroup extends Component {
       return (
         <div className="productCardsGroup">
           <h1>Eyes</h1>
-          {productDatas.map(cardInfo => {
+          {powderDatas.map(cardInfo => {
             return <ProductCards cardInfo={cardInfo} />;
           })}
         </div>
