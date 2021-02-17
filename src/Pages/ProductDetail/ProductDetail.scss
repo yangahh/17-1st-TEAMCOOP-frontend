@@ -1,1 +1,6 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+$background-color: #fef4ec;
+.ProductDetail {
+  background-color: $background-color;
+}
