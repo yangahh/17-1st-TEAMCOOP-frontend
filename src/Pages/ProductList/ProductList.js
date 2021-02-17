@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CategoryNav from './CategoryNav/CategoryNav';
 import CategoryList from './CategoryList/CategoryList';
-import ProductCards from './ProductCards/ProductCards';
+import ProductCardsGroup from './ProductCardsGroup/ProductCardsGroup';
 import './ProductList.scss';
 
 class ProductList extends Component {
@@ -11,6 +11,8 @@ class ProductList extends Component {
       currentCategory: 'category',
       category: [],
       healthGoal: [],
+      productDatas: [],
+      powderDatas: [],
     };
   }
 
@@ -28,6 +30,22 @@ class ProductList extends Component {
       .then(data => {
         this.setState({
           healthGoal: data,
+        });
+      });
+
+    fetch('/data/vitaminDetailData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productDatas: data,
+        });
+      });
+
+    fetch('/data/powderDetailData.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          powderDatas: data,
         });
       });
   }
@@ -53,7 +71,10 @@ class ProductList extends Component {
                   : this.state.healthGoal
               }
             />
-            <ProductCards />
+            <ProductCardsGroup
+              productDatas={this.state.productDatas}
+              powderDatas={this.state.powderDatas}
+            />
           </div>
         </section>
       </div>
