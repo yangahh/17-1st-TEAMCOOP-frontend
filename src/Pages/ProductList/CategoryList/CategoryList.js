@@ -11,16 +11,18 @@ class CategoryList extends Component {
   };
 
   render() {
+    const { selectedCategory } = this.props;
+
     return (
       <div className="categoryList">
         <h3 onClick={() => this.goToPage('shopAll')}>Shop All</h3>
         <ul>
-          {this.props.currentList.map(categoryTitle => {
+          {selectedCategory.map(categoryInfo => {
             return (
-              <li className="title" key={categoryTitle.id}>
-                {categoryTitle.category}
+              <li className="title" key={categoryInfo.id}>
+                {categoryInfo.category}
                 <ul>
-                  {categoryTitle.subcategories.map(subcategory => {
+                  {categoryInfo.subcategories.map(subcategory => {
                     return (
                       <li
                         className={

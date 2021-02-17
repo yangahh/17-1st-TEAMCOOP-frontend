@@ -16,7 +16,7 @@ class ProductList extends Component {
     };
   }
 
-  componentDidMount() {
+  getCategoryData = () => {
     fetch('/data/categoryData.json')
       .then(res => res.json())
       .then(data => {
@@ -24,7 +24,9 @@ class ProductList extends Component {
           category: data,
         });
       });
+  };
 
+  gethealthGoalData = () => {
     fetch('/data/healthGoalData.json')
       .then(res => res.json())
       .then(data => {
@@ -32,7 +34,9 @@ class ProductList extends Component {
           healthGoal: data,
         });
       });
+  };
 
+  getVitaminDetailData = () => {
     fetch('/data/vitaminDetailData.json')
       .then(res => res.json())
       .then(data => {
@@ -40,7 +44,9 @@ class ProductList extends Component {
           productDatas: data,
         });
       });
+  };
 
+  getPowderDetailData = () => {
     fetch('/data/powderDetailData.json')
       .then(res => res.json())
       .then(data => {
@@ -48,6 +54,13 @@ class ProductList extends Component {
           powderDatas: data,
         });
       });
+  };
+
+  componentDidMount() {
+    this.getCategoryData();
+    this.gethealthGoalData();
+    this.getVitaminDetailData();
+    this.getPowderDetailData();
   }
 
   handleCategory = target => {
@@ -55,25 +68,31 @@ class ProductList extends Component {
   };
 
   render() {
+    const {
+      currentCategory,
+      category,
+      healthGoal,
+      productDatas,
+      powderDatas,
+    } = this.state;
+
     return (
       <div className="productList">
         <CategoryNav
           handleCategory={this.handleCategory}
-          currentActive={`${this.state.currentCategory}Selected`}
+          currentCategory={currentCategory}
         />
         <section>
           <div className="wrapper">
             <CategoryList
               className="category-list"
-              currentList={
-                this.state.currentCategory === 'category'
-                  ? this.state.category
-                  : this.state.healthGoal
+              selectedCategory={
+                currentCategory === 'category' ? category : healthGoal
               }
             />
             <ProductCardsGroup
-              productDatas={this.state.productDatas}
-              powderDatas={this.state.powderDatas}
+              productDatas={productDatas}
+              powderDatas={powderDatas}
             />
           </div>
         </section>

@@ -2,45 +2,26 @@ import React, { Component } from 'react';
 import './CategoryNav.scss';
 
 class CategoryNav extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentCategory: 'categorySelected',
-    };
-  }
-
-  handleCategoryBorder = category => {
-    this.setState({ currentCategory: category });
-  };
-
   render() {
+    const { currentCategory, handleCategory } = this.props;
+
     return (
       <nav className="CategoryNav">
-        <div className={`nav-container ${this.state.currentCategory}`}>
+        <div className={`nav-container ${currentCategory}Selected`}>
           <span>Shop by :</span>
           <span
             onClick={() => {
-              this.props.handleCategory('category');
-              this.handleCategoryBorder('categorySelected');
+              handleCategory('category');
             }}
-            className={
-              this.state.currentCategory === 'categorySelected'
-                ? 'selected'
-                : 'none'
-            }
+            className={currentCategory === 'category' ? 'selected' : 'none'}
           >
             Category
           </span>
           <span
             onClick={() => {
-              this.props.handleCategory('healthGoal');
-              this.handleCategoryBorder('healthGoalSelected');
+              handleCategory('healthGoal');
             }}
-            className={
-              this.state.currentCategory === 'healthGoalSelected'
-                ? 'selected'
-                : 'none'
-            }
+            className={currentCategory === 'healthGoal' ? 'selected' : 'none'}
           >
             Health Goal
           </span>
