@@ -9,10 +9,12 @@
     .wrapper {
       @extend %flex-center;
       align-items: start;
-      width: 1000px;
+      width: 1200px;
 
       .productCards {
-        flex-grow: 1;
+        // flex-grow: 1;
+        // width: fit-content;
+        width: 900px;
       }
     }
   }

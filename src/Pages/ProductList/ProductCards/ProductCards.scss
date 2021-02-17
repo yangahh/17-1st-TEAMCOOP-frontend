@@ -1,0 +1,181 @@
+@import '../../../Styles/common.scss';
+
+.productCards {
+  padding-top: 60px;
+  font-family: 'Lato', sans-serif;
+  // background-color: pink;
+  padding: 60px 20px 0 20px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 48px;
+  }
+
+  .productCardList {
+    // display: flex;
+    // flex-wrap: wrap;
+
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    & > div {
+      margin-right: 20px;
+      margin-bottom: 20px;
+
+      &:nth-child(3n) {
+        // border: 3px solid red;
+        margin-right: 0;
+      }
+    }
+
+    .productCover {
+      box-sizing: border-box;
+      // margin-right: 20px;
+      //card design
+      width: 272px;
+      height: 477px;
+      background-image: url(https://images.ctfassets.net/t9x0u6p47op0/1cdBabMQgA8scyyeCkgEEQ/674b971a57e9d709ff45bb375bff6957/img_product_category_minerals.jpg?fit=fill&fl=progressive&fm=jpg&w=1400);
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 6px;
+      color: #212121;
+
+      //cover layout
+      padding: 80px 25px;
+
+      h3 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.56;
+      }
+    }
+
+    .productCard {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      //card design
+      width: 272px;
+      height: 477px;
+      // margin-right: 20px;
+      // background-image: url(https://images.ctfassets.net/t9x0u6p47op0/1cdBabMQgA8scyyeCkgEEQ/674b971a57e9d709ff45bb375bff6957/img_product_category_minerals.jpg?fit=fill&fl=progressive&fm=jpg&w=1400);
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 6px;
+      color: #212121;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15),
+          0px 1px 2px 0px rgba(0, 0, 0, 0.16);
+      }
+
+      .productCard__header {
+        height: 163px;
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+
+        & > img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .symbols {
+          width: 100%;
+          height: 62px;
+          position: absolute;
+          bottom: 0;
+          // background-color: cadetblue;
+          padding: 16px 22px;
+
+          img {
+            width: 28px;
+          }
+        }
+      }
+
+      .productCard__text-block {
+        flex-grow: 1;
+        padding: 24px 24px 0 24px;
+        border-left: 2px solid #f5f1ed;
+        border-right: 2px solid #f5f1ed;
+        height: 204px;
+
+        h2 {
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 5px;
+        }
+
+        p {
+          font-size: 16px;
+          color: #00000066;
+          margin-bottom: 10px;
+        }
+
+        ul {
+          padding: 16px 0;
+          color: #7f7f7f;
+          font-size: 14px;
+
+          li {
+            margin-bottom: 4px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 25px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            &::before {
+              content: '';
+              display: inline-block;
+              background-color: #7f7f7f;
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+              margin-right: 3px;
+              position: relative;
+              top: 11px;
+            }
+          }
+        }
+      }
+
+      .productCard__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid #f5f1ed;
+        border-top: 0;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        padding: 24px;
+
+        p {
+          font-size: 16px;
+        }
+
+        button {
+          font-size: 16px;
+          background-color: inherit;
+          border: none;
+          font-weight: 700;
+          color: $main-color;
+        }
+      }
+    }
+  }
+}

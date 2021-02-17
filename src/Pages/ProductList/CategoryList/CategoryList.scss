@@ -2,8 +2,12 @@
 
 .categoryList {
   width: 185px;
+  box-sizing: border-box;
+  // width: 400px;
+  // width: 220px;
   padding-top: 60px;
   font-family: 'Lato', sans-serif;
+  // background-color: cornflowerblue;
 
   h3 {
     width: fit-content;

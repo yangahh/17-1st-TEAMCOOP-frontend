@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CategoryNav from './CategoryNav/CategoryNav';
 import CategoryList from './CategoryList/CategoryList';
+import ProductCards from './ProductCards/ProductCards';
 import './ProductList.scss';
 
 class ProductList extends Component {
@@ -52,7 +53,7 @@ class ProductList extends Component {
                   : this.state.healthGoal
               }
             />
-            <div className="productCards"></div>
+            <ProductCards />
           </div>
         </section>
       </div>
