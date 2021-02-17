@@ -54,19 +54,22 @@
     //card design
     width: 272px;
     height: 477px;
-    // margin-right: 20px;
-    // background-image: url(https://images.ctfassets.net/t9x0u6p47op0/1cdBabMQgA8scyyeCkgEEQ/674b971a57e9d709ff45bb375bff6957/img_product_category_minerals.jpg?fit=fill&fl=progressive&fm=jpg&w=1400);
-
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 6px;
     color: #212121;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15),
         0px 1px 2px 0px rgba(0, 0, 0, 0.16);
+
+      .productCard__text-block,
+      .productCard__bottom {
+        border: none;
+      }
     }
 
     .productCard__header {
@@ -98,7 +101,6 @@
         height: 62px;
         position: absolute;
         bottom: 0;
-        // background-color: cadetblue;
         padding: 16px 22px;
 
         img {
@@ -164,6 +166,7 @@
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 6px;
       padding: 24px;
+      transition: background-color 0.3s ease;
 
       p {
         font-size: 16px;
@@ -179,7 +182,12 @@
 
         &:disabled {
           color: rgb(163, 163, 163);
+          cursor: default;
         }
+      }
+
+      &:hover {
+        background-color: #fdf9f8;
       }
     }
   }
