@@ -3,14 +3,46 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 
 class Nav extends Component {
-  render() {
-    const { scrollValue } = this.props;
+  constructor() {
+    super();
+    this.state = {
+      isNavTransparent: false,
+      vitaminsMenuList: [
+        {id: 1, link: '/productlist', title:'Letter Vitamins'},
+        {id: 2, link: '/productlist', title:'Minerals'},
+        {id: 3, link: '/productlist', title:'Herbs'},
+        {id: 4, link: '/productlist', title:'Probiotics'},
+        {id: 5, link: '/productlist', title:'See all'},
+      ],
+      powdersMenuList: [
+        {id: 1, link: '/productList', title:'Collagen'},
+        {id: 2, link: '/productList', title:'Protein'},
+        {id: 3, link: '/productList', title:'Boosts'},
+        {id: 4, link: '/productList', title:'See all'},
+      ]
+    };
+  }
 
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+  };
+
+  componentWillUnMount = () => {
+    window.removeEventListener('scroll', this.handleScroll);
+  };
+
+  handleScroll = () => {
+    window.pageYOffset > 0
+      ? this.setState({ isNavTransparent: true })
+      : this.setState({ isNavTransparent: false });
+  }
+
+  render() {
+    const {isNavTransparent, vitaminsMenuList, powdersMenuList} = this.state;
     return (
-      <div className="Nav">
-        <nav className={scrollValue ? 'nav-white' : 'nav-transparent'}>
+        <nav className={isNavTransparent ? 'nav-white' : 'nav-transparent'}>
           <div className="nav-container">
-            <ul className="nav-left-container">
+            <ul className="left-container">
               <li className="nav-item shop-dropdown">
                 <span>SHOP</span>
                 <section className="dropdown-menu">
@@ -18,41 +50,25 @@ class Nav extends Component {
                     <div className="dropdown-link-column">
                       <h4>VITAMINS</h4>
                       <ul>
-                        <Link to="/productList">
-                          <li className="product-items">Letter Vitamins</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li>Minerals</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li>Herbs</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li>Probiotics</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li>Specialty</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li className="main-color">See all</li>
-                        </Link>
+                        {vitaminsMenuList.map(menu =>{
+                          return(
+                            <Link to={menu.link}>
+                              <li className="product-items">{menu.title}</li>
+                            </Link>
+                          )
+                        })}
                       </ul>
                     </div>
                     <div className="dropdown-link-column">
                       <h4>POWDERS</h4>
                       <ul>
-                        <Link to="/productList">
-                          <li>Collagen</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li>Protein</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li>Boosts</li>
-                        </Link>
-                        <Link to="/productList">
-                          <li className="main-color">See All</li>
-                        </Link>
+                        {powdersMenuList.map(menu => {
+                          return(
+                            <Link to={menu.link}>
+                              <li>{menu.title}</li>
+                            </Link>
+                          )
+                        })}
                       </ul>
                     </div>
                   </div>
@@ -67,7 +83,7 @@ class Nav extends Component {
             <Link to="/">
               <div className="logo">core/of</div>
             </Link>
-            <ul className="nav-right-container">
+            <ul className="right-container">
               <Link to="/signup">
                 <li>SIGN IN</li>
               </Link>
@@ -95,7 +111,6 @@ class Nav extends Component {
             </ul>
           </div>
         </nav>
-      </div>
     );
   }
 }
