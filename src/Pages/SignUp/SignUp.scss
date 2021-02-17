@@ -1,1 +1,20 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+.sign_up {
+  .header {
+    p {
+      font-family: 'Lato';
+      font-size: 28px;
+    }
+  }
+  .first_content {
+    label {
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: #999;
+    }
+    .name_box {
+      width: 750px;
+      height: 50px;
+    }
+  }
+}
