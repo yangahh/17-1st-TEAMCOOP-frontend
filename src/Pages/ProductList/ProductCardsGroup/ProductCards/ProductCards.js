@@ -6,14 +6,18 @@ class ProductCards extends Component {
     const { cardInfo } = this.props;
 
     return (
-      <div className="productCardList" key={cardInfo.id}>
+      <div className="productCards" key={cardInfo.id}>
         <div className="productCover">
           <h3>{cardInfo.subcategory.title}</h3>
           <p>{cardInfo.subcategory.description}</p>
         </div>
         {cardInfo.item.map(item => {
           return (
-            <div className="productCard" key={item.id}>
+            <div
+              className="productCard"
+              key={item.id}
+              onClick={() => console.log(item)}
+            >
               <div className="productCard__header">
                 <img src={item.imageUrl} alt="product image" />
                 <div className="symbols">
