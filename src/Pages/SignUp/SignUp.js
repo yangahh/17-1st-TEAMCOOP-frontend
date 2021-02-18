@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './SignUp.scss';
 
 class SignUp extends Component {
   constructor() {
@@ -18,34 +19,35 @@ class SignUp extends Component {
     });
   };
 
-  gotoMain = event => {
-    fetch('', {
-      method: 'POST',
-      body: JSON.stringify({
-        name: this.state.name_box,
-        number: this.state.number,
-        confirm: this.state.confirm,
-        email: this.state.id,
-        password: this.state.pw,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.message === '') {
-          this.props.history.push('/login');
-          alert('회원가입 완료');
-        } else {
-          alert('실패');
-        }
-      });
-  };
+  // gotoMain = event => {
+  //   fetch('', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       name: this.state.name_box,
+  //       number: this.state.number,
+  //       confirm: this.state.confirm,
+  //       email: this.state.id,
+  //       password: this.state.pw,
+  //     }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(result => {
+  //       if (result.message === '') {
+  //         this.props.history.push('/login');
+  //         alert('회원가입 완료');
+  //       } else {
+  //         alert('실패');
+  //       }
+  //     });
+  // };
 
   render() {
     console.log(this.state.name_box);
     return (
       <div className="sign_up">
+        <div className= "signup_form">
         <header>
-          <p onClick={this.gotoMain}>Sign Up</p>
+          <p>Sign Up</p>
         </header>
         <div name="first_content">
           <div className="name_form">
@@ -150,6 +152,12 @@ class SignUp extends Component {
             <label>Agreeing To Recieve Marketing (optional) </label>
             <a href="https://takecareof.com">View Details</a>
           </div>
+        </div>
+        <div>
+          <button className="signup_btn">
+            <span>SignUp</span>
+          </button>
+        </div>
         </div>
       </div>
     );
