@@ -24,15 +24,15 @@ class SignUp extends Component {
   //     method: 'POST',
   //     body: JSON.stringify({
   //       name: this.state.name_box,
-  //       number: this.state.number,
-  //       confirm: this.state.confirm,
   //       email: this.state.id,
+  //       confirm: this.state.confirm,
+  //       number: this.state.number,
   //       password: this.state.pw,
   //     }),
   //   })
   //     .then(response => response.json())
   //     .then(result => {
-  //       if (result.message === '') {
+  //       if (result.message === 'SUCCESS') {
   //         this.props.history.push('/login');
   //         alert('회원가입 완료');
   //       } else {
