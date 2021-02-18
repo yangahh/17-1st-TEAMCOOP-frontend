@@ -1,6 +1,65 @@
 @import '../../Styles/common.scss';
 
-$background-color: #fef4ec;
 .ProductDetail {
-  background-color: $background-color;
+  background-color: $beige-color;
+
+  .product-nav {
+    position: sticky;
+    top: 0px;
+    height: 80px;
+    background-color: $white-color;
+  }
+
+  .nav-activity {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .nav-inactivity {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  .main-product-container {
+    @extend %flex-center;
+    background-color: red;
+    height: 1000px;
+    padding-bottom: 150px;
+
+    .product-image-content {
+      min-width: 60%;
+      height: auto;
+
+      .product-image {
+        max-width: 100%;
+        height: auto;
+        background-color: beige;
+      }
+    }
+
+    .product-content {
+      width: 40%;
+      height: 100%;
+      background-color: blueviolet;
+    }
+  }
+
+  .quality-badges-container {
+    @extend %flex-center;
+    height: 240px;
+    padding: 80px 0;
+    background-color: $dimbeige-color;
+  }
+
+  .overview-container {
+    height: 1400px;
+    padding-top: 150px;
+    background-color: palevioletred;
+  }
+
+  .similar-product-container {
+    height: 1000px;
+    padding: 150px 0;
+    background-color: brown;
+  }
 }
