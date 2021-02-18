@@ -66,9 +66,12 @@
       box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15),
         0px 1px 2px 0px rgba(0, 0, 0, 0.16);
 
-      .productCard__text-block,
+      .productCard__text-block {
+        border-color: white;
+      }
+
       .productCard__bottom {
-        border: none;
+        border-color: #fdf9f8;
       }
     }
 
