@@ -21,6 +21,7 @@
 
     .item-wrap {
       .item {
+        position: relative;
         display: flex;
         padding: 24px 0;
         // background-color: yellow;
@@ -58,6 +59,17 @@
             font-size: 17px;
             font-weight: 700;
           }
+        }
+
+        button {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          border: none;
+          cursor: pointer;
+          background-color: inherit;
+          font-weight: 700;
+          color: #00000040;
         }
 
         &.grid {

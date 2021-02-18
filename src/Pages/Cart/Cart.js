@@ -91,10 +91,19 @@ class Cart extends Component {
     this.getSubTotal();
   }
 
+  deleteItem = deletedItem => {
+    const remainItem = this.state.carts.filter(item => {
+      return item !== deletedItem;
+    });
+
+    this.setState({
+      carts: remainItem,
+    });
+  };
+
   render() {
     const { carts, subtotal } = this.state;
 
-    console.log(this.state.carts === false);
     return (
       <div className="cart">
         {carts.length === 0 && (
@@ -117,7 +126,7 @@ class Cart extends Component {
               </div>
             ) : (
               // <div className="cartlist">here is lists!</div>
-              <CartList cartList={carts} />
+              <CartList cartList={carts} deleteItem={this.deleteItem} />
             )}
           </div>
           <div className="order">

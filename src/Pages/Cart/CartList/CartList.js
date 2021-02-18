@@ -3,7 +3,7 @@ import './CartList.scss';
 
 class CartList extends Component {
   render() {
-    const { cartList } = this.props;
+    const { cartList, deleteItem } = this.props;
 
     const vitamins = cartList.filter(item => {
       return item.category === 'vitamin';
@@ -13,11 +13,10 @@ class CartList extends Component {
       return item.category === 'powder';
     });
 
-    console.log(cartList);
     return (
       <div className="cartlist">
         <div className="vitamin">
-          <h1>Vitamins</h1>
+          {vitamins.length !== 0 && <h1>Vitamins</h1>}
           <div className={`item-wrap ${vitamins.length > 2 && 'grid-wrap'}`}>
             {vitamins.map(item => {
               return (
@@ -33,14 +32,14 @@ class CartList extends Component {
                     </div>
                     <p>${item.productPrice}</p>
                   </div>
+                  <button onClick={() => deleteItem(item)}>X</button>
                 </div>
               );
             })}
           </div>
         </div>
         <div className="powder">
-          <h1>Powders</h1>
-
+          {powders.length !== 0 && <h1>Powders</h1>}
           <div className={`item-wrap ${powders.length > 2 && 'grid-wrap'}`}>
             {powders.map(item => {
               return (
@@ -56,6 +55,7 @@ class CartList extends Component {
                     </div>
                     <p>${item.productPrice}</p>
                   </div>
+                  <button onClick={() => deleteItem(item)}>X</button>
                 </div>
               );
             })}
