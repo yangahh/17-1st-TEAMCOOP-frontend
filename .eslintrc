@@ -1,17 +1,5 @@
-// {
-//   "extends": ["react-app", "plugin:prettier/recommended"],
-//   "plugins": ["prettier"],
-//   "rules": {
-//     "prettier/prettier": "error"
-//   }
-// }
-
 {
   "plugins": ["prettier"],
-  "extends": [
-    "prettier",
-    "prettier/@typescript-eslint"
-    // "plugin:@typescript-eslint/recommended",
-  ],
+  "extends": ["prettier", "prettier/@typescript-eslint"],
   "parser": "babel-eslint"
 }
