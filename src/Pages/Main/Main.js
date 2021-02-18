@@ -12,6 +12,10 @@ class Main extends Component {
   }
 
   componentDidMount() {
+    this.getContentCardData();
+  }
+
+  getContentCardData = () => {
     fetch('/data/content-card-data.json')
       .then(res => res.json())
       .then(res => {
@@ -19,7 +23,7 @@ class Main extends Component {
           contentData: res,
         });
       });
-  }
+  };
 
   render() {
     const { contentData } = this.state;
