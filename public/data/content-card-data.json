@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "content_img": "https://images.ctfassets.net/t9x0u6p47op0/5YvLStiym4yPJe3QerVfS8/c74265dac189de59971046bec9d9e3e1/icon_1_3x.gif",
+    "content_header": "Take the quiz",
+    "content_detail": "Tell us a little about yourself. We’re good listeners."
+  },
+  {
+    "id": 2,
+    "content_img": "https://images.ctfassets.net/t9x0u6p47op0/6eaQZ8J7TlvBlOP58RQuhb/7694baaa08780586890d089a5f1584c6/icon_2_3x.gif",
+    "content_header": "Get nutrients that work",
+    "content_detail": "Get your personalized recommendation. Backed by science and delivered to you."
+  },
+  {
+    "id": 3,
+    "content_img": "https://images.ctfassets.net/t9x0u6p47op0/6wjhOg2n0StKCr70hysSF8/00dd024e31413f77abda093e3fa9bf82/icon_3_3x.gif",
+    "content_header": "Stick with it long term",
+    "content_detail": "Keep the conversation going. We’ll adjust as your health needs change."
+  }
+]
