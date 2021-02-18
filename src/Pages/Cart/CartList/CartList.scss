@@ -1,0 +1,80 @@
+@import '../../../Styles/common.scss';
+
+.cartlist {
+  // height: 300px;
+  display: flex;
+  flex-direction: column;
+  // background-color: chartreuse;
+  margin-right: 130px;
+
+  & > div {
+    width: 100%;
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+      font-family: 'Lato';
+      border-bottom: 1px solid #00000040;
+      padding-bottom: 20px;
+    }
+
+    .item-wrap {
+      .item {
+        display: flex;
+        padding: 24px 0;
+        // background-color: yellow;
+        border-bottom: 1px solid #00000020;
+
+        &:last-child {
+          border: none;
+        }
+
+        img {
+          width: 108px;
+          height: 108px;
+          border-radius: 3px;
+          margin-right: 20px;
+        }
+
+        & > div {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          div {
+            h2 {
+              font-size: 17px;
+              margin: 5px 0 10px;
+            }
+
+            p {
+              font-size: 12px;
+              color: #999999;
+            }
+          }
+
+          p {
+            font-size: 17px;
+            font-weight: 700;
+          }
+        }
+
+        &.grid {
+          width: 50%;
+        }
+      }
+
+      &.grid-wrap {
+        display: flex;
+        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .item {
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+}
