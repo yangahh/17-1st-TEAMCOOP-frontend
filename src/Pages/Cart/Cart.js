@@ -91,14 +91,35 @@ class Cart extends Component {
     this.getSubTotal();
   }
 
+  componentDidUpdate() {
+    if (this.state.carts.length === 0) {
+      return;
+    }
+
+    let priceArr = [];
+    this.state.carts.map(item => {
+      priceArr.push(item.productPrice);
+    });
+
+    if (priceArr.length === 0) {
+      this.setState({ subtotal: 0 });
+    }
+    const beforeSubtotal = priceArr.reduce((a, b) => a + b);
+
+    this.state.subtotal !== beforeSubtotal && this.getSubTotal();
+  }
+
   deleteItem = deletedItem => {
     const remainItem = this.state.carts.filter(item => {
       return item !== deletedItem;
     });
 
-    this.setState({
-      carts: remainItem,
-    });
+    this.setState(
+      {
+        carts: remainItem,
+      },
+      this.getSubTotal(),
+    );
   };
 
   render() {
@@ -133,11 +154,15 @@ class Cart extends Component {
             <div className="order-details">
               <div>
                 <span>Subtotal</span>
-                <span>${subtotal}</span>
+                {/* <span>${subtotal}</span> */}
+                <span>{carts.length === 0 ? 'ㅡ' : subtotal}</span>
               </div>
               <div>
                 <span>Shipping</span>
-                <span>{subtotal > 20 ? 'FREE' : '$10'}</span>
+                {/* <span>{subtotal > 20 ? 'FREE' : '$10'}</span> */}
+                <span>
+                  {carts.length === 0 ? 'ㅡ' : subtotal > 20 ? 'FREE' : '$10'}
+                </span>
               </div>
               <div>
                 <span>Sales Tax</span>
@@ -145,8 +170,15 @@ class Cart extends Component {
               </div>
               <div>
                 <span>Total</span>
-                <span>
+                {/* <span>
                   {subtotal > 20 ? `$${subtotal}` : `$${subtotal + 10}`}
+                </span> */}
+                <span>
+                  {carts.length === 0
+                    ? 'ㅡ'
+                    : subtotal > 20
+                    ? `$${subtotal}`
+                    : `$${subtotal + 10}`}
                 </span>
               </div>
               <button>
