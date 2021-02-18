@@ -1,0 +1,24 @@
+@import '../../../Styles/common.scss';
+
+.ContentCard {
+  width: 400px;
+  padding: 0px 48px 12px;
+  text-align: center;
+
+  .point-card-image {
+    width: 100px;
+    margin-bottom: 30px;
+  }
+
+  .point-card-header {
+    margin-bottom: 10px;
+    font-family: 'Newsreader', serif;
+    font-size: 20px;
+  }
+
+  .point-card-detail {
+    color: $dimGray-color;
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
