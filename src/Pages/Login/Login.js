@@ -16,16 +16,39 @@ class Login extends Component {
     });
   };
  
-    gotoMain = () => {
-     if(this.state.id.includes("@") && this.state.pw.length >=8){
-    fetch("10.58.5.21:8002" , {
+  //   gotoMain = () => {
+  //    if(this.state.id.includes("@") && this.state.pw.length >=8){
+  //   fetch("http://10.58.5.21:8003/user/login" , {
+  //     method:"POST", 
+  //     body: JSON.stringify({
+  //       email: this.state.id,
+  //       password: this.state.pw,
+  //     })
+  //     .then ()
+  //   })
+  // }}
+
+   gotoMain = () => {
+    if(this.state.id.includes("@") && this.state.pw.length >=8){
+    fetch("http://10.58.5.21:8003/user/login" , {
       method:"POST", 
       body: JSON.stringify({
         email: this.state.id,
         password: this.state.pw,
       })
     })
-  }}
+    .then((response) => response.json())
+    .then((result) => {
+       if (result.message === "SUCCESS") {
+         localStorage.setItem('token', result.ACCESS_TOKEN);
+         this.props.history.push("/");
+         alert("로그인 성공");
+       }else { alert("로그인 실패"); console.log(result.message);}
+     }
+     )
+   }
+  };
+
      
 
   render() {
