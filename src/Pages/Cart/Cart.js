@@ -143,7 +143,7 @@ class Cart extends Component {
             </p>
           </div>
         )}
-        <section>
+        <section className={carts.length === 0 && 'onQuiz'}>
           <div className="cartlist-wrapper">
             {carts.length === 0 ? (
               <div className="no-item">
