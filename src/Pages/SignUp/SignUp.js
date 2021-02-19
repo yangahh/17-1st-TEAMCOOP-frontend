@@ -18,29 +18,6 @@ class SignUp extends Component {
       [e.target.name]: 'e.target.value',
     });
   };
-
-  // gotoMain = event => {
-  //   fetch('', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       name: this.state.name_box,
-  //       email: this.state.id,
-  //       confirm: this.state.confirm,
-  //       number: this.state.number,
-  //       password: this.state.pw,
-  //     }),
-  //   })
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       if (result.message === 'SUCCESS') {
-  //         this.props.history.push('/login');
-  //         alert('회원가입 완료');
-  //       } else {
-  //         alert('실패');
-  //       }
-  //     });
-  // };
-
   render() {
     console.log(this.state.name_box);
     return (
@@ -125,46 +102,57 @@ class SignUp extends Component {
         </div>
         <div className="third_content">
           <div className="agree_all_terms">
-            <input id="agree_all" name="agree_all" type="checkbox" className="agree_all" />
+            <input
+              id="agree_all"
+              name="agree_all"
+              type="checkbox"
+              className="agree_all"
+            />
             <label for="agree_all">AGREE ALL TERMS</label>
           </div>
           <div className="termsview">
             <div className="termsview1">
-              <input 
-                id ="termsService"
+              <input
+                id="termsService"
                 name="termsService1"
                 type="checkbox"
                 className="input-checkbox1"
               />
-              <label for='termsService'>Agree terms view</label>
+              <label for="termsService">Agree terms view</label>
               <a href="https://takecareof.com">View Details</a>
             </div>
             <div className="termsview2">
               <input
-                id ="termsService2"
+                id="termsService2"
                 name="termsService"
                 type="checkbox"
                 className="input-checkbox2"
               />
-              <label for='termsService2'>Agree Privacy Policy</label>
+              <label for="termsService2">Agree Privacy Policy</label>
               <a href="https://takecareof.com">View Details</a>
             </div>
             <div className="termsview3">
               <input
-                id ="termsService3"
+                id="termsService3"
                 name="termsService"
                 type="checkbox"
                 className="input-checkbox3"
               />
-              <label for='termsService3'>Agreeing To Recieve Marketing (optional) </label>
+              <label for="termsService3">
+                Agreeing To Recieve Marketing (optional){' '}
+              </label>
               <a href="https://takecareof.com">View Details</a>
             </div>
           </div>
         </div>
         <div>
-          <button className="signup_btn"><span>Sign Up</span></button>
+          <button className="signup_btn">
+            <span>Sign Up</span>
+          </button>
         </div>
-        <div className='copyright'>&copy; Carewith Inc. All Rights Reserved.</div>
+        <div className="copyright">
+          &copy; Carewith Inc. All Rights Reserved.
+        </div>
       </div>
     );
   }
