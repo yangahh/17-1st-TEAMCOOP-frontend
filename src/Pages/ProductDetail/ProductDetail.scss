@@ -29,8 +29,6 @@
 
   .main-product-container {
     display: flex;
-    background-color: red;
-    border: 3px solid black;
     padding-bottom: 150px;
 
     .product-image-content {
@@ -118,11 +116,21 @@
         padding: 19px 16px;
         margin-bottom: 20px;
         border: none;
+        background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
+          no-repeat 98% 50%;
+        background-color: white;
         font-size: 14px;
-        text-transform: capitalize;
+        -webkit-appearance: none; /* 네이티브 외형 감추기 */
+        -moz-appearance: none;
+        appearance: none;
+
+        &:focus {
+          border: 1px solid lightgray;
+          outline: none;
+        }
 
         &:hover {
-          border: 1px solid lightgray;
+          border: none;
         }
       }
 
@@ -137,12 +145,24 @@
         font-size: 16px;
         font-weight: 400;
         line-height: 28px;
+        transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
 
         .btn-line {
+          display: inline-block;
           width: 52px;
           height: 2px;
-          margin: 0 10px;
+          margin: 5px 10px;
           background-color: $white-color;
+        }
+
+        &:hover {
+          color: $black-color;
+          background-color: $white-color;
+          transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
+
+          .btn-line {
+            background-color: $black-color;
+          }
         }
       }
     }
