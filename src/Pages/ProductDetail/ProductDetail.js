@@ -6,10 +6,7 @@ class ProductDetail extends Component {
     return (
       <div className="ProductDetail">
         <nav className="product-nav">
-          <div className="nav-container">
-            11
-          </div>
-
+          <div className="nav-container">11</div>
         </nav>
         <section className="main-product-container">
           <div className="product-image-content">
@@ -32,14 +29,16 @@ class ProductDetail extends Component {
               <li>Grass-fed bovine collagen</li>
               <li>Made with premium Japanese matcha powder</li>
             </ul>
-            <a href="" className="detail-link">See supplement facts</a>
+            <a href="" className="detail-link">
+              See supplement facts
+            </a>
             <select name="product-count" className="product-count">
               <option value="">15 Serving Tub</option>
-              <option value="">Matcha</option>
+              <option value="">5 Packets</option>
             </select>
             <button className="add-cart-btn">
               Add
-              <span className="btn-line"/>
+              <span className="btn-line" />
               $32
             </button>
           </div>

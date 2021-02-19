@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "category": "powders",
+    "productImageSrc": "",
+    "isVegan": true,
+    "isVegetarian": false,
+    "tagList": [],
+    "display-title": "",
+    "subTitle": "",
+    "description": [],
+    "detailLink": "",
+    "quality-badge": [],
+    "allergy": [],
+    // "size": true,
+    "product-price": { "15 Serving Tub": 32, "5 Pacjets": 16 },
+    "stock": 4,
+    "quality-badges": ["Gluten Free", "No Dairy", "Natural Flavors"],
+    "similarProduct": [
+      {
+        "id": 1,
+        "displayTitle": "Superberry",
+        "subTitle": "The Antioxidant Ace",
+        "imageUrl": "~~~",
+        "healthGoal": ["Immunity", "herat", "skin"]
+      },
+      {
+        "id": 2,
+        "displayTitle": "Superberry",
+        "subTitle": "The Antioxidant Ace",
+        "imageUrl": "~~~",
+        "healthGoal": ["Immunity", "herat", "skin"]
+      }
+    ]
+  }
+]
