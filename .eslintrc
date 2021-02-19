@@ -1,8 +1,12 @@
 {
   "plugins": ["prettier"],
+<<<<<<< HEAD
   "extends": [
     "prettier",
     "prettier/@typescript-eslint"
   ],
+=======
+  "extends": ["prettier", "prettier/@typescript-eslint"],
+>>>>>>> main
   "parser": "babel-eslint"
 }
