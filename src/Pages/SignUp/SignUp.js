@@ -7,19 +7,82 @@ class SignUp extends Component {
     this.state = {
       name_box: '',
       number: '',
-      confirm: '',
       id: '',
       pw: '',
+      confirm: '',
     };
   }
 
   handleAllInput = e => {
     this.setState({
-      [e.target.name]: 'e.target.value',
+      [e.target.name]: e.target.value,
     });
   };
+
+  gotoMain = event => {
+    fetch('http://10.58.5.21:8003/user/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.name_box,
+        email: this.state.id,
+        number: this.state.number,
+        password: this.state.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          this.props.history.push('/login');
+          alert('회원가입 완료');
+        } else {
+          alert('실패');
+        }
+      });
+  };
+  sendSMS = e => {
+    // console.log(this.state);
+    e.preventDefault();
+
+    fetch('http://10.58.5.21:8003/user/sms', {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: this.state.number,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        // if (result.message === 'SUCCESS') {
+        //   // this.props.history.push('/login');
+        //   // alert('회원가입 완료');
+        // } else {
+        //   alert('실패');
+        // }
+      });
+  }
+
+  checkCode = e => {
+    fetch('http://10.58.5.21:8003/user/sms-validation', {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: this.state.number,
+        auth_number: this.state.confirm,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        // if (result.message === 'SUCCESS') {
+        //   this.props.history.push('/login');
+        //   alert('회원가입 완료');
+        // } else {
+        //   alert('실패');
+        // }
+      });
+  }
+
   render() {
-    console.log(this.state.name_box);
+    // console.log(this.state.name_box);
     return (
       <div className="sign_up">
         <header>
@@ -47,20 +110,20 @@ class SignUp extends Component {
                   type="text"
                   placeholder="Enter your phone number"
                 />
-                <button className="send">Send</button>
+                <button onClick={this.sendSMS} className="send">Send</button>
               </div>
             </div>
             <div className="confirm_form">
               <div className="with_button">
                 <input
-                  disabled
+                  // disabled
                   onChange={this.handleAllInput}
                   name="confirm"
                   className="confirm_box"
                   type="text"
                   placeholder="Enter authentication number"
                 />
-                <button className="confirm">Confirm</button>
+                <button onClick={this.checkCode} className="confirm">Confirm</button>
               </div>
             </div>
           </div>
@@ -146,7 +209,7 @@ class SignUp extends Component {
           </div>
         </div>
         <div>
-          <button className="signup_btn">
+          <button onClick={this.gotoMain} className="signup_btn">
             <span>Sign Up</span>
           </button>
         </div>
