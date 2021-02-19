@@ -2,7 +2,7 @@
 
 .CategoryNav {
   position: fixed;
-  top: 0;
+  top: 80px;
   left: 0;
   @extend %flex-center;
   width: 100%;
@@ -16,8 +16,14 @@
   z-index: 1;
 
   .nav-container {
+    // background-color: red;
+    display: flex;
+    justify-content: flex-start;
     // width: 1200px;
     width: 1116px;
+    height: 100%;
+    position: relative;
+    top: -39px;
     span {
       display: inline-block;
       height: 100%;
@@ -36,7 +42,7 @@
     }
 
     .selected {
-      border-bottom: 2px solid $main-color;
+      border-bottom: 3px solid $main-color;
     }
   }
 }

@@ -1,1 +1,186 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+nav {
+  @extend %flex-center;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+
+  &:hover {
+    background-color: $white-color;
+    transition: background-color 0.3s linear 0s, box-shadow 0.3s linear 0s;
+
+    .logo {
+      color: $main-color;
+    }
+  }
+
+  .nav-container {
+    @extend %flex-center;
+    justify-content: space-between;
+    height: 80px;
+    margin-bottom: -80px;
+    padding: 0 1.125rem;
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .left-container,
+    .right-container {
+      display: flex;
+      height: 100%;
+
+      li {
+        display: flex;
+        align-items: center;
+        width: initial;
+        height: 100%;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.125rem;
+        text-align: center;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .left-container {
+      a {
+        // color: black;
+        text-decoration: none;
+      }
+
+      .shop-dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      .nav-item {
+        margin-right: 2.5rem;
+
+        &:hover {
+          span {
+            color: $main-color;
+          }
+        }
+
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          top: calc(100% - 0.625rem);
+          padding: 40px 0 40px 40px;
+          border-radius: 10px;
+          background: $white-color;
+
+          .dropdown-menu-wrap {
+            display: flex;
+
+            .dropdown-link-column {
+              letter-spacing: 0.125rem;
+              margin-right: 40px;
+
+              h4 {
+                margin-bottom: 1.25rem;
+                font-size: 0.75rem;
+                text-align: left;
+              }
+
+              a {
+                &:last-child {
+                  li {
+                    color: $main-color;
+                  }
+                }
+
+                li {
+                  margin-bottom: 0.25rem;
+                  color: $black-color;
+                  font-size: 1rem;
+                  line-height: 2rem;
+                  font-weight: normal;
+                  text-decoration: none;
+                }
+
+                &:hover {
+                  li {
+                    color: $main-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      &:first-child {
+        flex: 4 1 0%;
+      }
+    }
+
+    .right-container {
+      justify-content: flex-end;
+
+      li {
+        // color: $black-color;
+        margin: 0px 12px;
+
+        &:hover {
+          color: $main-color;
+        }
+
+        img {
+          width: 32px;
+        }
+
+        button {
+          padding: 0.75rem 2rem;
+          border: 0.125rem solid $main-color;
+          border-radius: 6.25rem;
+          color: $white-color;
+          background-color: $main-color;
+          font-size: 1rem;
+          cursor: pointer;
+
+          &:hover {
+            color: $main-color;
+            background-color: $white-color;
+          }
+        }
+      }
+      &:last-child {
+        flex: 4 1 0%;
+      }
+    }
+  }
+}
+.nav-transparent {
+  a,
+  span {
+    color: $black-color;
+  }
+  transition: background-color 0.3s linear 0s, box-shadow 0.3s linear 0s;
+  background-color: transparent;
+
+  .logo {
+    color: $black-color;
+  }
+}
+
+.nav-white {
+  a,
+  li {
+    color: black;
+  }
+  transition: background-color 0.3s linear 0s, box-shadow 0.3s linear 0s;
+  background-color: $white-color;
+
+  .logo {
+    color: $main-color;
+  }
+}
