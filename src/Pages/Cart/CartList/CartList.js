@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './CartList.scss';
+import CartItem from './CartItem/CartItem';
 
 class CartList extends Component {
   render() {
@@ -18,22 +19,13 @@ class CartList extends Component {
         <div className="vitamin">
           {vitamins.length !== 0 && <h1>Vitamins</h1>}
           <div className={`item-wrap ${vitamins.length > 3 && 'grid-wrap'}`}>
-            {vitamins.map(item => {
+            {vitamins.map(itemInfo => {
               return (
-                <div
-                  className={`item ${vitamins.length > 3 && 'grid'}`}
-                  key={item.id}
-                >
-                  <img src={item.productImageUrl} alt="" />
-                  <div>
-                    <div>
-                      <h2>{item.productName}</h2>
-                      <p>{item.productDesc}</p>
-                    </div>
-                    <p>${item.productPrice}</p>
-                  </div>
-                  <button onClick={() => deleteItem(item)}>X</button>
-                </div>
+                <CartItem
+                  itemInfo={itemInfo}
+                  pruducts={vitamins}
+                  deleteItem={deleteItem}
+                />
               );
             })}
           </div>
@@ -41,22 +33,13 @@ class CartList extends Component {
         <div className="powder">
           {powders.length !== 0 && <h1>Powders</h1>}
           <div className={`item-wrap ${powders.length > 3 && 'grid-wrap'}`}>
-            {powders.map(item => {
+            {powders.map(itemInfo => {
               return (
-                <div
-                  className={`item ${powders.length > 3 && 'grid'}`}
-                  key={item.id}
-                >
-                  <img src={item.productImageUrl} alt="" />
-                  <div>
-                    <div>
-                      <h2>{item.productName}</h2>
-                      <p>{item.productDesc}</p>
-                    </div>
-                    <p>${item.productPrice}</p>
-                  </div>
-                  <button onClick={() => deleteItem(item)}>X</button>
-                </div>
+                <CartItem
+                  itemInfo={itemInfo}
+                  pruducts={powders}
+                  deleteItem={deleteItem}
+                />
               );
             })}
           </div>

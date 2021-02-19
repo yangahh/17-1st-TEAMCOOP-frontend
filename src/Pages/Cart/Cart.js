@@ -101,7 +101,7 @@ class Cart extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.carts.length === 0) {
+    if (!this.state.carts.length) {
       return;
     }
 
@@ -149,7 +149,7 @@ class Cart extends Component {
               <div className="no-item">
                 <img
                   src="https://images.ctfassets.net/t9x0u6p47op0/4b4qjgWLXvAj5MhdrIS1KL/797869888bd2d0e9b96e8fbd0d8958d2/iconCart.svg?"
-                  alt=""
+                  alt="empty cart"
                 />
                 <p>You have no items in your cart.</p>
                 <a href="#">Browse products</a>
