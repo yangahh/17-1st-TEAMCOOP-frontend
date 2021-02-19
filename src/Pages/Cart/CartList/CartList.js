@@ -17,11 +17,11 @@ class CartList extends Component {
       <div className="cartlist">
         <div className="vitamin">
           {vitamins.length !== 0 && <h1>Vitamins</h1>}
-          <div className={`item-wrap ${vitamins.length > 2 && 'grid-wrap'}`}>
+          <div className={`item-wrap ${vitamins.length > 3 && 'grid-wrap'}`}>
             {vitamins.map(item => {
               return (
                 <div
-                  className={`item ${vitamins.length > 2 && 'grid'}`}
+                  className={`item ${vitamins.length > 3 && 'grid'}`}
                   key={item.id}
                 >
                   <img src={item.productImageUrl} alt="" />
@@ -40,11 +40,11 @@ class CartList extends Component {
         </div>
         <div className="powder">
           {powders.length !== 0 && <h1>Powders</h1>}
-          <div className={`item-wrap ${powders.length > 2 && 'grid-wrap'}`}>
+          <div className={`item-wrap ${powders.length > 3 && 'grid-wrap'}`}>
             {powders.map(item => {
               return (
                 <div
-                  className={`item ${powders.length > 2 && 'grid'}`}
+                  className={`item ${powders.length > 3 && 'grid'}`}
                   key={item.id}
                 >
                   <img src={item.productImageUrl} alt="" />

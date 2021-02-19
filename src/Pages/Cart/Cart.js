@@ -70,6 +70,15 @@ class Cart extends Component {
           productImageUrl:
             'https://images.ctfassets.net/t9x0u6p47op0/2JYsGrS01bhzWXIQZp02uY/58768df70a7c35aa03a43dd47ca79dbd/img_plantvanilla-tub_tile.jpg',
         },
+        {
+          category: 'vitamin',
+          id: 8,
+          productName: 'B-Complex',
+          productDesc: '45000mcg Pantothenic acid, ...',
+          productPrice: 12,
+          productImageUrl:
+            'https://images.ctfassets.net/t9x0u6p47op0/o4UtlsnpccgOG8wc6QU6u/80643ed497c4e8850dfeea5f8ca554ba/img_bcomplex3_tile.jpg',
+        },
       ],
       subtotal: 0,
     };
@@ -155,7 +164,7 @@ class Cart extends Component {
               <div>
                 <span>Subtotal</span>
                 {/* <span>${subtotal}</span> */}
-                <span>{carts.length === 0 ? 'ㅡ' : subtotal}</span>
+                <span>{carts.length === 0 ? 'ㅡ' : `$${subtotal}`}</span>
               </div>
               <div>
                 <span>Shipping</span>

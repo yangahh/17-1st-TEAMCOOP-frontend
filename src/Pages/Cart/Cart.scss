@@ -112,10 +112,17 @@
         letter-spacing: 0.2px;
         cursor: pointer;
 
+        &:hover {
+          color: $main-color;
+          background-color: white;
+          border: 2px solid $main-color;
+        }
+
         &:disabled {
           color: #aaaaaa;
           background-color: #d5d5d5;
           cursor: default;
+          border: none;
         }
       }
 
