@@ -26,7 +26,7 @@ class Nav extends Component {
 
   handleScroll = () => {
     this.setState({
-      isNavTransparent: window.pageYOffset > 0 ? false : true,
+      isNavTransparent: !window.pageYOffset > 0,
     });
   };
 
