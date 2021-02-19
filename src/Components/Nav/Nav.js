@@ -25,9 +25,9 @@ class Nav extends Component {
   };
 
   handleScroll = () => {
-    window.pageYOffset > 0
-      ? this.setState({ isNavTransparent: false })
-      : this.setState({ isNavTransparent: true });
+    this.setState({
+      isNavTransparent: window.pageYOffset > 0 ? false : true,
+    });
   };
 
   getDropdownMenuData = () => {
