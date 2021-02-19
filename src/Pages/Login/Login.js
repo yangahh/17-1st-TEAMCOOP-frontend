@@ -16,6 +16,18 @@ class Login extends Component {
     });
   };
  
+    gotoMain = () => {
+     if(this.state.id.includes("@") && this.state.pw.length >=8){
+    fetch("10.58.5.21:8002" , {
+      method:"POST", 
+      body: JSON.stringify({
+        email: this.state.id,
+        password: this.state.pw,
+      })
+    })
+  }}
+     
+
   render() {
     return (
       <div className="Login">
