@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
+import bedgeIcon from './badgeIconData';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
+// import 'react-accessible-accordion/dist/fancy-example.css';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
+  constructor() {
+    super();
+    this.state = {
+      allergyList: ['Soy', 'Nuts', 'Milk', 'Wheat', 'Fish'],
+    };
+  }
+
   render() {
+    const { allergyList } = this.state;
+    const doNotCotain = allergyList.filter(allergy => {
+      return !['Soy'].includes(allergy);
+    });
     return (
       <div className="ProductDetail">
         {/* <nav className="product-nav">
@@ -29,7 +49,7 @@ class ProductDetail extends Component {
               <li>Grass-fed bovine collagen</li>
               <li>Made with premium Japanese matcha powder</li>
             </ul>
-            <a href="" className="detail-link">
+            <a href="" className="nutrition-link">
               See supplement facts
             </a>
             <select name="product-count" className="product-count">
@@ -46,14 +66,61 @@ class ProductDetail extends Component {
         <section className="quality-badges-container">
           <div className="badge-card">
             <img
-              src="https://images.ctfassets.net/t9x0u6p47op0/5DvOw5233lcle7PubPokZ/d441ebab184bff65f749eecd1ffa7ef4/dietary-badges-glutenfree.svg"
+              src={bedgeIcon['Gluten Free']}
               alt="badge-image"
               className="badge-image"
             />
             <div className="badge-name">Gluten Free</div>
           </div>
+          <div className="badge-card">
+            <img
+              src={bedgeIcon['Non-GMO']}
+              alt="badge-image"
+              className="badge-image"
+            />
+            <div className="badge-name">Non-GMO</div>
+          </div>
         </section>
-        <section className="overview-container">3</section>
+        <section className="overview-container">
+          <div className="overview-header">The basics</div>
+          <div className="accordion-container">
+            <Accordion>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>SUGGESTED USE</AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    All of our products are created with optimal absorption in
+                    mind. We generally recommend that you take our supplements
+                    together with a meal such as breakfast or lunch.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemHeading allowMultipleExpanded={true}>
+                  <AccordionItemButton>ALLERGY</AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>Contain: Soy</p>
+                  <p>
+                    Does not contain:
+                    {doNotCotain.join(', ')}
+                  </p>
+                  <a href="" className="nutrition-link">
+                    See supplement facts
+                  </a>
+                </AccordionItemPanel>
+              </AccordionItem>
+            </Accordion>
+          </div>
+          <div className="overview-image">
+            <img
+              src="https://images.unsplash.com/photo-1494390248081-4e521a5940db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1295&q=80"
+              alt="overview-image"
+            />
+          </div>
+        </section>
         <section className="similar-product-container">4</section>
       </div>
     );

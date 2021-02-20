@@ -99,7 +99,7 @@
         }
       }
 
-      .detail-link {
+      .nutrition-link {
         display: inline-block;
         margin-bottom: 70px;
         border-bottom: 1px solid black;
@@ -170,8 +170,8 @@
 
   .quality-badges-container {
     @extend %flex-center;
-    // height: 240px;
-    padding: 80px 0;
+    justify-content: space-around;
+    padding: 80px 500px;
     background-color: $dimbeige-color;
 
     .badge-card {
@@ -184,14 +184,112 @@
       .badge-image {
         display: block;
         width: 42px;
+        margin-bottom: 20px;
+      }
+
+      .badge-name {
+        color: $black-color;
+        text-align: center;
+        font-size: 16px;
+        font-family: 'Lato';
+        line-height: 24px;
       }
     }
   }
 
   .overview-container {
-    height: 1400px;
-    padding-top: 150px;
-    background-color: palevioletred;
+    // height: 1400px;
+    position: relative;
+    padding-top: 200px;
+    margin-bottom: 200px;
+
+    .overview-header {
+      margin: 0px 0px 35px 120px;
+      font-size: 68px;
+      font-family: 'Newsreader', serif;
+      line-height: 87px;
+    }
+
+    .accordion-container {
+      margin-left: 180px;
+      max-width: 35%;
+      // background-color: pink;
+
+      .accordion {
+        // border: ;
+
+        .accordion__item {
+          border-bottom: 1px solid $black-color;
+
+          // &:first-child {
+          //   border-top: 1px solid $black-color;
+          // }
+
+          // &:last-child {
+          //   border: none;
+          // }
+
+          .accordion__button {
+            padding: 36px 0;
+            border-bottom: 1px solid $black-color;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 5px;
+            cursor: pointer;
+
+            &:before {
+              display: inline-block;
+              content: '';
+              height: 10px;
+              width: 10px;
+              // margin-left: 20px;
+              margin: 0 20px;
+              border-bottom: 2px solid currentColor;
+              border-right: 2px solid currentColor;
+              transform: rotate(-45deg);
+              transition: all 0.3s ease 0s;
+            }
+
+            &[aria-expanded='true']::before,
+            &[aria-selected='true']::before {
+              transform: rotate(45deg);
+              transition: all 0.3s ease 0s;
+            }
+          }
+
+          .accordion__panel {
+            padding: 60px 60px 60px 0px;
+            font-family: 'Newsreader', serif;
+            font-size: 24px;
+            line-height: 40px;
+            animation: fadein 0.35s ease-in;
+
+            .nutrition-link {
+              display: inline-block;
+              border-bottom: 1px solid black;
+              color: $black-color;
+              text-decoration: none;
+              font-family: 'Lato';
+              font-size: 16px;
+              line-height: 28px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    .overview-image {
+      position: absolute;
+      top: 150px;
+      right: 0;
+      height: auto;
+      width: 700px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 
   .similar-product-container {
