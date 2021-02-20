@@ -9,4 +9,8 @@ const bedgeIcon = {
     'https://images.ctfassets.net/t9x0u6p47op0/5vvz14Gphb0tTiGV07EHXo/ee0bc4d40dc38931eb010df030e6a4a3/dietary-badge-fermented__2_.svg',
   vegan:
     'https://images.ctfassets.net/t9x0u6p47op0/4QLgyov2mPAKgOhLrFzP0q/8a1d59dd544b3f4e1f706112256370ce/dietary-badge-vegan__1_.svg',
+  noDairy:
+    'https://images.ctfassets.net/t9x0u6p47op0/3jxue1oNF8OBaqTr4R1maq/48c15c60cd7e07c37cf78dbc77bcc781/dietary-badges-dairyfree.svg',
+  naturalFlavors:
+    'https://images.ctfassets.net/t9x0u6p47op0/5UsMBFnEtAmDRpbb2D6odO/14d9acfc7d27a0703cce707588515118/dietary-badges-natural-flavors.svg',
 };

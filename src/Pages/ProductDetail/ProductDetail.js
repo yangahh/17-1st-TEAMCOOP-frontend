@@ -5,9 +5,9 @@ class ProductDetail extends Component {
   render() {
     return (
       <div className="ProductDetail">
-        <nav className="product-nav">
+        {/* <nav className="product-nav">
           <div className="nav-container">11</div>
-        </nav>
+        </nav> */}
         <section className="main-product-container">
           <div className="product-image-content">
             <img
@@ -43,7 +43,16 @@ class ProductDetail extends Component {
             </button>
           </div>
         </section>
-        <section className="quality-badges-container">2</section>
+        <section className="quality-badges-container">
+          <div className="badge-card">
+            <img
+              src="https://images.ctfassets.net/t9x0u6p47op0/5DvOw5233lcle7PubPokZ/d441ebab184bff65f749eecd1ffa7ef4/dietary-badges-glutenfree.svg"
+              alt="badge-image"
+              className="badge-image"
+            />
+            <div className="badge-name">Gluten Free</div>
+          </div>
+        </section>
         <section className="overview-container">3</section>
         <section className="similar-product-container">4</section>
       </div>
