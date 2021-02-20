@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import symbolUrl from './symbolUrl';
 import './ProductCards.scss';
 
 class ProductCards extends Component {
@@ -12,7 +13,7 @@ class ProductCards extends Component {
           <p>{cardInfo.subcategory.description}</p>
         </div>
         {cardInfo.item.map(item => {
-          const outOfStock = item.stock === 0;
+          const outOfStock = item.stock === true;
           const isPriceTypeString = typeof item.displayPrice === 'string';
 
           return (
@@ -25,30 +26,28 @@ class ProductCards extends Component {
                 {item.isNew && <span className="new">NEW</span>}
                 <img src={item.imageUrl} alt="product image" />
                 <div className="symbols">
-                  {item.symbolUrl.map(symbolSrc => {
-                    return <img src={symbolSrc} alt="" />;
+                  {item.symbolURL.map(symbolSrc => {
+                    return <img src={symbolUrl[symbolSrc]} alt="symbol" />;
                   })}
                 </div>
               </div>
               <div className="productCard__text-block">
                 <h2>{item.displayTitle}</h2>
-                <p>{item.subtitle}</p>
+                <p>{item.subTitle}</p>
                 <ul>
-                  {item.description.map(text => {
+                  {item.description.split('/').map(text => {
                     return <li>{text}</li>;
                   })}
                 </ul>
               </div>
               <div className="productCard__bottom">
-                <p>${item.displayPrice}</p>
+                <p>${item.displayPrice[0]}</p>
                 {outOfStock ? (
                   <button disabled type="button">
                     Out of stock
                   </button>
                 ) : (
-                  <button type="button">
-                    {isPriceTypeString ? 'Select' : 'Add'}
-                  </button>
+                  <button type="button">Add</button>
                 )}
               </div>
             </div>

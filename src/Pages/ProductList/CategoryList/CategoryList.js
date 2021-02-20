@@ -7,7 +7,7 @@ class CategoryList extends Component {
       console.log(category);
       return;
     }
-    console.log(category.subcategory);
+    console.log(`${category.path}/${category.id}`);
   };
 
   render() {
@@ -29,7 +29,8 @@ class CategoryList extends Component {
                           subcategory.imgSrc ? 'subtitle bold' : 'subtitle'
                         }
                         key={subcategory.id}
-                        onClick={() => this.goToPage(subcategory)}
+                        onClick={() => this.props.fetchCategory(subcategory)}
+                        // onClick={() => this.goToPage(subcategory)}
                       >
                         {subcategory.imgSrc && <img src={subcategory.imgSrc} />}
 
