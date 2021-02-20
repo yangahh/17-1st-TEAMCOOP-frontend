@@ -12,6 +12,9 @@ class ProductCards extends Component {
           <p>{cardInfo.subcategory.description}</p>
         </div>
         {cardInfo.item.map(item => {
+          const outOfStock = item.stock === 0;
+          const isPriceTypeString = typeof item.displayPrice === 'string';
+
           return (
             <div
               className="productCard"
@@ -38,20 +41,15 @@ class ProductCards extends Component {
               </div>
               <div className="productCard__bottom">
                 <p>${item.displayPrice}</p>
-                {item.stock === 0 ? (
+                {outOfStock ? (
                   <button disabled type="button">
                     Out of stock
                   </button>
-                ) : typeof item.displayPrice === 'string' ? (
-                  <button type="button">Select</button>
                 ) : (
-                  <button type="button">Add</button>
+                  <button type="button">
+                    {isPriceTypeString ? 'Select' : 'Add'}
+                  </button>
                 )}
-                {/* {typeof item.displayPrice === 'string' ? (
-                  <button type="button">Select</button>
-                ) : (
-                  <button type="button">Add</button>
-                )} */}
               </div>
             </div>
           );

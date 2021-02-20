@@ -4,10 +4,9 @@ import ProductCards from './ProductCards/ProductCards';
 
 class ProductCardsGroup extends Component {
   render() {
-    const { productDatas, powderDatas } = this.props;
-    console.log(this.props.selectedCategory);
+    const { productDatas, powderDatas, selectedCategory } = this.props;
 
-    if (this.props.selectedCategory === 'category') {
+    if (selectedCategory === 'category') {
       return (
         <div className="productCardsGroup">
           <h1>Vitamins</h1>

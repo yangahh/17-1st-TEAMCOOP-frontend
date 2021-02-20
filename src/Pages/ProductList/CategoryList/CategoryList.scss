@@ -3,11 +3,8 @@
 .categoryList {
   width: 185px;
   box-sizing: border-box;
-  // width: 400px;
-  // width: 220px;
   padding-top: 60px;
   font-family: 'Lato', sans-serif;
-  // background-color: cornflowerblue;
 
   h3 {
     width: fit-content;
@@ -55,8 +52,7 @@
             width: 0px;
             height: 1px;
             margin: 5px 0 0;
-            transition: all 0.2s ease-in-out;
-            transition-duration: 0.3s;
+            transition: all 0.3s ease-in-out;
             opacity: 0;
             background-color: #212121;
           }
