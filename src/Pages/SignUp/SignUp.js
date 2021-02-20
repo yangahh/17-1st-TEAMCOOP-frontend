@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CheckList from './CheckList';
 import './SignUp.scss';
 
 class SignUp extends Component {
@@ -10,6 +11,11 @@ class SignUp extends Component {
       id: '',
       pw: '',
       confirm: '',
+      allChecked: false,
+      checked0: false,
+      checked1: true,
+      checked2: false,
+      checkList:[],
     };
   }
 
@@ -18,6 +24,30 @@ class SignUp extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
+  handleAllChecked = () => {
+    const {allChecked} =this.state;
+    this.setState({
+      allChecked:!allChecked,
+      checked0: !allChecked,
+      checked1: !allChecked,
+      checked2: !allChecked,
+    })
+  };
+
+  handleChecked = (idx) => {
+    this.setState({
+      idx:!this.state[`checked$(idx)`]
+    })
+console.log(idx);
+  }
+
+  // handleChecked = (index) => {
+  //   console.log(index);
+  //   this.setState({
+  //     ['checked$(index)']:!this.state[checked$(index)]
+  //   })
+  // }
 
   gotoMain = event => {
     fetch('http://10.58.5.21:8003/user/signup', {
@@ -81,9 +111,11 @@ class SignUp extends Component {
       });
   }
 
+
   render() {
     // console.log(this.state.name_box);
     return (
+      
       <div className="sign_up">
         <header>
           <span>Sign Up</span>
@@ -116,7 +148,7 @@ class SignUp extends Component {
             <div className="confirm_form">
               <div className="with_button">
                 <input
-                  // disabled
+                  disabled
                   onChange={this.handleAllInput}
                   name="confirm"
                   className="confirm_box"
@@ -158,7 +190,7 @@ class SignUp extends Component {
                 name="pw_again"
                 className="pw_box"
                 type="text"
-                placeholder="enter your password"
+                placeholder="Enter your password"
               />
             </div>
           </div>
@@ -166,46 +198,20 @@ class SignUp extends Component {
         <div className="third_content">
           <div className="agree_all_terms">
             <input
-              id="agree_all"
-              name="agree_all"
+              onClick={this.handleAllChecked}
+              checked={this.state.allChecked}
               type="checkbox"
               className="agree_all"
+              id="agree_all"
             />
             <label for="agree_all">AGREE ALL TERMS</label>
           </div>
+          
           <div className="termsview">
-            <div className="termsview1">
-              <input
-                id="termsService"
-                name="termsService1"
-                type="checkbox"
-                className="input-checkbox1"
-              />
-              <label for="termsService">Agree terms view</label>
-              <a href="https://takecareof.com">View Details</a>
-            </div>
-            <div className="termsview2">
-              <input
-                id="termsService2"
-                name="termsService"
-                type="checkbox"
-                className="input-checkbox2"
-              />
-              <label for="termsService2">Agree Privacy Policy</label>
-              <a href="https://takecareof.com">View Details</a>
-            </div>
-            <div className="termsview3">
-              <input
-                id="termsService3"
-                name="termsService"
-                type="checkbox"
-                className="input-checkbox3"
-              />
-              <label for="termsService3">
-                Agreeing To Recieve Marketing (optional){' '}
-              </label>
-              <a href="https://takecareof.com">View Details</a>
-            </div>
+          {CHECKLIST_ARR.map((term,idx) => {
+                return (
+                <CheckList term={term} idx={idx} onClick={this.handleChecked} checked={`this.state.checked${idx}`}/>)
+              })}
           </div>
         </div>
         <div>
@@ -220,5 +226,7 @@ class SignUp extends Component {
     );
   }
 }
+
+const CHECKLIST_ARR = ["Agree terms view", "Agree Privacy Policy", "Agreeing To Recieve Marketing (optional)"]
 
 export default SignUp;
