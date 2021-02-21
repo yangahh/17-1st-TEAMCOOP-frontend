@@ -22,7 +22,7 @@ class ProductCards extends Component {
         Authorization: sessionStorage.getItem('access_token'),
       },
       body: JSON.stringify({
-        id: item.id,
+        productId: item.id,
         productSize: item.displaySize[0],
         productPrice: item.displayPrice[0],
       }),
