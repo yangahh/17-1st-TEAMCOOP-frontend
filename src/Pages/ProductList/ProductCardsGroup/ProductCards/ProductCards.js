@@ -6,7 +6,7 @@ import './ProductCards.scss';
 class ProductCards extends Component {
   render() {
     const { cardInfo } = this.props;
-    console.log(cardInfo);
+
     return (
       <div className="productCards" key={cardInfo.id}>
         {cardInfo.id !== 100 && (
@@ -19,13 +19,12 @@ class ProductCards extends Component {
 
         {cardInfo.item.map(item => {
           const outOfStock = item.stock === true;
-          const isPriceTypeString = typeof item.displayPrice === 'string';
 
           return (
             <div
               className="productCard"
               key={item.id}
-              onClick={() => console.log(item)}
+              onClick={() => console.log(item)} //상세페이지 연결
             >
               <div className="productCard__header">
                 {item.isNew && <span className="new">NEW</span>}

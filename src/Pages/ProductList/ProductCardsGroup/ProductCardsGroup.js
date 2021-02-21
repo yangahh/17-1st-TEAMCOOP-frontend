@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './ProductCardsGroup.scss';
 import ProductCards from './ProductCards/ProductCards';
+import './ProductCardsGroup.scss';
 
 class ProductCardsGroup extends Component {
   render() {

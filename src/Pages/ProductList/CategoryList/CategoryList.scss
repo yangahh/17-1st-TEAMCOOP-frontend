@@ -1,12 +1,12 @@
 @import '../../../Styles/common.scss';
 
 .categoryList {
-  width: 185px;
-  box-sizing: border-box;
-  padding-top: 60px;
-  font-family: 'Lato', sans-serif;
   position: sticky;
   top: 144px;
+  box-sizing: border-box;
+  width: 185px;
+  padding-top: 60px;
+  font-family: 'Lato', sans-serif;
 
   h3 {
     width: fit-content;
@@ -17,9 +17,9 @@
     cursor: pointer;
 
     &:nth-child(2) {
+      position: relative;
       border-bottom: none;
       margin-bottom: 40px;
-      position: relative;
 
       &:after {
         content: '';

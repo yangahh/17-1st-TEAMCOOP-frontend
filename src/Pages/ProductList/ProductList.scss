@@ -2,12 +2,10 @@
 
 .productList {
   width: 100%;
-  // padding-top: 144px;
 
   .banner {
     @extend %flex-center;
     flex-direction: column;
-
     height: 420px;
     background-color: #a8ced8;
     font-family: 'Lato';
@@ -20,9 +18,9 @@
     }
 
     p {
-      text-align: center;
       width: 730px;
       font-size: 18px;
+      text-align: center;
 
       &:nth-child(2) {
         margin-top: 30px;
@@ -44,8 +42,6 @@
       width: 1200px;
 
       .productCardsGroup {
-        // flex-grow: 1;
-        // width: fit-content;
         width: 900px;
       }
     }

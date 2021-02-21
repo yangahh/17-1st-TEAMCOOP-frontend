@@ -57,7 +57,7 @@ class ProductList extends Component {
   //     });
   // };
 
-  testingShowAll = () => {
+  fetchShowAll = () => {
     fetch('http://172.30.250.141:8000/product', {
       method: 'GET',
     })
@@ -73,15 +73,16 @@ class ProductList extends Component {
   componentDidMount() {
     this.getCategoryData();
     this.gethealthGoalData();
+    this.fetchShowAll();
+
+    //mock-data fetch
     // this.getVitaminDetailData();
     // this.getPowderDetailData();
-
-    this.testingShowAll();
   }
 
   handleCategory = target => {
     this.setState({ currentCategory: target });
-    this.testingShowAll();
+    this.fetchShowAll();
   };
 
   //카테고리별 페치함수 호출
@@ -187,7 +188,7 @@ class ProductList extends Component {
           <div className="wrapper">
             <CategoryList
               fetchNewItem={this.fetchNewItem}
-              fetchShowAll={this.testingShowAll}
+              fetchShowAll={this.fetchShowAll}
               fetchCategory={this.fetchCategory}
               className="category-list"
               selectedCategory={

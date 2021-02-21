@@ -1,40 +1,28 @@
 @import '../../../../Styles/common.scss';
 
 .productCards {
-  // display: flex;
-  // flex-wrap: wrap;
-  margin-bottom: 50px;
   display: flex;
   flex-flow: row wrap;
-  flex-direction: row;
-  flex-wrap: wrap;
+  margin-bottom: 50px;
 
   & > div {
     margin-right: 20px;
     margin-bottom: 20px;
 
     &:nth-child(3n) {
-      // border: 3px solid red;
       margin-right: 0;
     }
   }
 
   .productCover {
     position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    // margin-right: 20px;
-    //card design
     width: 272px;
     height: 477px;
-    // background-image: url(https://images.ctfassets.net/t9x0u6p47op0/1cdBabMQgA8scyyeCkgEEQ/674b971a57e9d709ff45bb375bff6957/img_product_category_minerals.jpg?fit=fill&fl=progressive&fm=jpg&w=1400);
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    border-radius: 6px;
-    color: #212121;
-
-    //cover layout
     padding: 80px 25px;
+    box-sizing: border-box;
+    color: #212121;
+    border-radius: 6px;
+    overflow: hidden;
 
     img {
       position: absolute;
@@ -66,8 +54,8 @@
     height: 477px;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 6px;
     color: #212121;
+    border-radius: 6px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 
@@ -86,22 +74,22 @@
     }
 
     .productCard__header {
-      height: 163px;
       position: relative;
-      overflow: hidden;
+      height: 163px;
       border-top-left-radius: 6px;
       border-top-right-radius: 6px;
+      overflow: hidden;
 
       .new {
         position: absolute;
         top: 24px;
         left: 24px;
         display: inline-block;
-        font-size: 12px;
         padding: 5px 10px;
-        background-color: $main-color;
         color: $white-color;
+        background-color: $main-color;
         border-radius: 12px;
+        font-size: 12px;
       }
 
       & > img {
@@ -110,10 +98,10 @@
       }
 
       .symbols {
-        width: 100%;
-        height: 62px;
         position: absolute;
         bottom: 0;
+        width: 100%;
+        height: 62px;
         padding: 16px 22px;
 
         img {
@@ -125,21 +113,21 @@
 
     .productCard__text-block {
       flex-grow: 1;
+      height: 204px;
       padding: 24px 24px 0 24px;
       border-left: 2px solid #f5f1ed;
       border-right: 2px solid #f5f1ed;
-      height: 204px;
 
       h2 {
+        margin-bottom: 5px;
         font-size: 24px;
         font-weight: 700;
-        margin-bottom: 5px;
       }
 
       p {
-        font-size: 16px;
-        color: #00000066;
         margin-bottom: 10px;
+        color: #00000066;
+        font-size: 16px;
       }
 
       ul {
@@ -148,9 +136,9 @@
         font-size: 14px;
 
         li {
-          margin-bottom: 4px;
           display: flex;
           align-items: flex-start;
+          margin-bottom: 4px;
           line-height: 25px;
           display: none;
 
@@ -183,11 +171,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 24px;
       border: 2px solid #f5f1ed;
       border-top: 0;
       border-bottom-left-radius: 6px;
       border-bottom-right-radius: 6px;
-      padding: 24px;
       transition: background-color 0.3s ease;
 
       p {
@@ -195,11 +183,11 @@
       }
 
       button {
-        font-size: 16px;
-        background-color: inherit;
         border: none;
-        font-weight: 700;
         color: $main-color;
+        background-color: inherit;
+        font-size: 16px;
+        font-weight: 700;
         cursor: pointer;
 
         &:disabled {
