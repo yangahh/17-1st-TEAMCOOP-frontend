@@ -9,6 +9,39 @@ class ProductCards extends Component {
     this.props.history.push(`/product/${id}`);
   };
 
+  goToCart = item => {
+    // console.log({
+    //   id: item.id,
+    //   productSize: item.displaySize[0],
+    //   productPrice: item.displayPrice[0],
+    // });
+
+    fetch('http://172.30.250.141:8000/product/tocart', {
+      method: 'POST',
+      headers: {
+        Authorization: sessionStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        id: item.id,
+        productSize: item.displaySize[0],
+        productPrice: item.displayPrice[0],
+      }),
+    })
+      .then(response => response.json())
+      .then(res => console.log(res));
+
+    // fetch('http://172.30.250.141:8000/user/login', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: 'toaur6802@gmail.com',
+    //     password: '12345678',
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   // .then(res => localStorage.setItem('ACCESS_TOKEN', res.ACCESS_TOKEN));
+    //   .then(res => console.log(res));
+  };
+
   render() {
     const { cardInfo } = this.props;
 
@@ -29,7 +62,8 @@ class ProductCards extends Component {
             <div
               className="productCard"
               key={item.id}
-              onClick={() => this.goToDetail(item.id)} //상세페이지 연결
+              // onClick={() => this.goToDetail(item.id)} //상세페이지 연결
+              onClick={() => this.goToCart(item)}
             >
               <div className="productCard__header">
                 {item.isNew && <span className="new">NEW</span>}
