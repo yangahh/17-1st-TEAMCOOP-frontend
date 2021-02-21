@@ -14,15 +14,33 @@ class ProductDetail extends Component {
   constructor() {
     super();
     this.state = {
-      allergyList: ['Soy', 'Nuts', 'Milk', 'Wheat', 'Fish'],
+      allAllergyList: ['Soy', 'Nuts', 'Milk', 'Wheat', 'Fish'],
+      detailData: {},
     };
   }
 
+  componentDidMount() {
+    this.getProductDetailData();
+  }
+
+  getProductDetailData = () => {
+    fetch('/data/productDetail.json')
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          detailData: res,
+        });
+      });
+  };
+
   render() {
-    const { allergyList } = this.state;
-    const doNotCotain = allergyList.filter(allergy => {
-      return !['Soy'].includes(allergy);
-    });
+    const { allAllergyList, detailData } = this.state;
+    console.log(detailData.allergyList);
+    // detailData.allergyList && (
+    // const doNotCotain = allAllergyList.filter(allergy => {
+    //   return !detailData.allergyList.includes(allergy);
+    // }))
+    // console.log(doNotCotain);
     return (
       <div className="ProductDetail">
         {/* <nav className="product-nav">
@@ -31,27 +49,28 @@ class ProductDetail extends Component {
         <section className="main-product-container">
           <div className="product-image-content">
             <img
-              src="//images.ctfassets.net/t9x0u6p47op0/1XkujrgRJeDZKpAeWuS6cK/316424a9efefa7ba6784904f460e77e6/hero_collagen_lemon_passionfruit.jpg?fm=webp"
+              src={detailData['productImageSrc']}
               alt="product image"
               className="product-image"
             />
           </div>
           <div className="product-content">
             <ul className="tag-list">
-              <li>SKIN</li>
-              <li>NAILS</li>
+              {detailData.healthGoalList &&
+                detailData.healthGoalList.map(goal => <li>{goal}</li>)}
             </ul>
-            <h1 className="display-title">Collagen-matcha</h1>
-            <h2 className="sub-title">The Skin Hero</h2>
+            <h1 className="display-title">{detailData.title}</h1>
+            <h2 className="sub-title">{detailData.subTitle}</h2>
             <ul className="description">
-              <li>Supports hydration and elasticity in skin*</li>
-              <li>Helps strengthen nails*</li>
-              <li>Grass-fed bovine collagen</li>
-              <li>Made with premium Japanese matcha powder</li>
+              {detailData.description &&
+                detailData.description.map(description => (
+                  <li>{description}</li>
+                ))}
             </ul>
-            <a href="" className="nutrition-link">
+            <a href={detailData.nutritionLink} className="nutrition-link">
               See supplement facts
             </a>
+            {/* // 파우더일때만 보이게 변경 */}
             <select name="product-count" className="product-count">
               <option value="">15 Serving Tub</option>
               <option value="">5 Packets</option>
@@ -64,22 +83,20 @@ class ProductDetail extends Component {
           </div>
         </section>
         <section className="quality-badges-container">
-          <div className="badge-card">
-            <img
-              src={bedgeIcon['Gluten Free']}
-              alt="badge-image"
-              className="badge-image"
-            />
-            <div className="badge-name">Gluten Free</div>
-          </div>
-          <div className="badge-card">
-            <img
-              src={bedgeIcon['Non-GMO']}
-              alt="badge-image"
-              className="badge-image"
-            />
-            <div className="badge-name">Non-GMO</div>
-          </div>
+          {/* {console.log(detailData.dietaryHabitList)} */}
+          {detailData.dietaryHabitList &&
+            detailData.dietaryHabitList.map(dietaryHabit => {
+              return (
+                <div className="badge-card">
+                  <img
+                    src={bedgeIcon[dietaryHabit]}
+                    alt="badge-image"
+                    className="badge-image"
+                  />
+                  <div className="badge-name">{dietaryHabit}</div>
+                </div>
+              );
+            })}
         </section>
         <section className="overview-container">
           <div className="overview-header">The basics</div>
@@ -90,11 +107,18 @@ class ProductDetail extends Component {
                   <AccordionItemButton>SUGGESTED USE</AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-                  <p>
-                    All of our products are created with optimal absorption in
-                    mind. We generally recommend that you take our supplements
-                    together with a meal such as breakfast or lunch.
-                  </p>
+                  {detailData.category === 'powders' ? (
+                    <p>
+                      Mix two scoops in 8-10 oz. of hot or cold liquid. For best
+                      results, use daily.
+                    </p>
+                  ) : (
+                    <p>
+                      All of our products are created with optimal absorption in
+                      mind. We generally recommend that you take our supplements
+                      together with a meal such as breakfast or lunch.
+                    </p>
+                  )}
                 </AccordionItemPanel>
               </AccordionItem>
               <AccordionItem>
@@ -102,12 +126,21 @@ class ProductDetail extends Component {
                   <AccordionItemButton>ALLERGY</AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>
-                  <p>Contain: Soy</p>
+                  <p>
+                    Contain:
+                    {detailData.allergyList &&
+                      detailData.allergyList.join(', ')}
+                  </p>
                   <p>
                     Does not contain:
-                    {doNotCotain.join(', ')}
+                    {detailData.allergyList &&
+                      allAllergyList
+                        .filter(
+                          allergy => !detailData.allergyList.includes(allergy),
+                        )
+                        .join(', ')}
                   </p>
-                  <a href="" className="nutrition-link">
+                  <a href={detailData.nutritionLink} className="nutrition-link">
                     See supplement facts
                   </a>
                 </AccordionItemPanel>
@@ -121,7 +154,33 @@ class ProductDetail extends Component {
             />
           </div>
         </section>
-        <section className="similar-product-container">4</section>
+        <section className="similar-product-container">
+          <h2>Similar products</h2>
+          <h3>Explore some of our other supplements</h3>
+          <div className="product-card-container">
+            {detailData.similarProduct &&
+              detailData.similarProduct.map(product => {
+                return (
+                  <div className="similar-product-card">
+                    <div className="card-image">
+                      <img
+                        src={product.imageUrl}
+                        alt={product.title + ' image'}
+                      />
+                    </div>
+                    <ul className="healthGoal">
+                      {product.healthGoalList &&
+                        product.healthGoalList.map(healthGoal => {
+                          return <li>{healthGoal}</li>;
+                        })}
+                    </ul>
+                    <h3>{product.title}</h3>
+                    <h4>{product.subTitle}</h4>
+                  </div>
+                );
+              })}
+          </div>
+        </section>
       </div>
     );
   }

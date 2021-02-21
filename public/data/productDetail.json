@@ -1,35 +1,38 @@
-[
-  {
-    "id": 1,
-    "category": "powders",
-    "productImageSrc": "",
-    "productCardImageSrc": "",
-    "isVegan": true,
-    "isVegetarian": false,
-    "healthGoalList": [],
-    "title": "",
-    "subTitle": "",
-    "description": [],
-    "nutritionLink": "",
-    "allergyList": [],
-    "productPrice": { "15 Serving Tub": 32, "5 Packets": 16 },
-    // "isSoldOut": True or False,
-    "dietaryHabitList": ["Gluten Free", "No Dairy", "Natural Flavors"],
-    "similarProduct": [
-      {
-        "id": 1,
-        "title": "Superberry",
-        "subTitle": "The Antioxidant Ace",
-        "imageUrl": "~~~",
-        "healthGoalList": ["Immunity", "heart", "skin"]
-      },
-      {
-        "id": 2,
-        "title": "Superberry",
-        "subTitle": "The Antioxidant Ace",
-        "imageUrl": "~~~",
-        "healthGoal": ["Immunity", "heart", "skin"]
-      }
-    ]
-  }
-]
+{
+  "id": 1,
+  "category": "powders",
+  "productImageSrc": "//images.ctfassets.net/t9x0u6p47op0/1XkujrgRJeDZKpAeWuS6cK/316424a9efefa7ba6784904f460e77e6/hero_collagen_lemon_passionfruit.jpg?fm=webp",
+  "productCardImageSrc": "https://images.ctfassets.net/t9x0u6p47op0/Cokgc6UV6Qz2iFB9uAVkj/0871456f6e30834c4f8e6feb5def2d2f/img-lemonpass-collagen-expert-set.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+  "isVegan": true,
+  "isVegetarian": false,
+  "healthGoalList": ["Skin", "Nail"],
+  "title": "Whey Protein",
+  "subTitle": "The Skin Hero",
+  "description": [
+    "Supports hydration and elasticity in skin*",
+    "Helps strengthen nails*",
+    "Made with premium Japanese matcha powder",
+    "A creamy addition to coffee or smoothies"
+  ],
+  "nutritionLink": "/",
+  "allergyList": ["Soy", "Fish"],
+  "productPrice": { "15 Serving Tub": 32, "5 Packets": 16 },
+  "isSoldOut": true,
+  "dietaryHabitList": ["Gluten Free", "No Dairy", "Natural Flavors"],
+  "similarProduct": [
+    {
+      "id": 1,
+      "title": "Superberry",
+      "subTitle": "The Antioxidant Ace",
+      "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/Hlh4QNYRWK0WWiEaIYOA6/229504a998f870544000d1888f3516fc/img_elderberry_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+      "healthGoalList": ["Immunity", "heart", "skin"]
+    },
+    {
+      "id": 2,
+      "title": "Superberry",
+      "subTitle": "The Antioxidant Ace",
+      "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/4Fmdpl3WZ2gK2EoU6eySwI/745f465fc0ac379dc4ff44a4eb550243/img_milkthistle_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+      "healthGoalList": ["Immunity", "skin"]
+    }
+  ]
+}
