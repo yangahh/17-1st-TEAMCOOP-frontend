@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import symbolUrl from './symbolUrl';
 import coverUrl from './coverUrl';
 import './ProductCards.scss';
 
 class ProductCards extends Component {
+  goToDetail = id => {
+    this.props.history.push(`/product/${id}`);
+  };
+
   render() {
     const { cardInfo } = this.props;
 
@@ -24,7 +29,7 @@ class ProductCards extends Component {
             <div
               className="productCard"
               key={item.id}
-              onClick={() => console.log(item)} //상세페이지 연결
+              onClick={() => this.goToDetail(item.id)} //상세페이지 연결
             >
               <div className="productCard__header">
                 {item.isNew && <span className="new">NEW</span>}
@@ -62,4 +67,4 @@ class ProductCards extends Component {
   }
 }
 
-export default ProductCards;
+export default withRouter(ProductCards);
