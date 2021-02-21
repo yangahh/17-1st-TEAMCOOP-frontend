@@ -96,7 +96,30 @@ class Cart extends Component {
     this.setState({ subtotal });
   };
 
+  getCartList = () => {
+    console.log('YEAH');
+
+    fetch('http://172.30.250.141:8000/order/mycart', {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('access_token'),
+      },
+    })
+      .then(response => response.json())
+      .then(res => this.updateCart(res.message));
+  };
+
+  updateCart = message => {
+    if (message === 'EMPTY') {
+      console.log('yeeeaaahhhh!');
+      this.setState({
+        carts: [],
+      });
+    }
+  };
+
   componentDidMount() {
+    this.getCartList();
     this.getSubTotal();
   }
 
