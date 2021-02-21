@@ -162,11 +162,13 @@ class ProductDetail extends Component {
               detailData.similarProduct.map(product => {
                 return (
                   <div className="similar-product-card">
-                    <div className="card-image">
-                      <img
-                        src={product.imageUrl}
-                        alt={product.title + ' image'}
-                      />
+                    <div className="image-wrap">
+                      <div className="card-image">
+                        <img
+                          src={product.imageUrl}
+                          alt={product.title + ' image'}
+                        />
+                      </div>
                     </div>
                     <ul className="healthGoal">
                       {product.healthGoalList &&
