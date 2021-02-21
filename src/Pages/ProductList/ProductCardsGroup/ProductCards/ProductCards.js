@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import symbolUrl from './symbolUrl';
+import coverUrl from './coverUrl';
 import './ProductCards.scss';
 
 class ProductCards extends Component {
   render() {
     const { cardInfo } = this.props;
-
+    console.log(cardInfo);
     return (
       <div className="productCards" key={cardInfo.id}>
-        <div className="productCover">
-          <h3>{cardInfo.subcategory.title}</h3>
-          <p>{cardInfo.subcategory.description}</p>
-        </div>
+        {cardInfo.id !== 100 && (
+          <div className="productCover">
+            <img src={coverUrl[cardInfo.subcategory.title]} alt="cover image" />
+            <h3>{cardInfo.subcategory.title}</h3>
+            <p>{cardInfo.subcategory.description}</p>
+          </div>
+        )}
+
         {cardInfo.item.map(item => {
           const outOfStock = item.stock === true;
           const isPriceTypeString = typeof item.displayPrice === 'string';

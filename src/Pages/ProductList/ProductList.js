@@ -36,6 +36,7 @@ class ProductList extends Component {
       });
   };
 
+  //mock-data fetch
   // getVitaminDetailData = () => {
   //   fetch('/data/vitaminDetailData.json')
   //     .then(res => res.json())
@@ -56,20 +57,7 @@ class ProductList extends Component {
   //     });
   // };
 
-  testingVitamin = () => {
-    fetch('http://172.30.250.141:8000/product', {
-      method: 'GET',
-    })
-      .then(response => response.json())
-      .then(res => {
-        this.setState({
-          productDatas: res.data.splice(0, 5),
-        });
-      });
-    // .then(data => console.log(data));
-  };
-
-  testingPowder = () => {
+  testingShowAll = () => {
     fetch('http://172.30.250.141:8000/product', {
       method: 'GET',
     })
@@ -77,16 +65,10 @@ class ProductList extends Component {
       .then(res => {
         this.setState({
           powderDatas: res.data.splice(5, 8),
+          productDatas: res.data.splice(0, 5),
         });
       });
-    // .then(data => console.log(data));
   };
-
-  // testingGetEachPLEASE = category => {
-  //   fetch('http://172.30.250.226:8000/product', {
-  //     method: 'GET',
-  //   });
-  // };
 
   componentDidMount() {
     this.getCategoryData();
@@ -94,27 +76,87 @@ class ProductList extends Component {
     // this.getVitaminDetailData();
     // this.getPowderDetailData();
 
-    this.testingVitamin();
-    this.testingPowder();
+    this.testingShowAll();
   }
 
   handleCategory = target => {
     this.setState({ currentCategory: target });
+    this.testingShowAll();
   };
 
   //카테고리별 페치함수 호출
   fetchCategory = category => {
     console.log(`${category.path}/${category.id}`);
 
-    fetch(
-      `http://172.30.250.226:8000/product/${category.path}/${category.id}`,
-      {
-        method: 'GET',
-      },
-    )
-      .then(response => response.json())
-      .then(data => console.log(data));
+    if (category.path === 'category') {
+      fetch(
+        `http://172.30.250.141:8000/product/${category.path}/${category.id}`,
+        {
+          method: 'GET',
+        },
+      )
+        .then(response => response.json())
+        .then(res => {
+          this.setState({
+            productDatas: res.data,
+            powderDatas: [],
+          });
+        });
+    } else if (category.path === 'goal') {
+      fetch(
+        `http://172.30.250.141:8000/product/${category.path}/${category.id}`,
+        {
+          method: 'GET',
+        },
+      )
+        .then(response => response.json())
+        .then(res => {
+          const goalData = [
+            {
+              id: 100,
+              subcategory: {
+                title: '',
+                description: '',
+              },
+              item: res.data,
+            },
+          ];
+
+          this.setState({
+            productDatas: goalData,
+            powderDatas: [],
+          });
+        });
+    }
   };
+
+  fetchNewItem = () => {
+    fetch('http://172.30.250.141:8000/product/category/99999', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(res => {
+        const goalData = [
+          {
+            id: 100,
+            subcategory: {
+              title: '',
+              description: '',
+            },
+            item: res.data,
+          },
+        ];
+
+        this.setState({
+          productDatas: goalData,
+          powderDatas: [],
+        });
+      });
+  };
+
+  componentDidUpdate() {
+    window.scrollTo(0, 350);
+  }
 
   render() {
     const {
@@ -127,7 +169,15 @@ class ProductList extends Component {
 
     return (
       <div className="productList">
-        <div className="banner">h1</div>
+        <div className="banner">
+          <h3>Healthy products made just for you</h3>
+          <p>
+            Vitamins, protein, and more, made from the best ingredients on earth
+            and personalized just for you. Adjust your delivery or cancel at any
+            time.
+          </p>
+          <p>Free shipping on orders over $20.</p>
+        </div>
         <CategoryNav
           handleCategory={this.handleCategory}
           currentCategory={currentCategory}
@@ -136,6 +186,8 @@ class ProductList extends Component {
         <section>
           <div className="wrapper">
             <CategoryList
+              fetchNewItem={this.fetchNewItem}
+              fetchShowAll={this.testingShowAll}
               fetchCategory={this.fetchCategory}
               className="category-list"
               selectedCategory={

@@ -2,7 +2,38 @@
 
 .productList {
   width: 100%;
-  padding-top: 144px;
+  // padding-top: 144px;
+
+  .banner {
+    @extend %flex-center;
+    flex-direction: column;
+
+    height: 420px;
+    background-color: #a8ced8;
+    font-family: 'Lato';
+    letter-spacing: 0.4px;
+
+    h3 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    p {
+      text-align: center;
+      width: 730px;
+      font-size: 18px;
+
+      &:nth-child(2) {
+        margin-top: 30px;
+        line-height: 24px;
+      }
+
+      &:nth-child(3) {
+        margin-top: 30px;
+      }
+    }
+  }
 
   section {
     @extend %flex-center;

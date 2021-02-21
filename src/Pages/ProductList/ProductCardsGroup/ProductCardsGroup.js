@@ -4,46 +4,21 @@ import ProductCards from './ProductCards/ProductCards';
 
 class ProductCardsGroup extends Component {
   render() {
-    const { productDatas, powderDatas, selectedCategory } = this.props;
+    const { productDatas, powderDatas } = this.props;
 
     return (
       <div className="productCardsGroup">
-        <h1>Vitamins</h1>
+        {powderDatas.length ? <h1>Vitamins</h1> : ''}
         {productDatas.map(cardInfo => {
           return <ProductCards cardInfo={cardInfo} />;
         })}
 
-        <h1>Powders</h1>
+        <h1>{powderDatas.length ? 'Powders' : ''}</h1>
         {powderDatas.map(cardInfo => {
           return <ProductCards cardInfo={cardInfo} />;
         })}
       </div>
     );
-
-    // if (selectedCategory === 'category') {
-    //   return (
-    //     <div className="productCardsGroup">
-    //       <h1>Vitamins</h1>
-    //       {productDatas.map(cardInfo => {
-    //         return <ProductCards cardInfo={cardInfo} />;
-    //       })}
-
-    //       <h1>Powders</h1>
-    //       {powderDatas.map(cardInfo => {
-    //         return <ProductCards cardInfo={cardInfo} />;
-    //       })}
-    //     </div>
-    //   );
-    // } else {
-    //   return (
-    //     <div className="productCardsGroup">
-    //       <h1>Eyes</h1>
-    //       {powderDatas.map(cardInfo => {
-    //         return <ProductCards cardInfo={cardInfo} />;
-    //       })}
-    //     </div>
-    //   );
-    // }
   }
 }
 

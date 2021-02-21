@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 import './CategoryList.scss';
 
 class CategoryList extends Component {
-  goToPage = category => {
-    if (category === 'shopAll') {
-      console.log(category);
-      return;
-    }
-    console.log(`${category.path}/${category.id}`);
-  };
-
   render() {
-    const { selectedCategory } = this.props;
+    const {
+      selectedCategory,
+      fetchCategory,
+      fetchShowAll,
+      fetchNewItem,
+    } = this.props;
 
     return (
       <div className="categoryList">
-        <h3 onClick={() => this.goToPage('shopAll')}>Shop All</h3>
+        <h3 onClick={() => fetchShowAll()}>Shop All</h3>
+        <h3 onClick={() => fetchNewItem()}>Recently Added</h3>
         <ul>
           {selectedCategory.map(categoryInfo => {
             return (
@@ -29,8 +27,7 @@ class CategoryList extends Component {
                           subcategory.imgSrc ? 'subtitle bold' : 'subtitle'
                         }
                         key={subcategory.id}
-                        onClick={() => this.props.fetchCategory(subcategory)}
-                        // onClick={() => this.goToPage(subcategory)}
+                        onClick={() => fetchCategory(subcategory)}
                       >
                         {subcategory.imgSrc && <img src={subcategory.imgSrc} />}
 
