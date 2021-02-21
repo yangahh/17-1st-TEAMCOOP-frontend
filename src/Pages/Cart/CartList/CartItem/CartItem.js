@@ -8,13 +8,13 @@ class CartItem extends Component {
     return (
       <div
         className={`cartItem item ${pruducts.length > 3 && 'grid'}`}
-        key={itemInfo.id}
+        key={itemInfo.productStockId}
       >
         <img src={itemInfo.productImageUrl} alt="product image" />
         <div>
           <div>
             <h2>{itemInfo.productName}</h2>
-            <p>{itemInfo.productDesc}</p>
+            <p>{itemInfo.productSubName}</p>
           </div>
           <p>${itemInfo.productPrice}</p>
         </div>

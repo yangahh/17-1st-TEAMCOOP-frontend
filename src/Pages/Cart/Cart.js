@@ -88,7 +88,7 @@ class Cart extends Component {
     this.setState({ subtotal: 0 });
     let priceArr = [];
     this.state.carts.map(item => {
-      priceArr.push(item.productPrice);
+      priceArr.push(item.productPrice - 0);
     });
 
     const subtotal = priceArr.reduce((a, b) => a + b);
@@ -97,23 +97,30 @@ class Cart extends Component {
   };
 
   getCartList = () => {
-    console.log('YEAH');
-
     fetch('http://172.30.250.141:8000/order/mycart', {
       method: 'GET',
       headers: {
-        Authorization: localStorage.getItem('access_token'),
+        Authorization: sessionStorage.getItem('access_token'),
       },
     })
       .then(response => response.json())
-      .then(res => this.updateCart(res.message));
+      .then(res => this.updateCart(res));
   };
 
-  updateCart = message => {
-    if (message === 'EMPTY') {
-      console.log('yeeeaaahhhh!');
+  // addCart = res => {
+  //   this.setState({
+  //     carts: res.carts,
+  //   });
+  // };
+
+  updateCart = res => {
+    if (res.message === 'EMPTY') {
       this.setState({
         carts: [],
+      });
+    } else if (res.message === 'SUCCESS') {
+      this.setState({
+        carts: res.carts,
       });
     }
   };
@@ -123,6 +130,10 @@ class Cart extends Component {
     this.getSubTotal();
   }
 
+  // componentDidUpdate() {
+  //   this.getCartList();
+  // }
+
   componentDidUpdate() {
     if (!this.state.carts.length) {
       return;
@@ -130,7 +141,9 @@ class Cart extends Component {
 
     let priceArr = [];
     this.state.carts.map(item => {
-      priceArr.push(item.productPrice);
+      const numberPrice = item.productPrice - 0;
+      priceArr.push(numberPrice);
+      // priceArr.push(item.productPrice);
     });
 
     if (priceArr.length === 0) {
@@ -140,6 +153,20 @@ class Cart extends Component {
 
     this.state.subtotal !== beforeSubtotal && this.getSubTotal();
   }
+
+  fetchDeleteItem = deletedItem => {
+    fetch(
+      `http://172.30.250.141:8000/order/cart/${deletedItem.productStockId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: sessionStorage.getItem('access_token'),
+        },
+      },
+    )
+      .then(response => response.json())
+      .then(res => console.log(res));
+  };
 
   deleteItem = deletedItem => {
     const remainItem = this.state.carts.filter(item => {
@@ -152,6 +179,8 @@ class Cart extends Component {
       },
       this.getSubTotal(),
     );
+
+    this.fetchDeleteItem(deletedItem);
   };
 
   render() {
@@ -193,7 +222,7 @@ class Cart extends Component {
                 <span>Shipping</span>
                 {/* <span>{subtotal > 20 ? 'FREE' : '$10'}</span> */}
                 <span>
-                  {carts.length === 0 ? 'ㅡ' : subtotal > 20 ? 'FREE' : '$10'}
+                  {carts.length === 0 ? 'ㅡ' : subtotal > 20 ? 'FREE' : '$5'}
                 </span>
               </div>
               <div>
@@ -210,7 +239,7 @@ class Cart extends Component {
                     ? 'ㅡ'
                     : subtotal > 20
                     ? `$${subtotal}`
-                    : `$${subtotal + 10}`}
+                    : `$${subtotal + 5}`}
                 </span>
               </div>
               <button>
