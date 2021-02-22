@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './CartList.scss';
 import CartItem from './CartItem/CartItem';
+import './CartList.scss';
 
 class CartList extends Component {
   render() {
