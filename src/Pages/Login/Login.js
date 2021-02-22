@@ -60,6 +60,7 @@ class Login extends Component {
           </div>
         </header>
         <div className="login_form">
+        <span className={pwAlert? "Invalid": "Valid" }>Invalid email or password.</span>
           <div className='id_form'>
             <label>EMAIL
               <input type="text" onChange={this.handleAllInput} name="id" className="id_box" /> 
