@@ -11,6 +11,10 @@ class SignUp extends Component {
       id: '',
       pw: '',
       confirm: '',
+      confirmNum:true,
+      pw_again:'',
+      pwAlert: true,
+      numberValid: true,
       allChecked: false,
       checked0: false,
       checked1: true,
@@ -19,14 +23,22 @@ class SignUp extends Component {
     };
   }
 
-  handleAllInput = e => {
+  handleInputValue = e => {
     this.setState({
       [e.target.name]: e.target.value,
+    });
+    const {number} = this.state;
+    const checkNumber = !isNaN(number)&& number.length>=9 ;
+
+    
+    this.setState({
+    numberValid: checkNumber? false: true,
     });
   };
 
   handleAllChecked = () => {
     const {allChecked} =this.state;
+
     this.setState({
       allChecked:!allChecked,
       checked0: !allChecked,
@@ -35,24 +47,18 @@ class SignUp extends Component {
     })
   };
 
-  handleChecked = (idx) => {
-    this.setState({
-      idx:!this.state[`checked$(idx)`]
-    })
-console.log(idx);
-  }
+//   handleChecked = (idx) => {
+//     this.setState({
+//       idx:!this.state[`checked$(idx)`]
+//     })
+// console.log(idx);
+//   }
 
-  // handleChecked = (index) => {
-  //   console.log(index);
-  //   this.setState({
-  //     ['checked$(index)']:!this.state[checked$(index)]
-  //   })
-  // }
 
-  gotoMain = event => {
+  isAllValid = event => {
     fetch('http://10.58.5.21:8003/user/signup', {
       method: 'POST',
-      body: JSON.stringify({
+        body: JSON.stringify({
         name: this.state.name_box,
         email: this.state.id,
         number: this.state.number,
@@ -70,9 +76,11 @@ console.log(idx);
       });
   };
   sendSMS = e => {
-    // console.log(this.state);
     e.preventDefault();
-
+    this.setState ({
+      confirmNum: !this.state.confirmNum
+    })
+  
     fetch('http://10.58.5.21:8003/user/sms', {
       method: 'POST',
       body: JSON.stringify({
@@ -111,9 +119,20 @@ console.log(idx);
       });
   }
 
+   isValidPw = (e) => {
+     e.preventDefault();
+     const{pw, pw_again} = this.state;
+     const checkPwSame = pw === pw_again;
+
+     this.setState({
+       pwAlert: checkPwSame? true: false,
+     })
+   }
+
 
   render() {
-    // console.log(this.state.name_box);
+    const {pwAlert}= this.state;
+    console.log(this.state.numberValid);
     return (
       
       <div className="sign_up">
@@ -122,77 +141,81 @@ console.log(idx);
         </header>
         <div className="signup_form">
           <div className="first_content">
-            <div className="name_form">
+             <form className="name_form"> 
               <label>Name</label>
               <input
-                onChange={this.handleAllInput}
+                onChange={this.handleInputValue}
                 name="name_box"
                 className="name_box"
-                type="text"
+                type="text" 
                 placeholder="Enter your name"
+                required
               />
-            </div>
-            <div className="phone_form">
+              </form>
+            <form className="phone_form">
               <label>Phone number</label>
               <div className="with_button">
                 <input
-                  onChange={this.handleAllInput}
+                  onKeyPress={this.handleInputValue}
                   name="number"
                   className="number_box"
-                  type="text"
+                  type="tel" 
                   placeholder="Enter your phone number"
+                  required
                 />
-                <button onClick={this.sendSMS} className="send">Send</button>
+                <button disabled={this.state.numberValid} onClick={this.sendSMS} className="send">Send</button>
               </div>
-            </div>
-            <div className="confirm_form">
+            </form>
+            <form className="confirm_form">
               <div className="with_button">
                 <input
-                  disabled
-                  onChange={this.handleAllInput}
+                  disabled={this.state.confirmNum}
+                  onChange={this.handleInputValue}
                   name="confirm"
                   className="confirm_box"
-                  type="text"
+                  type="text" 
                   placeholder="Enter authentication number"
                 />
                 <button onClick={this.checkCode} className="confirm">Confirm</button>
               </div>
-            </div>
+            </form>
           </div>
           <div className="second_content">
-            <div className="id_form">
+            <form className="id_form">
               <label for="user_id">ID (EMAIL)</label>
               <br />
               <input
-                onChange={this.handleAllInput}
+                onChange={this.handleInputValue}
                 name="id"
                 className="id_box"
-                type="text"
+                type="text" 
                 placeholder="Enter your ID"
               />
-            </div>
-            <div className="pw_form">
+            </form>
+            <form className="pw_form">
               <label for="user_pw">PASSWORD</label>
               <br />
               <input
-                onChange={this.handleAllInput}
+                onChange={this.handleInputValue}
                 name="pw"
                 className="pw_box"
-                type="text"
+                type="text" 
                 placeholder="Enter your password"
               />
-            </div>
-            <div className="pw_again_form">
+            </form>
+            <form className="pw_again_form">
               <label for="pw_again">CONFIRM PASSWORD</label>
               <br />
               <input
-                onChange={this.handleAllInput}
+                onChange={this.handleInputValue}
+                onKeyUp= {this.isValidPw}
                 name="pw_again"
                 className="pw_box"
-                type="text"
+                type="text" 
                 placeholder="Enter your password"
               />
-            </div>
+              <span className={pwAlert? "pw_confirm": "pw_not_confirm" }>Different password.</span>
+            </form>
           </div>
         </div>
         <div className="third_content">
@@ -215,7 +238,7 @@ console.log(idx);
           </div>
         </div>
         <div>
-          <button onClick={this.gotoMain} className="signup_btn">
+          <button onClick={this.isAllValid} className="signup_btn">
             <span>Sign Up</span>
           </button>
         </div>
