@@ -81,6 +81,7 @@ class Cart extends Component {
         },
       ],
       subtotal: 0,
+      checkout: false,
     };
   }
 
@@ -104,6 +105,7 @@ class Cart extends Component {
       },
     })
       .then(response => response.json())
+      // .then(res => console.log(res));
       .then(res => this.updateCart(res));
   };
 
@@ -182,7 +184,7 @@ class Cart extends Component {
 
   render() {
     const { carts, subtotal } = this.state;
-
+    console.log(this.state.checkout);
     return (
       <div className="cart">
         {carts.length === 0 && (
@@ -193,7 +195,30 @@ class Cart extends Component {
           </div>
         )}
         <section className={carts.length === 0 && 'onQuiz'}>
-          <div className="cartlist-wrapper">
+          {!this.state.checkout && (
+            <div className="cartlist-wrapper">
+              {carts.length === 0 ? (
+                <div className="no-item">
+                  <img
+                    src="https://images.ctfassets.net/t9x0u6p47op0/4b4qjgWLXvAj5MhdrIS1KL/797869888bd2d0e9b96e8fbd0d8958d2/iconCart.svg?"
+                    alt="empty cart"
+                  />
+                  <p>You have no items in your cart.</p>
+                  <a href="#">Browse products</a>
+                </div>
+              ) : (
+                // <div className="cartlist">here is lists!</div>
+                <CartList cartList={carts} deleteItem={this.deleteItem} />
+              )}
+            </div>
+          )}
+          {this.state.checkout && (
+            <div className="cartlist-checkout">
+              <h1>Delivery Information</h1>
+              <CartList cartList={carts} deleteItem={this.deleteItem} />
+            </div>
+          )}
+          {/* <div className="cartlist-wrapper">
             {carts.length === 0 ? (
               <div className="no-item">
                 <img
@@ -207,7 +232,7 @@ class Cart extends Component {
               // <div className="cartlist">here is lists!</div>
               <CartList cartList={carts} deleteItem={this.deleteItem} />
             )}
-          </div>
+          </div> */}
           <div className="order">
             <div className="order-details">
               <div>
@@ -246,6 +271,10 @@ class Cart extends Component {
             <button
               disabled={carts.length === 0 ? true : false}
               className="order-checkout"
+              onClick={() =>
+                carts.length !== 0 &&
+                this.setState({ checkout: !this.state.checkout })
+              }
             >
               Checkout
             </button>

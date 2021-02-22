@@ -7,11 +7,11 @@ class CartList extends Component {
     const { cartList, deleteItem } = this.props;
 
     const vitamins = cartList.filter(item => {
-      return item.category === 'VITAMINS';
+      return item.category === 'vitamins';
     });
 
     const powders = cartList.filter(item => {
-      return item.category === 'POWDERS';
+      return item.category === 'powders';
     });
 
     return (

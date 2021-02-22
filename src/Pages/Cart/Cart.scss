@@ -72,6 +72,28 @@
       // }
     }
 
+    .cartlist-checkout {
+      width: 900px;
+      // background-color: beige;
+
+      & > h1 {
+        font-size: 50px;
+        font-weight: 700;
+        font-family: 'Lato';
+        margin-bottom: 50px;
+      }
+
+      .cartlist {
+        background-color: rgb(233, 231, 230);
+        border-radius: 5px;
+        padding: 0 15px;
+
+        h1 {
+          display: none;
+        }
+      }
+    }
+
     .order {
       // background-color: hotpink;
       position: fixed;
