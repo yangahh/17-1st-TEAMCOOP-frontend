@@ -22,10 +22,22 @@
   }
 
   .login_form {
-    Invalid {
+    .Invalid {
+      display: block;
+      width: 580px;
+      height: 50px;
+      padding-top: 35px;
+      background-color: #f5f1ed;
+      text-align: center;
+      text-indent: 2px;
+      color: black;
+      font-size: 15px;
+      font-family: 'Lato', sans-serif;
     }
-    Valid {
+    .valid {
+      display: none;
     }
+
     .id_form,
     .pw_form {
       font-size: 12px;

@@ -7,6 +7,7 @@ class Login extends Component {
     this.state = {
       id: '',
       pw: '',
+      isValid:true,
     };
   }
 
@@ -49,9 +50,17 @@ class Login extends Component {
    }
   };
 
-     
+   isValidIdPw = (e) => {
+     const{id, pw} = this.state;
+     const validIdPw = id.includes('@') && pw.length>=6
+
+     this.setState({
+       isValid:validIdPw
+     })
+   }  
 
   render() {
+    const {isValid}=this.state;
     return (
       <div className="Login">
         <header>
@@ -60,15 +69,15 @@ class Login extends Component {
           </div>
         </header>
         <div className="login_form">
-        <span className={pwAlert? "Invalid": "Valid" }>Invalid email or password.</span>
+        <span className={isValid? "valid": "Invalid" }>Invalid email or password.</span>
           <div className='id_form'>
             <label>EMAIL
-              <input type="text" onChange={this.handleAllInput} name="id" className="id_box" /> 
+              <input type="text" onKeyUp = {this.isValidIdPw} onChange={this.handleAllInput} name="id" className="id_box" /> 
             </label>
           </div>
           <div className='pw_form'>
             <label>PASSWORD
-              <input type="password" onChange={this.handleAllInput} name="pw" className="pw_box" /> 
+              <input type="password" onKeyUp = {this.isValidIdPw} onChange={this.handleAllInput} name="pw" className="pw_box" /> 
             </label>
           </div>
           <div className='check_box'>
