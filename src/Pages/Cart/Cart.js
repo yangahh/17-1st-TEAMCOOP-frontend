@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import CartList from './CartList/CartList';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
 import './Cart.scss';
 
 class Cart extends Component {
@@ -182,6 +189,11 @@ class Cart extends Component {
     this.fetchDeleteItem(deletedItem);
   };
 
+  placeOrder = props => {
+    console.log('주문버튼 누름');
+    console.log(this.state.carts);
+  };
+
   render() {
     const { carts, subtotal } = this.state;
     console.log(this.state.checkout);
@@ -215,7 +227,42 @@ class Cart extends Component {
           {this.state.checkout && (
             <div className="cartlist-checkout">
               <h1>Delivery Information</h1>
-              <CartList cartList={carts} deleteItem={this.deleteItem} />
+              <Accordion allowZeroExpanded={true}>
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>Order List</AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className="onCheckout">
+                    <CartList
+                      cartList={carts}
+                      deleteItem={this.deleteItem}
+                      className="checkout-list"
+                    />
+                  </AccordionItemPanel>
+                </AccordionItem>
+              </Accordion>
+              <form>
+                <label>
+                  FULL NAME
+                  <input type="text" value="SaemsolYoo" />
+                </label>
+                <label>
+                  ADDRESS LINE
+                  <input type="text" value="Washington D.C" />
+                </label>
+                <label>
+                  ZIP
+                  <input type="text" value="20217" />
+                </label>
+                <label>
+                  EMAIL
+                  <input type="email" value="lucy@gmail.com" />
+                </label>
+                <label>
+                  PHONE NUMBER
+                  <input type="text" value="010-1234-5678" />
+                </label>
+              </form>
             </div>
           )}
           {/* <div className="cartlist-wrapper">
@@ -268,7 +315,33 @@ class Cart extends Component {
                 Add a code <span>+</span>
               </button>
             </div>
-            <button
+            {!this.state.checkout && (
+              <button
+                disabled={carts.length === 0 ? true : false}
+                className="order-checkout"
+                onClick={() =>
+                  carts.length !== 0 &&
+                  this.setState({ checkout: !this.state.checkout })
+                }
+              >
+                Checkout
+              </button>
+            )}
+            {this.state.checkout && (
+              <button
+                disabled={carts.length === 0 ? true : false}
+                className="order-checkout"
+                //  백엔드로 결제 요청하기!
+                // onClick={() =>
+                //   carts.length !== 0 &&
+                //   this.setState({ checkout: !this.state.checkout })
+                // }
+                onClick={() => this.placeOrder(this.props)}
+              >
+                Place order
+              </button>
+            )}
+            {/* <button
               disabled={carts.length === 0 ? true : false}
               className="order-checkout"
               onClick={() =>
@@ -277,7 +350,7 @@ class Cart extends Component {
               }
             >
               Checkout
-            </button>
+            </button> */}
             <p>Free shipping on orders over $20</p>
             <p>
               International orders incur a $6 handling fee. All prices in USD.

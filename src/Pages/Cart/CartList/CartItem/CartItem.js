@@ -16,7 +16,7 @@ class CartItem extends Component {
             <h2>{itemInfo.productName}</h2>
             <p>{itemInfo.productSubName}</p>
           </div>
-          <p>${itemInfo.productPrice}</p>
+          <p className="price">${itemInfo.productPrice}</p>
         </div>
         <button onClick={() => deleteItem(itemInfo)}>X</button>
       </div>
