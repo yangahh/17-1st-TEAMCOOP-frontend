@@ -4,6 +4,8 @@ import symbolUrl from './symbolUrl';
 import coverUrl from './coverUrl';
 import './ProductCards.scss';
 
+import { SERVER } from '../../../../config';
+
 class ProductCards extends Component {
   constructor() {
     super();
@@ -23,7 +25,7 @@ class ProductCards extends Component {
     //   productPrice: item.displayPrice[0],
     // });
 
-    fetch('http://10.58.0.208:8000/product/tocart', {
+    fetch(`${SERVER}/product/tocart`, {
       method: 'POST',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),

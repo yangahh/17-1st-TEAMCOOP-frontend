@@ -4,6 +4,8 @@ import CategoryList from './CategoryList/CategoryList';
 import ProductCardsGroup from './ProductCardsGroup/ProductCardsGroup';
 import './ProductList.scss';
 
+import { SERVER } from '../../config';
+
 class ProductList extends Component {
   constructor() {
     super();
@@ -58,7 +60,7 @@ class ProductList extends Component {
   // };
 
   fetchShowAll = () => {
-    fetch('http://10.58.0.208:8000/product', {
+    fetch(`${SERVER}/product`, {
       method: 'GET',
     })
       .then(response => response.json())
@@ -90,7 +92,7 @@ class ProductList extends Component {
     console.log(`${category.path}/${category.id}`);
 
     if (category.path === 'category') {
-      fetch(`http://10.58.0.208:8000/product/${category.path}/${category.id}`, {
+      fetch(`${SERVER}/product/${category.path}/${category.id}`, {
         method: 'GET',
       })
         .then(response => response.json())
@@ -101,7 +103,7 @@ class ProductList extends Component {
           });
         });
     } else if (category.path === 'goal') {
-      fetch(`http://10.58.0.208:8000/product/${category.path}/${category.id}`, {
+      fetch(`${SERVER}/product/${category.path}/${category.id}`, {
         method: 'GET',
       })
         .then(response => response.json())
@@ -126,7 +128,7 @@ class ProductList extends Component {
   };
 
   fetchNewItem = () => {
-    fetch('http://10.58.0.208:8000/product/category/99999', {
+    fetch(`${SERVER}/product/category/99999`, {
       method: 'GET',
     })
       .then(response => response.json())
