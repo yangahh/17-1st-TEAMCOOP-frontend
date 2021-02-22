@@ -97,7 +97,7 @@ class Cart extends Component {
   };
 
   getCartList = () => {
-    fetch('http://172.30.250.141:8000/order/mycart', {
+    fetch('http://10.58.0.208:8000/order/mycart', {
       method: 'GET',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
@@ -155,15 +155,12 @@ class Cart extends Component {
   }
 
   fetchDeleteItem = deletedItem => {
-    fetch(
-      `http://172.30.250.141:8000/order/cart/${deletedItem.productStockId}`,
-      {
-        method: 'DELETE',
-        headers: {
-          Authorization: sessionStorage.getItem('access_token'),
-        },
+    fetch(`http://10.58.0.208:8000/order/cart/${deletedItem.productStockId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: sessionStorage.getItem('access_token'),
       },
-    )
+    })
       .then(response => response.json())
       .then(res => console.log(res));
   };
