@@ -58,7 +58,7 @@ class ProductList extends Component {
   // };
 
   fetchShowAll = () => {
-    fetch('http://172.30.250.141:8000/product', {
+    fetch('http://10.58.0.208:8000/product', {
       method: 'GET',
     })
       .then(response => response.json())
@@ -90,12 +90,9 @@ class ProductList extends Component {
     console.log(`${category.path}/${category.id}`);
 
     if (category.path === 'category') {
-      fetch(
-        `http://172.30.250.141:8000/product/${category.path}/${category.id}`,
-        {
-          method: 'GET',
-        },
-      )
+      fetch(`http://10.58.0.208:8000/product/${category.path}/${category.id}`, {
+        method: 'GET',
+      })
         .then(response => response.json())
         .then(res => {
           this.setState({
@@ -104,12 +101,9 @@ class ProductList extends Component {
           });
         });
     } else if (category.path === 'goal') {
-      fetch(
-        `http://172.30.250.141:8000/product/${category.path}/${category.id}`,
-        {
-          method: 'GET',
-        },
-      )
+      fetch(`http://10.58.0.208:8000/product/${category.path}/${category.id}`, {
+        method: 'GET',
+      })
         .then(response => response.json())
         .then(res => {
           const goalData = [
@@ -132,7 +126,7 @@ class ProductList extends Component {
   };
 
   fetchNewItem = () => {
-    fetch('http://172.30.250.141:8000/product/category/99999', {
+    fetch('http://10.58.0.208:8000/product/category/99999', {
       method: 'GET',
     })
       .then(response => response.json())

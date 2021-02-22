@@ -5,6 +5,13 @@ import coverUrl from './coverUrl';
 import './ProductCards.scss';
 
 class ProductCards extends Component {
+  constructor() {
+    super();
+    this.state = {
+      buttonState: false,
+    };
+  }
+
   goToDetail = id => {
     this.props.history.push(`/product/${id}`);
   };
@@ -16,7 +23,7 @@ class ProductCards extends Component {
     //   productPrice: item.displayPrice[0],
     // });
 
-    fetch('http://172.30.250.141:8000/product/tocart', {
+    fetch('http://10.58.0.208:8000/product/tocart', {
       method: 'POST',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
@@ -40,6 +47,12 @@ class ProductCards extends Component {
     //   .then(response => response.json())
     //   // .then(res => localStorage.setItem('ACCESS_TOKEN', res.ACCESS_TOKEN));
     //   .then(res => console.log(res));
+  };
+
+  added = () => {
+    if (this.state.buttonState === false) {
+      this.setState({ buttonState: true });
+    }
   };
 
   render() {
@@ -90,7 +103,9 @@ class ProductCards extends Component {
                     Out of stock
                   </button>
                 ) : (
-                  <button type="button">Add</button>
+                  <button type="button" disabled={this.state.buttonState}>
+                    {this.state.buttonState ? 'Added' : 'Add'}
+                  </button>
                 )}
               </div>
             </div>
