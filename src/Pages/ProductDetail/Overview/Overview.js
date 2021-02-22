@@ -38,7 +38,7 @@ class Overview extends Component {
                 </AccordionItemPanel>
               </AccordionItem>
               <AccordionItem>
-                <AccordionItemHeading allowMultipleExpanded={true}>
+                <AccordionItemHeading>
                   <AccordionItemButton>ALLERGY</AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel>

@@ -1,40 +1,44 @@
 {
-  "id": 1,
-  "category": "powders",
-  "productImageSrc": "//images.ctfassets.net/t9x0u6p47op0/1XkujrgRJeDZKpAeWuS6cK/316424a9efefa7ba6784904f460e77e6/hero_collagen_lemon_passionfruit.jpg?fm=webp",
-  "productCardImageSrc": "https://images.ctfassets.net/t9x0u6p47op0/Cokgc6UV6Qz2iFB9uAVkj/0871456f6e30834c4f8e6feb5def2d2f/img-lemonpass-collagen-expert-set.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
-  "isVegan": true,
-  "isVegetarian": false,
-  "healthGoalList": ["Skin", "Nail"],
-  "title": "Whey Protein",
-  "subTitle": "The Skin Hero",
-  "description": "Essential mineral for over 300 reactions in the body/Includes 72 trace minerals/High solubility/From Irish seawater",
-  "nutritionLink": "/",
-  "allergyList": ["Soy", "Fish"],
-  "productPrice": { "15 Serving Tub": 32, "5 Packets": 16 },
-  "isSoldOut": { "15 Serving Tub": false, "5 Packets": true },
-  "dietaryHabitList": ["Gluten Free", "No Dairy", "Natural Flavors"],
-  "similarProduct": [
-    {
-      "id": 1,
-      "title": "Superberry",
-      "subTitle": "The Antioxidant Ace",
-      "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/Hlh4QNYRWK0WWiEaIYOA6/229504a998f870544000d1888f3516fc/img_elderberry_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
-      "healthGoalList": ["Immunity", "heart", "skin"]
-    },
-    {
-      "id": 2,
-      "title": "Superberry",
-      "subTitle": "The Antioxidant Ace",
-      "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/4Fmdpl3WZ2gK2EoU6eySwI/745f465fc0ac379dc4ff44a4eb550243/img_milkthistle_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
-      "healthGoalList": ["Immunity", "skin"]
-    },
-    {
-      "id": 3,
-      "title": "Superberry",
-      "subTitle": "The Antioxidant Ace",
-      "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/4Fmdpl3WZ2gK2EoU6eySwI/745f465fc0ac379dc4ff44a4eb550243/img_milkthistle_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
-      "healthGoalList": ["Immunity", "skin"]
-    }
-  ]
+  "data": {
+    "allergyList": [],
+    "category": "vitamins",
+    "description": "Supports the nervous system/Supports energy metabolism/Cultured with whole foods/Fermented for absorption",
+    "dietaryHabitList": ["Non-GMO", "Fermented", "Vegetarian"],
+    "healthGoalList": ["Energy"],
+    "isSoldOut": false,
+    "isVegan": false,
+    "isVegetarian": false,
+    "nutritionLink": "https://careof-web.s3.amazonaws.com/supplement-labels/b-complex_3.pdf",
+    "productCardImageSrc": "https://images.ctfassets.net/t9x0u6p47op0/29RWgFnrvKCGoSUsUMk2OC/5be252f0b45ca376af047dcc1c4855c1/img_bcomplex3_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=1400",
+    "productId": 1,
+    "productImageSrc": "https://images.ctfassets.net/t9x0u6p47op0/4bCa6dRo8AdOchgfLmcIQt/414d4a2168e1ab3c16d8258f487aa886/B-Complex.jpg?fm=webp",
+    "productPrice": "12.00",
+    "productSize": [null],
+    "similarProduct": [
+      {
+        "healthGoalList": ["Energy"],
+        "id": 2,
+        "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/6UpBvRqkSNLcIKL44d9ckE/f8886c0b24ccc79992b782c89f7f708a/img_vitaminb12_card.jpg?fit=fill&fl=progressive&fm=jpg&w=800",
+        "subTitle": "The Energizer",
+        "title": "Vitamin B12"
+      },
+      {
+        "healthGoalList": ["Energy"],
+        "id": 9,
+        "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/2vQIT9Zm482UU8iiwYQmYY/92dc36651ab72e485ce63bbb0e0a6158/img_iron3_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=1400",
+        "subTitle": "The Blood Booster",
+        "title": "Iron"
+      },
+      {
+        "healthGoalList": ["Energy"],
+        "id": 10,
+        "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/2vQIT9Zm482UU8iiwYQmYY/92dc36651ab72e485ce63bbb0e0a6158/img_iron3_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=1400",
+        "subTitle": "The Blood Booster",
+        "title": "Iron"
+      }
+    ],
+    "subTitle": "The Busy B's",
+    "title": "B-Complex"
+  },
+  "message": "SUCCESS"
 }

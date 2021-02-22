@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import MainProduct from './MainProduct/MainProduct';
 import QualityBadges from './QualityBadges/QualityBadges';
 import Overview from './Overview/Overview';
+import SimilarProduct from './SimilarProduct/SimilarProduct';
 import './ProductDetail.scss';
-import SimilarProdcut from './SimilarProdcut/SimilarProdcut';
 
 class ProductDetail extends Component {
   constructor() {
@@ -18,9 +18,8 @@ class ProductDetail extends Component {
   }
 
   getProductDetailData = () => {
-    // fetch('/data/productDetail.json')
-    // fetch('http://10.58.0.208:8000/product/19')
-    fetch('http://10.58.2.233:8000/product/23')
+    // fetch(`http://10.58.2.233:8000/product/${this.props.match.params.id}`)
+    fetch('/data/productDetail.json')
       .then(res => res.json())
       .then(res => {
         console.log(res);
@@ -35,9 +34,6 @@ class ProductDetail extends Component {
     console.log(detailData.productSize);
     return (
       <div className="ProductDetail">
-        {/* <nav className="product-nav">
-          <div className="nav-container">11</div>
-        </nav> */}
         <MainProduct
           id={detailData.productId}
           title={detailData.title}
@@ -60,7 +56,7 @@ class ProductDetail extends Component {
           nutritionLink={detailData.nutritionLink}
         />
         {detailData.similarProduct && detailData.similarProduct.length ? (
-          <SimilarProdcut similarProduct={detailData.similarProduct} />
+          <SimilarProduct similarProduct={detailData.similarProduct} />
         ) : (
           ''
         )}

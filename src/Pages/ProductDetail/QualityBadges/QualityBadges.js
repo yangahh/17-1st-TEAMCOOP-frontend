@@ -9,12 +9,12 @@ class QualityBadges extends Component {
       <div className="QualityBadges">
         <section className="quality-badges-container">
           {dietaryHabitList &&
-            dietaryHabitList.map(dietaryHabit => {
+            dietaryHabitList.map((dietaryHabit, index) => {
               return (
-                <div className="badge-card">
+                <div className="badge-card" key={index}>
                   <img
+                    alt={dietaryHabit + ' badge icon'}
                     src={bedgeIcon[dietaryHabit]}
-                    alt="badge-image"
                     className="badge-image"
                   />
                   <div className="badge-name">{dietaryHabit}</div>

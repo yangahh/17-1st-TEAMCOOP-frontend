@@ -5,20 +5,20 @@ class MainProduct extends Component {
   constructor() {
     super();
     this.state = {
-      productSize: '15 Serving Tub',
+      powderProductSize: '15 Serving Tub',
     };
   }
 
   handleProductPrice = event => {
-    this.setState({ productSize: event.target.value });
+    this.setState({ powderProductSize: event.target.value });
   };
 
-  powdersGoToCart = (id, productSize) => {
+  powdersGoToCart = (id, powderProductSize) => {
     const { productPrice } = this.props;
     console.log({
       productId: id,
-      productSize: productSize,
-      productPrice: productPrice[productSize],
+      productSize: powderProductSize,
+      productPrice: productPrice[powderProductSize],
     });
 
     fetch('http://10.58.2.233:8000/product/tocart', {
@@ -34,17 +34,6 @@ class MainProduct extends Component {
     })
       .then(response => response.json())
       .then(res => console.log(res));
-
-    // fetch('http://172.30.250.141:8000/user/login', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     email: 'toaur6802@gmail.com',
-    //     password: '12345678',
-    //   }),
-    // })
-    //   .then(response => response.json())
-    //   // .then(res => localStorage.setItem('ACCESS_TOKEN', res.ACCESS_TOKEN));
-    //   .then(res => console.log(res));
   };
 
   vitaminsGoToCart = (id, productPrice) => {
@@ -113,7 +102,10 @@ class MainProduct extends Component {
           </div>
           <div className="product-content">
             <ul className="tag-list">
-              {healthGoalList && healthGoalList.map(goal => <li>{goal}</li>)}
+              {healthGoalList &&
+                healthGoalList.map((goal, index) => (
+                  <li key={index}>{goal}</li>
+                ))}
             </ul>
             <h1 className="display-title">{title}</h1>
             <h2 className="sub-title">{subTitle}</h2>
@@ -121,7 +113,9 @@ class MainProduct extends Component {
               {description &&
                 description
                   .split('/')
-                  .map(description => <li>{description}</li>)}
+                  .map((description, index) => (
+                    <li key={index}>{description}</li>
+                  ))}
             </ul>
             <a href={nutritionLink} className="nutrition-link">
               See supplement facts
@@ -138,10 +132,11 @@ class MainProduct extends Component {
                 </select>
                 <button
                   className="add-cart-btn"
-                  onClick={() => this.powdersGoToCart(id, productSize)}
+                  onClick={() => this.powdersGoToCart(id, powderProductSize)}
                 >
                   Add
-                  <span className="btn-line" />${productPrice[productSize]}
+                  <span className="btn-line" />$
+                  {productPrice[powderProductSize]}
                   {isSoldOut[productSize] ? <br> SOLD OUT </br> : ''}
                 </button>
               </div>
