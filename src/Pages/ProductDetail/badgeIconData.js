@@ -1,7 +1,7 @@
 const bedgeIcon = {
   'Non-GMO':
     'https://images.ctfassets.net/t9x0u6p47op0/77N3Ux5xCttRzhSoq2R3PA/111e1fa11cf67ed1c09e6a7123cab6cc/dietary-badge-nonGMO__1_.svg',
-  Vegietarian:
+  Vegetarian:
     'https://images.ctfassets.net/t9x0u6p47op0/39K0AqM8ES8oTUlJhe94PW/140379b3ea73d1a0d0b69fb1aa723ec2/dietaryg-badge-vegetarian__1_.svg',
   'Gluten Free':
     'https://images.ctfassets.net/t9x0u6p47op0/5DvOw5233lcle7PubPokZ/d441ebab184bff65f749eecd1ffa7ef4/dietary-badges-glutenfree.svg',

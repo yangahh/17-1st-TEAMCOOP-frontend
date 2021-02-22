@@ -8,16 +8,11 @@
   "healthGoalList": ["Skin", "Nail"],
   "title": "Whey Protein",
   "subTitle": "The Skin Hero",
-  "description": [
-    "Supports hydration and elasticity in skin*",
-    "Helps strengthen nails*",
-    "Made with premium Japanese matcha powder",
-    "A creamy addition to coffee or smoothies"
-  ],
+  "description": "Essential mineral for over 300 reactions in the body/Includes 72 trace minerals/High solubility/From Irish seawater",
   "nutritionLink": "/",
   "allergyList": ["Soy", "Fish"],
   "productPrice": { "15 Serving Tub": 32, "5 Packets": 16 },
-  "isSoldOut": true,
+  "isSoldOut": { "15 Serving Tub": false, "5 Packets": true },
   "dietaryHabitList": ["Gluten Free", "No Dairy", "Natural Flavors"],
   "similarProduct": [
     {
@@ -29,6 +24,13 @@
     },
     {
       "id": 2,
+      "title": "Superberry",
+      "subTitle": "The Antioxidant Ace",
+      "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/4Fmdpl3WZ2gK2EoU6eySwI/745f465fc0ac379dc4ff44a4eb550243/img_milkthistle_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+      "healthGoalList": ["Immunity", "skin"]
+    },
+    {
+      "id": 3,
       "title": "Superberry",
       "subTitle": "The Antioxidant Ace",
       "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/4Fmdpl3WZ2gK2EoU6eySwI/745f465fc0ac379dc4ff44a4eb550243/img_milkthistle_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
