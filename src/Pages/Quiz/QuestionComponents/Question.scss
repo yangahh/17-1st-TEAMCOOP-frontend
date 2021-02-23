@@ -2,11 +2,99 @@
 
 .Question {
   h5 {
+    margin-bottom: 15px;
     color: #999999;
     font-size: 16px;
   }
 
   h2 {
+    margin-bottom: 30px;
     color: $black-color;
+    font-family: 'Newsreader';
+    font-size: 45px;
+    font-weight: 400;
+  }
+
+  .textbox {
+    @extend %flex-center;
+    width: 100%;
+    margin: 18px auto;
+    padding: 30px 0;
+
+    input {
+      padding: 0 40px;
+      font-size: 34px;
+    }
+
+    button {
+      height: 45px;
+      border: none;
+      border-radius: 30px;
+      margin-left: 20px;
+      padding: 0 20px;
+      color: white;
+      background-color: #7f848b;
+      cursor: pointer;
+    }
+
+    label {
+      input {
+        width: 50%;
+        padding-left: 5px;
+      }
+    }
+  }
+
+  .two-textbox {
+    @extend %flex-center;
+    flex-direction: column;
+    width: 100%;
+    margin: 18px auto;
+    padding: 30px 0;
+
+    label {
+      input {
+        padding: 0 40px;
+        margin-bottom: 20px;
+        font-size: 32px;
+      }
+    }
+
+    button {
+      height: 45px;
+      border: none;
+      border-radius: 30px;
+      margin-left: 20px;
+      padding: 0 20px;
+      color: white;
+      background-color: #7f848b;
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    text-align: left;
+    li {
+      margin-bottom: 10px;
+      label {
+        padding-left: 85px;
+        line-height: 20px;
+        font-size: 25px;
+
+        input {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .checkbox-btn {
+    height: 45px;
+    border: none;
+    border-radius: 30px;
+    padding: 0 20px;
+    color: white;
+    background-color: #7f848b;
+    cursor: pointer;
   }
 }

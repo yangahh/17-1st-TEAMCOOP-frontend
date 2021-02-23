@@ -5,8 +5,9 @@ class Question5 extends Component {
   constructor() {
     super();
     this.state = {
-      skin: '',
-      eye: '',
+      workoutLess3hours: false,
+      workoutLess6hours: false,
+      workoutMore6hours: false,
     };
   }
   handleInputValue = event => {
@@ -16,39 +17,59 @@ class Question5 extends Component {
     });
   };
   render() {
-    const { skin, eye } = this.state;
+    const {
+      workoutLess3hours,
+      workoutLess6hours,
+      workoutMore6hours,
+    } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
-        <h5 className="question-count">Question2</h5>
-        <h2 className="qustion-title">what</h2>
+        <h5 className="question-count">Question5</h5>
+        <h2 className="qustion-title">How often do you workout in a week?</h2>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={skin}
+                value={workoutLess3hours}
                 defaultChecked={false}
-                name="skin"
+                name="workoutLess3hours"
                 onChange={this.handleInputValue}
               />
-              skin
+              less than 3hours
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={eye}
+                value={workoutLess6hours}
                 defaultChecked={false}
-                name="eye"
+                name="workoutLess6hours"
                 onChange={this.handleInputValue}
               />
-              eye
+              3~6hours
+            </label>
+          </li>
+          <li>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                value={workoutMore6hours}
+                defaultChecked={false}
+                name="workoutMore6hours"
+                onChange={this.handleInputValue}
+              />
+              more than 6hours
             </label>
           </li>
         </ul>
-        <button onClick={() => handleSubmit(this.state, questionId)}>
+        <button
+          type="button"
+          className="checkbox-btn"
+          onClick={() => handleSubmit(this.state, questionId)}
+        >
           NEXT
         </button>
       </div>

@@ -9,6 +9,7 @@ import Question7 from './QuestionComponents/Question7';
 import Question8 from './QuestionComponents/Question8';
 import Question9 from './QuestionComponents/Question9';
 import Question10 from './QuestionComponents/Question10';
+import Question11 from './QuestionComponents/Question11';
 
 import './Quiz.scss';
 
@@ -17,14 +18,14 @@ class Quiz extends Component {
     super();
     this.state = {
       questionId: 1,
-      answer: [],
+      answer: {},
     };
   }
 
   handleSubmit = (data, questionId) => {
     const { answer } = this.state;
     this.setState({
-      answer: answer.concat({ id: questionId, ...data }),
+      answer: Object.assign(answer, data),
     });
 
     this.handleNextQuestion(questionId);
@@ -102,11 +103,20 @@ class Quiz extends Component {
           handleSubmit={this.handleSubmit}
         />
       ),
+      11: (
+        <Question11
+          questionId={this.state.questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
     };
 
     return (
       <div className="Quiz">
-        <div className="quiz-container">Quiz{quiz_obj[questionId]}</div>
+        <div className="quiz-container">
+          {/* <h1>Quiz</h1> */}
+          {quiz_obj[questionId]}
+        </div>
       </div>
     );
   }

@@ -5,8 +5,8 @@ class Question6 extends Component {
   constructor() {
     super();
     this.state = {
-      skin: '',
-      eye: '',
+      yesSmoke: false,
+      noSmoke: false,
     };
   }
   handleInputValue = event => {
@@ -16,39 +16,43 @@ class Question6 extends Component {
     });
   };
   render() {
-    const { skin, eye } = this.state;
+    const { yesSmoke, noSmoke } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
-        <h5 className="question-count">Question2</h5>
-        <h2 className="qustion-title">what</h2>
+        <h5 className="question-count">Question6</h5>
+        <h2 className="qustion-title">Do you smoke?</h2>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={skin}
+                value={yesSmoke}
                 defaultChecked={false}
-                name="skin"
+                name="yesSmoke"
                 onChange={this.handleInputValue}
               />
-              skin
+              YES
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={eye}
+                value={noSmoke}
                 defaultChecked={false}
-                name="eye"
+                name="noSmoke"
                 onChange={this.handleInputValue}
               />
-              eye
+              NO
             </label>
           </li>
         </ul>
-        <button onClick={() => handleSubmit(this.state, questionId)}>
+        <button
+          type="button"
+          className="checkbox-btn"
+          onClick={() => handleSubmit(this.state, questionId)}
+        >
           NEXT
         </button>
       </div>

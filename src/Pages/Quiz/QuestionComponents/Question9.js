@@ -5,8 +5,9 @@ class Question9 extends Component {
   constructor() {
     super();
     this.state = {
-      skin: '',
-      eye: '',
+      vegan: false,
+      vegetarian: false,
+      nonVegetarian: false,
     };
   }
   handleInputValue = event => {
@@ -16,39 +17,55 @@ class Question9 extends Component {
     });
   };
   render() {
-    const { skin, eye } = this.state;
+    const { vegan, vegetarian, nonVegetarian } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
-        <h5 className="question-count">Question2</h5>
-        <h2 className="qustion-title">what</h2>
+        <h5 className="question-count">Question9</h5>
+        <h2 className="qustion-title">Are you Vegetarian?</h2>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={skin}
+                value={vegan}
                 defaultChecked={false}
-                name="skin"
+                name="vegan"
                 onChange={this.handleInputValue}
               />
-              skin
+              Vegan
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={eye}
+                value={vegetarian}
                 defaultChecked={false}
-                name="eye"
+                name="vegetarian"
                 onChange={this.handleInputValue}
               />
-              eye
+              Vegetarian
+            </label>
+          </li>
+          <li>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                value={nonVegetarian}
+                defaultChecked={false}
+                name="nonVegetarian"
+                onChange={this.handleInputValue}
+              />
+              Non-Vegetarian
             </label>
           </li>
         </ul>
-        <button onClick={() => handleSubmit(this.state, questionId)}>
+        <button
+          type="button"
+          className="checkbox-btn"
+          onClick={() => handleSubmit(this.state, questionId)}
+        >
           NEXT
         </button>
       </div>

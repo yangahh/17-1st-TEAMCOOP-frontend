@@ -5,7 +5,6 @@ class Question3 extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
       age: '',
     };
   }
@@ -17,27 +16,27 @@ class Question3 extends Component {
   };
 
   render() {
-    const { name, age } = this.state;
+    const { age } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
         <h5 className="question-count">Question3</h5>
-        <h2 className="qustion-title">what</h2>
-        <ul className="qustion-answer-wrap">
-          <li>
-            <input
-              onChange={this.handleInputValue}
-              name="age"
-              value={age}
-              type="text"
-              maxLength="3"
-              required="true"
-            />
-          </li>
-        </ul>
-        <button onClick={() => handleSubmit(this.state, questionId)}>
-          NEXT
-        </button>
+        <h2 className="qustion-title">What is your age?</h2>
+        <form className="textbox">
+          <input
+            onChange={this.handleInputValue}
+            name="age"
+            value={age}
+            type="text"
+            maxLength="2"
+          />
+          <button
+            type="button"
+            onClick={age && (() => handleSubmit(this.state, questionId))}
+          >
+            NEXT
+          </button>
+        </form>
       </div>
     );
   }

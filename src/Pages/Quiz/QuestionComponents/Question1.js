@@ -16,26 +16,28 @@ class Question1 extends Component {
   };
 
   render() {
-    const { name, age } = this.state;
+    const { name } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
         <h5 className="question-count">Question1</h5>
-        <h2 className="qustion-title">what</h2>
-        <ul className="qustion-answer-wrap">
-          <li>
-            <input
-              onChange={this.handleInputValue}
-              name="name"
-              value={name}
-              type="text"
-              maxLength="5"
-            />
-          </li>
-        </ul>
-        <button onClick={() => handleSubmit(this.state, questionId)}>
-          NEXT
-        </button>
+        <h2 className="qustion-title">What is your name?</h2>
+        <form className="textbox">
+          <input
+            onChange={this.handleInputValue}
+            name="name"
+            value={name}
+            type="text"
+            maxLength="4"
+            required
+          />
+          <button
+            type="button"
+            onClick={() => handleSubmit(this.state, questionId)}
+          >
+            NEXT
+          </button>
+        </form>
       </div>
     );
   }

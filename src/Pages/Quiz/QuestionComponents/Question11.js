@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './Question.scss';
 
-class Question10 extends Component {
+class Question11 extends Component {
   constructor() {
     super();
     this.state = {
-      allergySoy: false,
-      allergyNuts: false,
-      allergyMilk: false,
-      allergyWheat: false,
-      allergyFish: false,
+      arthritis: false,
+      diabetes: false,
+      menstrualIrregularity: false,
+      liverDisease: false,
+      osteoporosis: false,
     };
   }
   handleInputValue = event => {
@@ -20,76 +20,76 @@ class Question10 extends Component {
   };
   render() {
     const {
-      allergySoy,
-      allergyNuts,
-      allergyMilk,
-      allergyWheat,
-      allergyFish,
+      arthritis,
+      diabetes,
+      menstrualIrregularity,
+      liverDisease,
+      osteoporosis,
     } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
-        <h5 className="question-count">Question10</h5>
-        <h2 className="qustion-title">Do you have any allergies?</h2>
+        <h5 className="question-count">Question11</h5>
+        <h2 className="qustion-title">Do you have any diseases?</h2>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergySoy}
+                value={arthritis}
                 defaultChecked={false}
-                name="allergySoy"
+                name="arthritis"
                 onChange={this.handleInputValue}
               />
-              Soy
+              Arthritis
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyNuts}
+                value={diabetes}
                 defaultChecked={false}
-                name="allergyNuts"
+                name="diabetes"
                 onChange={this.handleInputValue}
               />
-              Nuts
+              Diabetes
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyMilk}
+                value={menstrualIrregularity}
                 defaultChecked={false}
-                name="allergyMilk"
+                name="menstrualIrregularity"
                 onChange={this.handleInputValue}
               />
-              Milk
+              Menstrual irregularity
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyWheat}
+                value={liverDisease}
                 defaultChecked={false}
-                name="allergyWheat"
+                name="liverDisease"
                 onChange={this.handleInputValue}
               />
-              Wheat
+              Liver disease
             </label>
           </li>
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyFish}
+                value={osteoporosis}
                 defaultChecked={false}
-                name="allergyFish"
+                name="osteoporosis"
                 onChange={this.handleInputValue}
               />
-              Fish
+              Osteoporosis
             </label>
           </li>
         </ul>
@@ -105,4 +105,4 @@ class Question10 extends Component {
   }
 }
 
-export default Question10;
+export default Question11;
