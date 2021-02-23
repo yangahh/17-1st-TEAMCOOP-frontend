@@ -23,13 +23,16 @@
       font-size: 18px;
     }
   }
+
   .review_form {
     width: 950px;
-    height: 320px;
+    min-height: 250px;
+    height: fit-content;
     display: flex;
     justify-content: center;
-    margin-bottom: 45px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding-top: 30px;
+    padding-bottom: 30px;
 
     .left_content {
       padding-left: 30px;
@@ -43,6 +46,7 @@
           width: 210px;
         }
       }
+
       img {
         padding-top: 40px;
         width: 110px;
@@ -51,6 +55,15 @@
     }
 
     .right_content {
+      width: 100%;
+
+      span {
+        display: block;
+        padding-bottom: 20px;
+        color: black;
+        font-size: 30px;
+      }
+
       img {
         padding-bottom: 20px;
       }
