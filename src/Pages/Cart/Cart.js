@@ -308,13 +308,22 @@ class Cart extends Component {
               </button>
             )}
             {this.state.checkout && (
-              <button
-                disabled={carts.length === 0 ? true : false}
-                className="order-checkout"
-                onClick={this.placeOrder}
-              >
-                Place order
-              </button>
+              <>
+                <button
+                  disabled={carts.length === 0 ? true : false}
+                  className="order-checkout"
+                  onClick={this.placeOrder}
+                >
+                  Place order
+                </button>
+                <button
+                  disabled={carts.length === 0 ? true : false}
+                  className="order-checkout backto-cart"
+                  onClick={this.goToCheckout}
+                >
+                  Back to Cart
+                </button>
+              </>
             )}
             <p>Free shipping on orders over $20</p>
             <p>
