@@ -5,6 +5,7 @@ import coverUrl from './coverUrl';
 import './ProductCards.scss';
 
 import { SERVER } from '../../../../config';
+import ProductCard from './ProductCard/ProductCard';
 
 class ProductCards extends Component {
   constructor() {
@@ -19,12 +20,6 @@ class ProductCards extends Component {
   };
 
   goToCart = item => {
-    // console.log({
-    //   id: item.id,
-    //   productSize: item.displaySize[0],
-    //   productPrice: item.displayPrice[0],
-    // });
-
     fetch(`${SERVER}/product/tocart`, {
       method: 'POST',
       headers: {
@@ -38,17 +33,6 @@ class ProductCards extends Component {
     })
       .then(response => response.json())
       .then(res => console.log(res));
-
-    // fetch('http://172.30.250.141:8000/user/login', {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     email: 'toaur6802@gmail.com',
-    //     password: '12345678',
-    //   }),
-    // })
-    //   .then(response => response.json())
-    //   // .then(res => localStorage.setItem('ACCESS_TOKEN', res.ACCESS_TOKEN));
-    //   .then(res => console.log(res));
   };
 
   added = () => {
@@ -72,15 +56,12 @@ class ProductCards extends Component {
 
         {cardInfo.item.map(item => {
           const outOfStock = item.stock === true;
-
           return (
-            <div
-              className="productCard"
-              key={item.id}
-              // onClick={() => this.goToDetail(item.id)} //상세페이지 연결
-              onClick={() => this.goToCart(item)}
-            >
-              <div className="productCard__header">
+            <div className="productCard" key={item.id}>
+              <div
+                className="productCard__header"
+                onClick={() => this.goToDetail(item.id)}
+              >
                 {item.isNew && <span className="new">NEW</span>}
                 <img src={item.imageUrl} alt="product image" />
                 <div className="symbols">
@@ -89,7 +70,10 @@ class ProductCards extends Component {
                   })}
                 </div>
               </div>
-              <div className="productCard__text-block">
+              <div
+                className="productCard__text-block"
+                onClick={() => this.goToDetail(item.id)}
+              >
                 <h2>{item.displayTitle}</h2>
                 <p>{item.subTitle}</p>
                 <ul>
@@ -98,18 +82,12 @@ class ProductCards extends Component {
                   })}
                 </ul>
               </div>
-              <div className="productCard__bottom">
-                <p>${item.displayPrice[0]}</p>
-                {outOfStock ? (
-                  <button disabled type="button">
-                    Out of stock
-                  </button>
-                ) : (
-                  <button type="button" disabled={this.state.buttonState}>
-                    {this.state.buttonState ? 'Added' : 'Add'}
-                  </button>
-                )}
-              </div>
+              <ProductCard
+                item={item}
+                goToCart={this.goToCart}
+                outOfStock={outOfStock}
+                addedItemIdArr={this.props.addedItemIdArr}
+              />
             </div>
           );
         })}

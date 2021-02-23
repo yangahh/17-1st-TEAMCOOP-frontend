@@ -10,12 +10,23 @@ class ProductCardsGroup extends Component {
       <div className="productCardsGroup">
         {powderDatas.length ? <h1>Vitamins</h1> : ''}
         {productDatas.map(cardInfo => {
-          return <ProductCards cardInfo={cardInfo} />;
+          return (
+            <ProductCards
+              addedItemIdArr={this.props.addedItemIdArr}
+              cardInfo={cardInfo}
+            />
+          );
         })}
 
         <h1>{powderDatas.length ? 'Powders' : ''}</h1>
         {powderDatas.map(cardInfo => {
-          return <ProductCards cardInfo={cardInfo} />;
+          return (
+            <ProductCards
+              getAddedItem={this.props.getAddedItem}
+              addedItemIdArr={this.props.addedItemIdArr}
+              cardInfo={cardInfo}
+            />
+          );
         })}
       </div>
     );

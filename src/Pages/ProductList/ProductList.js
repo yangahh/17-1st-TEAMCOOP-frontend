@@ -76,11 +76,38 @@ class ProductList extends Component {
     this.getCategoryData();
     this.gethealthGoalData();
     this.fetchShowAll();
+    this.getAddedItem();
 
     //mock-data fetch
     // this.getVitaminDetailData();
     // this.getPowderDetailData();
   }
+
+  getAddedItem = () => {
+    fetch(`${SERVER}/order/mycart`, {
+      method: 'GET',
+      headers: {
+        Authorization: sessionStorage.getItem('access_token'),
+      },
+    })
+      .then(response => response.json())
+      // .then(res => console.log(res));
+      .then(res => this.saveAddedItem(res.data.carts));
+  };
+
+  saveAddedItem = addedItemArr => {
+    console.log(addedItemArr);
+
+    let addedItemIdArr = [];
+
+    addedItemArr.map(item => {
+      addedItemIdArr.push(item.productId);
+    });
+
+    console.log(addedItemIdArr);
+
+    this.setState({ addedItemIdArr });
+  };
 
   handleCategory = target => {
     this.setState({ currentCategory: target });
@@ -192,6 +219,7 @@ class ProductList extends Component {
               }
             />
             <ProductCardsGroup
+              addedItemIdArr={this.state.addedItemIdArr}
               productDatas={productDatas}
               powderDatas={powderDatas}
               selectedCategory={
