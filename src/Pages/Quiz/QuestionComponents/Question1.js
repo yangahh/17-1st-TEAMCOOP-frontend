@@ -6,7 +6,6 @@ class Question1 extends Component {
     super();
     this.state = {
       name: '',
-      age: '',
     };
   }
   handleInputValue = event => {
@@ -31,16 +30,6 @@ class Question1 extends Component {
               value={name}
               type="text"
               maxLength="5"
-            />
-          </li>
-          <li>
-            <input
-              onChange={this.handleInputValue}
-              name="age"
-              value={age}
-              type="text"
-              maxLength="3"
-              required="true"
             />
           </li>
         </ul>

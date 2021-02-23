@@ -36,9 +36,6 @@ class Question3 extends Component {
           </li>
         </ul>
         <button onClick={() => handleSubmit(this.state, questionId)}>
-          Previous
-        </button>
-        <button onClick={() => handleSubmit(this.state, questionId)}>
           NEXT
         </button>
       </div>
@@ -46,4 +43,4 @@ class Question3 extends Component {
   }
 }
 
-export default Question1;
+export default Question3;
