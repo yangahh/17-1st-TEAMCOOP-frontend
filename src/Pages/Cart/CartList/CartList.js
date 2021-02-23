@@ -4,7 +4,7 @@ import './CartList.scss';
 
 class CartList extends Component {
   render() {
-    const { cartList, deleteItem } = this.props;
+    const { cartList, deleteItem, refreshCartList } = this.props;
 
     const vitamins = cartList.filter(item => {
       return item.category === 'vitamins';
@@ -25,6 +25,7 @@ class CartList extends Component {
                   itemInfo={itemInfo}
                   pruducts={vitamins}
                   deleteItem={deleteItem}
+                  refreshCartList={refreshCartList}
                 />
               );
             })}
@@ -39,6 +40,7 @@ class CartList extends Component {
                   itemInfo={itemInfo}
                   pruducts={powders}
                   deleteItem={deleteItem}
+                  refreshCartList={refreshCartList}
                 />
               );
             })}

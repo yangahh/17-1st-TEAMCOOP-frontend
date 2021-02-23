@@ -29,16 +29,16 @@ class CartItem extends Component {
   }
 
   componentDidUpdate() {
-    const { target, productId } = this.state;
+    const { target, productStockId } = this.state;
 
-    target === 'powders' && this.updatePowderCart(productId);
-    target === 'vitamins' && this.updateVitaminCart(productId);
+    target === 'powders' && this.updatePowderCart(productStockId);
+    target === 'vitamins' && this.updateVitaminCart(productStockId);
   }
 
-  updatePowderCart = productId => {
-    console.log('파우더 변경');
+  updatePowderCart = productStockId => {
+    console.log(`파우더 변경 ${productStockId}`);
 
-    fetch(`${SERVER}/order/cart/${productId}`, {
+    fetch(`${SERVER}/order/cart/${productStockId}`, {
       method: 'POST',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
@@ -53,16 +53,19 @@ class CartItem extends Component {
       .then(res => console.log(res));
 
     console.log(
+      `${SERVER}/order/cart/${productStockId}`,
       this.state.productId,
       this.state.powderQuantity - 0,
       this.state.powderSize,
     );
+
+    this.props.refreshCartList();
   };
 
-  updateVitaminCart = productId => {
-    console.log('비타민 변경');
+  updateVitaminCart = productStockId => {
+    console.log(`비타민 변경 ${productStockId}`);
 
-    fetch(`${SERVER}/order/cart/${productId}`, {
+    fetch(`${SERVER}/order/cart/${productStockId}`, {
       method: 'POST',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
@@ -75,25 +78,35 @@ class CartItem extends Component {
       .then(response => response.json())
       .then(res => console.log(res));
 
-    console.log(this.state.productId, this.state.vitaminQuantity);
+    console.log(
+      `${SERVER}/order/cart/${productStockId}`,
+      this.state.productId,
+      this.state.vitaminQuantity,
+    );
+
+    this.props.refreshCartList();
   };
 
-  handleVitaminOption = (itemInfo, event) => {
+  handleVitaminOption = (itemInfo, event, stockId) => {
     this.setState({
       target: itemInfo.category,
       productId: itemInfo.productId,
       vitaminQuantity: event.target.value,
+      productStockId: stockId,
     });
   };
 
-  handlePowderOption = (itemInfo, event) => {
+  handlePowderOption = (itemInfo, event, stockId) => {
     const { name, value } = event.target;
+
+    console.log(name, value);
 
     name === 'productSize' &&
       this.setState({
         powderSize: value,
         target: itemInfo.category,
         productId: itemInfo.productId,
+        productStockId: stockId,
       });
 
     name === 'productQuantity' &&
@@ -101,11 +114,13 @@ class CartItem extends Component {
         powderQuantity: value,
         target: itemInfo.category,
         productId: itemInfo.productId,
+        productStockId: stockId,
       });
   };
 
   render() {
     const { itemInfo, pruducts, deleteItem } = this.props;
+    // console.log(itemInfo);
 
     return (
       <div
@@ -118,12 +133,20 @@ class CartItem extends Component {
             <h2>{itemInfo.productName}</h2>
             <p>{itemInfo.productSubName}</p>
           </div>
-
-          <p className="price">${itemInfo.productPrice}</p>
+          {/* <p className="price">${itemInfo.productPrice}</p> */}
+          <p className="price">
+            ${Number(itemInfo.productPrice) * itemInfo.productQuantity}
+          </p>
           {itemInfo.category === 'vitamins' && (
             <div className="selectOption">
               <select
-                onChange={() => this.handleVitaminOption(itemInfo, event)}
+                onChange={() =>
+                  this.handleVitaminOption(
+                    itemInfo,
+                    event,
+                    itemInfo.productStockId,
+                  )
+                }
               >
                 <option
                   selected={itemInfo.productQuantity === 1 ? true : false}
@@ -150,7 +173,13 @@ class CartItem extends Component {
             <div className="selectOption">
               <select
                 name="productQuantity"
-                onChange={() => this.handlePowderOption(itemInfo, event)}
+                onChange={() =>
+                  this.handlePowderOption(
+                    itemInfo,
+                    event,
+                    itemInfo.productStockId,
+                  )
+                }
               >
                 <option
                   selected={itemInfo.productQuantity === 1 ? true : false}
@@ -173,7 +202,13 @@ class CartItem extends Component {
               </select>
               <select
                 name="productSize"
-                onChange={() => this.handlePowderOption(itemInfo, event)}
+                onChange={() =>
+                  this.handlePowderOption(
+                    itemInfo,
+                    event,
+                    itemInfo.productStockId,
+                  )
+                }
               >
                 <option
                   selected={

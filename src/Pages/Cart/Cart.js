@@ -25,12 +25,19 @@ class Cart extends Component {
     };
   }
 
+  refreshCartList = () => {
+    console.log('변경했다!!!!!!!');
+    // this.getCartList();
+  };
+
   componentDidMount() {
     this.getCartList();
     // this.getSubTotal();
   }
 
   getCartList = () => {
+    // console.log('패치');
+
     fetch(`${SERVER}/order/mycart`, {
       method: 'GET',
       headers: {
@@ -39,9 +46,14 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(res => this.updateCart(res));
+    // .then(res => console.log('패치'));
+
+    console.log('장바구니 가져오기!');
   };
 
   updateCart = res => {
+    // console.log('업데이트');
+
     if (res.message === 'EMPTY') {
       this.setState({
         carts: [],
@@ -156,7 +168,6 @@ class Cart extends Component {
 
   render() {
     const { carts, subtotal } = this.state;
-
     return (
       <div className="cart">
         {carts.length === 0 && (
@@ -179,7 +190,11 @@ class Cart extends Component {
                   <a href="#">Browse products</a>
                 </div>
               ) : (
-                <CartList cartList={carts} deleteItem={this.deleteItem} />
+                <CartList
+                  cartList={carts}
+                  deleteItem={this.deleteItem}
+                  refreshCartList={this.refreshCartList}
+                />
               )}
             </div>
           )}
