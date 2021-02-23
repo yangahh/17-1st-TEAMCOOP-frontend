@@ -8,33 +8,45 @@ class Quiz extends Component {
   constructor() {
     super();
     this.state = {
-      question1: false,
-      question2: false,
-      name: '',
-      age: '',
+      questionId: 1,
+      answer: [],
     };
   }
 
-  handleInputValue = event => {
-    const { name, value } = event.target;
+  handleSubmit = (data, questionId) => {
+    const { answer } = this.state;
     this.setState({
-      [name]: value,
+      answer: answer.concat({ id: questionId, ...data }),
     });
+
+    this.handleQuestionId(questionId);
+  };
+
+  handleQuestionId = id => {
+    this.setState({ questionId: id + 1 });
   };
 
   render() {
-    const { name, age } = this.state;
-    console.log(name, age);
+    console.log(this.state);
+    const { questionId } = this.state;
+    const quiz_obj = {
+      1: (
+        <Question1
+          questionId={this.state.questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
+      2: (
+        <Question2
+          questionId={this.state.questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
+    };
+
     return (
       <div className="Quiz">
-        <div className="quiz-container">
-          <Question1
-            handleInputValue={this.handleInputValue}
-            name={name}
-            age={age}
-          />
-          <Question2 />
-        </div>
+        <div className="quiz-container">Quiz{quiz_obj[questionId]}</div>
       </div>
     );
   }

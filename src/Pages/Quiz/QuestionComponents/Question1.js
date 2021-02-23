@@ -2,8 +2,23 @@ import React, { Component } from 'react';
 import './Question.scss';
 
 class Question1 extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: '',
+      age: '',
+    };
+  }
+  handleInputValue = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
   render() {
-    const { name, age, handleInputValue } = this.props;
+    const { name, age } = this.state;
+    const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
         <h5 className="question-count">Question1</h5>
@@ -11,16 +26,17 @@ class Question1 extends Component {
         <ul className="qustion-answer-wrap">
           <li>
             <input
-              onChange={handleInputValue}
+              onChange={this.handleInputValue}
+              name="name"
               value={name}
               type="text"
               maxLength="5"
-              // required="true"
             />
           </li>
           <li>
             <input
-              onChange={() => handleInputValue()}
+              onChange={this.handleInputValue}
+              name="age"
               value={age}
               type="text"
               maxLength="3"
@@ -28,7 +44,9 @@ class Question1 extends Component {
             />
           </li>
         </ul>
-        <button>NEXT</button>
+        <button onClick={() => handleSubmit(this.state, questionId)}>
+          NEXT
+        </button>
       </div>
     );
   }
