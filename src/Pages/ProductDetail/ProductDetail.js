@@ -17,12 +17,17 @@ class ProductDetail extends Component {
     this.getProductDetailData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.getProductDetailData();
+      window.scrollTo(0, 0);
+    }
+  }
+
   getProductDetailData = () => {
-    // fetch(`http://10.58.2.233:8000/product/${this.props.match.params.id}`)
-    fetch('/data/productDetail.json')
+    fetch(`http://10.58.6.180:8000/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         this.setState({
           detailData: res.data,
         });
@@ -31,7 +36,6 @@ class ProductDetail extends Component {
 
   render() {
     const { detailData, productSize } = this.state;
-    console.log(detailData.productSize);
     return (
       <div className="ProductDetail">
         <MainProduct

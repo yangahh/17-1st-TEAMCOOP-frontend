@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './SimilarProductCard.scss';
 
 class SimilarProductCard extends Component {
@@ -30,4 +31,4 @@ class SimilarProductCard extends Component {
   }
 }
 
-export default SimilarProductCard;
+export default withRouter(SimilarProductCard);

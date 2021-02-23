@@ -6,7 +6,6 @@
     padding-bottom: 150px;
 
     .product-image-content {
-      width: 100%;
       min-width: 60%;
 
       .product-image {
@@ -129,6 +128,20 @@
         &:hover {
           border: none;
         }
+      }
+
+      .already-cart-btn {
+        width: 100%;
+        padding: 15px 0;
+        border-radius: 50px;
+        border: none;
+        color: $white-color;
+        background-color: $dimGray-color;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
       }
 
       .add-cart-btn {
