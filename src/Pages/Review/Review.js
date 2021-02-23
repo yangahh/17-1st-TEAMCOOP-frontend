@@ -18,7 +18,7 @@ class Review extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          reviewData: res
+          reviewData: res,
           // reviewData: res.data,
         });
       });
@@ -38,7 +38,6 @@ class Review extends Component {
             </select>
           </div>
         </header>
-        {/* 첫번째폼 */}
         {this.state.reviewData.map(review => (
           <NewReview
             img={review.img}
