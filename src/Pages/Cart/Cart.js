@@ -22,22 +22,19 @@ class Cart extends Component {
       phoneNumber: '',
       zip: '',
       address: '',
+      // orderModal: true,
     };
   }
 
   refreshCartList = () => {
-    console.log('변경했다!!!!!!!');
-    // this.getCartList();
+    this.getCartList();
   };
 
   componentDidMount() {
     this.getCartList();
-    // this.getSubTotal();
   }
 
   getCartList = () => {
-    // console.log('패치');
-
     fetch(`${SERVER}/order/mycart`, {
       method: 'GET',
       headers: {
@@ -46,14 +43,9 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(res => this.updateCart(res));
-    // .then(res => console.log('패치'));
-
-    console.log('장바구니 가져오기!');
   };
 
   updateCart = res => {
-    // console.log('업데이트');
-
     if (res.message === 'EMPTY') {
       this.setState({
         carts: [],
@@ -65,19 +57,6 @@ class Cart extends Component {
       });
     }
   };
-
-  //이거 지우나?
-  // getSubTotal = () => {
-  //   this.setState({ subtotal: 0 });
-  //   let priceArr = [];
-  //   this.state.carts.map(item => {
-  //     priceArr.push(item.productPrice - 0);
-  //   });
-
-  //   const subtotal = priceArr.reduce((a, b) => a + b);
-
-  //   this.setState({ subtotal });
-  // };
 
   testTOTAL = () => {
     let priceArr = [];
@@ -107,12 +86,9 @@ class Cart extends Component {
       return item !== deletedItem;
     });
 
-    this.setState(
-      {
-        carts: remainItem,
-      },
-      // this.getSubTotal(),
-    );
+    this.setState({
+      carts: remainItem,
+    });
 
     this.fetchDeleteItem(deletedItem);
   };
@@ -123,16 +99,13 @@ class Cart extends Component {
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
       },
-    })
-      .then(response => response.json())
-      .then(res => console.log(res));
+    }).then(response => response.json());
   };
 
   goToCheckout = () => {
     this.state.carts.length !== 0 &&
       this.setState({ checkout: !this.state.checkout });
 
-    console.log('결제할거야');
     fetch(`${SERVER}/order/checkout/${this.state.orderNumber}`, {
       method: 'GET',
       headers: {
@@ -141,7 +114,6 @@ class Cart extends Component {
     })
       .then(response => response.json())
       .then(res => this.setUserInfo(res.data.user));
-    // .then(res => console.log(res.data.user));
   };
 
   handleInput = e => {
@@ -152,7 +124,6 @@ class Cart extends Component {
   };
 
   setUserInfo = info => {
-    console.log(info);
     this.setState({
       name: info.userName,
       email: info.email,
@@ -162,8 +133,39 @@ class Cart extends Component {
     });
   };
 
-  placeOrder = props => {
-    console.log('주문버튼 누름');
+  placeOrder = () => {
+    fetch(`${SERVER}/order/checkout/${this.state.orderNumber}`, {
+      method: 'POST',
+      headers: {
+        Authorization: sessionStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        subTotalCost: this.state.subtotal,
+        shippingCost: this.state.subtotal > 20 ? 0 : 5,
+        totalCost: this.state.subtotal + (this.state.subtotal > 20 ? 0 : 5),
+        address: this.state.address,
+        zipcode: this.state.zip,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => this.activeModal(res));
+    // .then(res => console.log(res));
+  };
+
+  activeModal = res => {
+    if (res.message === 'SUCCESS') {
+      this.setState({
+        orderModal: true,
+      });
+    }
+  };
+
+  finishOrderPage = () => {
+    this.setState({
+      orderModal: false,
+    });
+
+    this.props.history.push('/');
   };
 
   render() {
@@ -233,7 +235,6 @@ class Cart extends Component {
                     onChange={e => this.handleInput(e)}
                     name="address"
                     type="text"
-                    // value="Washington D.C"
                     value={this.state.address}
                   />
                 </label>
@@ -243,7 +244,6 @@ class Cart extends Component {
                     onChange={e => this.handleInput(e)}
                     name="zip"
                     type="text"
-                    // value="20217"
                     value={this.state.zip}
                   />
                 </label>
@@ -253,7 +253,6 @@ class Cart extends Component {
                     onChange={e => this.handleInput(e)}
                     name="email"
                     type="email"
-                    // value="lucy@gmail.com"
                     value={this.state.email}
                   />
                 </label>
@@ -263,7 +262,6 @@ class Cart extends Component {
                     onChange={e => this.handleInput(e)}
                     name="phoneNumber"
                     type="text"
-                    // value="010-1234-5678"
                     value={this.state.phoneNumber}
                   />
                 </label>
@@ -313,7 +311,7 @@ class Cart extends Component {
               <button
                 disabled={carts.length === 0 ? true : false}
                 className="order-checkout"
-                onClick={() => this.placeOrder(this.props)}
+                onClick={this.placeOrder}
               >
                 Place order
               </button>
@@ -324,6 +322,15 @@ class Cart extends Component {
             </p>
           </div>
         </section>
+        {this.state.orderModal && (
+          <div className="orderModal">
+            <div>
+              <h1>🥳 Thank you for your order! 🛍</h1>
+              <p>Order Number : {this.state.orderNumber}</p>
+              <button onClick={this.finishOrderPage}>Go to main</button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

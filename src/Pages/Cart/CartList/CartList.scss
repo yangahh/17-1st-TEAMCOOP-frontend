@@ -1,10 +1,8 @@
 @import '../../../Styles/common.scss';
 
 .cartlist {
-  // height: 300px;
   display: flex;
   flex-direction: column;
-  // background-color: chartreuse;
   margin-right: 130px;
 
   & > div {
@@ -24,7 +22,6 @@
         position: relative;
         display: flex;
         padding: 24px 0;
-        // background-color: yellow;
         border-bottom: 1px solid #00000020;
 
         &:last-child {
@@ -43,7 +40,7 @@
           flex-direction: column;
           justify-content: space-between;
 
-          div {
+          .productName {
             h2 {
               font-size: 17px;
               margin: 5px 0 10px;
@@ -52,12 +49,54 @@
             p {
               font-size: 12px;
               color: #999999;
+              font-weight: 400;
             }
           }
 
-          p {
-            font-size: 17px;
-            font-weight: 700;
+          .priceAndQuantity {
+            display: flex;
+            align-items: center;
+            padding-bottom: 5px;
+            width: 200px;
+
+            .price {
+              margin-right: 20px;
+              font-size: 17px;
+              font-weight: 700;
+            }
+
+            .selectOption {
+              position: relative;
+              font-family: Arial;
+
+              select {
+                padding: 8px 10px;
+                border: 2px solid #99999930;
+                border-radius: 4px;
+                font-family: inherit;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                &:focus {
+                  outline: none;
+                }
+
+                &:hover {
+                  border-color: #00000090;
+                }
+              }
+
+              .quantity {
+                width: 50px;
+                margin-right: 10px;
+              }
+
+              .productSize {
+                width: 120px;
+                margin-right: 0;
+              }
+            }
           }
         }
 
@@ -70,6 +109,10 @@
           background-color: inherit;
           font-weight: 700;
           color: #00000040;
+
+          &:hover {
+            color: #00000070;
+          }
         }
 
         &.grid {

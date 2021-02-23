@@ -28,11 +28,15 @@ class CartItem extends Component {
       });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    //여기서 셋스테이트하면 무한,,,,, 업데이트....
     const { target, productStockId } = this.state;
 
-    target === 'powders' && this.updatePowderCart(productStockId);
-    target === 'vitamins' && this.updateVitaminCart(productStockId);
+    if (this.state !== prevState) {
+      //이걸로 무한렌더링은 해결!
+      target === 'powders' && this.updatePowderCart(productStockId);
+      target === 'vitamins' && this.updateVitaminCart(productStockId);
+    }
   }
 
   updatePowderCart = productStockId => {
@@ -49,17 +53,15 @@ class CartItem extends Component {
         productQuantity: this.state.powderQuantity - 0,
       }),
     })
-      .then(response => response.json())
-      .then(res => console.log(res));
+      .then(res => res.json())
+      .then(res => this.stockAlert(res))
+      .then(this.props.refreshCartList);
+  };
 
-    console.log(
-      `${SERVER}/order/cart/${productStockId}`,
-      this.state.productId,
-      this.state.powderQuantity - 0,
-      this.state.powderSize,
-    );
-
-    this.props.refreshCartList();
+  stockAlert = res => {
+    if (res.message === 'OUT_OF_STOCK') {
+      alert('SORRY');
+    }
   };
 
   updateVitaminCart = productStockId => {
@@ -74,17 +76,7 @@ class CartItem extends Component {
         productId: this.state.productId,
         productQuantity: this.state.vitaminQuantity - 0,
       }),
-    })
-      .then(response => response.json())
-      .then(res => console.log(res));
-
-    console.log(
-      `${SERVER}/order/cart/${productStockId}`,
-      this.state.productId,
-      this.state.vitaminQuantity,
-    );
-
-    this.props.refreshCartList();
+    }).then(this.props.refreshCartList);
   };
 
   handleVitaminOption = (itemInfo, event, stockId) => {
@@ -120,7 +112,6 @@ class CartItem extends Component {
 
   render() {
     const { itemInfo, pruducts, deleteItem } = this.props;
-    // console.log(itemInfo);
 
     return (
       <div
@@ -129,104 +120,116 @@ class CartItem extends Component {
       >
         <img src={itemInfo.productImageUrl} alt="product image" />
         <div>
-          <div>
+          <div className="productName">
             <h2>{itemInfo.productName}</h2>
             <p>{itemInfo.productSubName}</p>
           </div>
-          {/* <p className="price">${itemInfo.productPrice}</p> */}
-          <p className="price">
-            ${Number(itemInfo.productPrice) * itemInfo.productQuantity}
-          </p>
-          {itemInfo.category === 'vitamins' && (
-            <div className="selectOption">
-              <select
-                onChange={() =>
-                  this.handleVitaminOption(
-                    itemInfo,
-                    event,
-                    itemInfo.productStockId,
-                  )
-                }
-              >
-                <option
-                  selected={itemInfo.productQuantity === 1 ? true : false}
-                  value="1"
-                >
-                  1
-                </option>
-                <option
-                  selected={itemInfo.productQuantity === 2 ? true : false}
-                  value="2"
-                >
-                  2
-                </option>
-                <option
-                  selected={itemInfo.productQuantity === 3 ? true : false}
-                  value="3"
-                >
-                  3
-                </option>
-              </select>
-            </div>
-          )}
-          {itemInfo.category === 'powders' && (
-            <div className="selectOption">
-              <select
-                name="productQuantity"
-                onChange={() =>
-                  this.handlePowderOption(
-                    itemInfo,
-                    event,
-                    itemInfo.productStockId,
-                  )
-                }
-              >
-                <option
-                  selected={itemInfo.productQuantity === 1 ? true : false}
-                  value="1"
-                >
-                  1
-                </option>
-                <option
-                  selected={itemInfo.productQuantity === 2 ? true : false}
-                  value="2"
-                >
-                  2
-                </option>
-                <option
-                  selected={itemInfo.productQuantity === 3 ? true : false}
-                  value="3"
-                >
-                  3
-                </option>
-              </select>
-              <select
-                name="productSize"
-                onChange={() =>
-                  this.handlePowderOption(
-                    itemInfo,
-                    event,
-                    itemInfo.productStockId,
-                  )
-                }
-              >
-                <option
-                  selected={
-                    itemInfo.productSize === '15 Serving Tub' ? true : false
+          <div className="priceAndQuantity">
+            <p className="price">
+              ${Number(itemInfo.productPrice) * itemInfo.productQuantity}
+            </p>
+            {itemInfo.category === 'vitamins' && (
+              <div className="selectOption">
+                <select
+                  className="quantity"
+                  onChange={() =>
+                    this.handleVitaminOption(
+                      itemInfo,
+                      event,
+                      itemInfo.productStockId,
+                    )
                   }
-                  value="15 Serving Tub"
                 >
-                  15 Serving Tub
-                </option>
-                <option
-                  selected={itemInfo.productSize === '5 Packets' ? true : false}
-                  value="5 Packets"
+                  <option
+                    disabled={itemInfo.productStock < 1 ? true : false}
+                    selected={itemInfo.productQuantity === 1 ? true : false}
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    disabled={itemInfo.productStock < 2 ? true : false}
+                    selected={itemInfo.productQuantity === 2 ? true : false}
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    disabled={itemInfo.productStock < 3 ? true : false}
+                    selected={itemInfo.productQuantity === 3 ? true : false}
+                    value="3"
+                  >
+                    3
+                  </option>
+                </select>
+              </div>
+            )}
+            {itemInfo.category === 'powders' && (
+              <div className="selectOption">
+                <select
+                  className="quantity"
+                  name="productQuantity"
+                  onChange={() =>
+                    this.handlePowderOption(
+                      itemInfo,
+                      event,
+                      itemInfo.productStockId,
+                    )
+                  }
                 >
-                  5 Packets
-                </option>
-              </select>
-            </div>
-          )}
+                  <option
+                    disabled={itemInfo.productStock < 1 ? true : false}
+                    selected={itemInfo.productQuantity === 1 ? true : false}
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    disabled={itemInfo.productStock < 2 ? true : false}
+                    selected={itemInfo.productQuantity === 2 ? true : false}
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    disabled={itemInfo.productStock < 3 ? true : false}
+                    selected={itemInfo.productQuantity === 3 ? true : false}
+                    value="3"
+                  >
+                    3
+                  </option>
+                </select>
+                <select
+                  className="productSize"
+                  name="productSize"
+                  onChange={() =>
+                    this.handlePowderOption(
+                      itemInfo,
+                      event,
+                      itemInfo.productStockId,
+                    )
+                  }
+                >
+                  <option
+                    selected={
+                      itemInfo.productSize === '15 Serving Tub' ? true : false
+                    }
+                    value="15 Serving Tub"
+                  >
+                    15 Serving Tub
+                  </option>
+                  <option
+                    selected={
+                      itemInfo.productSize === '5 Packets' ? true : false
+                    }
+                    value="5 Packets"
+                  >
+                    5 Packets
+                  </option>
+                </select>
+              </div>
+            )}
+          </div>
         </div>
         <button onClick={() => deleteItem(itemInfo)}>X</button>
       </div>
