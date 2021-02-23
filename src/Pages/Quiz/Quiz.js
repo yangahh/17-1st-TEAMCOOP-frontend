@@ -22,7 +22,11 @@ class Quiz extends Component {
     this.handleQuestionId(questionId);
   };
 
-  handleQuestionId = id => {
+  handlePreviousQuestion = id => {
+    this.setState({ questionId: id + 1 });
+  };
+
+  handleNextQuestion = id => {
     this.setState({ questionId: id + 1 });
   };
 
