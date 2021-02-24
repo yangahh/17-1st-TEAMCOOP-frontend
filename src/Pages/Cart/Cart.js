@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CartList from './CartList/CartList';
 import { SERVER } from '../../config';
 import {
@@ -8,6 +9,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+
 import './Cart.scss';
 
 class Cart extends Component {
@@ -35,6 +37,10 @@ class Cart extends Component {
   }
 
   getCartList = () => {
+    if (!sessionStorage.getItem('access_token')) {
+      return;
+    }
+
     fetch(`${SERVER}/order/mycart`, {
       method: 'GET',
       headers: {
@@ -189,7 +195,7 @@ class Cart extends Component {
                     alt="empty cart"
                   />
                   <p>You have no items in your cart.</p>
-                  <a href="#">Browse products</a>
+                  <Link to="/productlist">Browse products</Link>
                 </div>
               ) : (
                 <CartList
