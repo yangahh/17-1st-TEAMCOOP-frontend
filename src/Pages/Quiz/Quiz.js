@@ -10,6 +10,7 @@ import Question8 from './QuestionComponents/Question8';
 import Question9 from './QuestionComponents/Question9';
 import Question10 from './QuestionComponents/Question10';
 import Question11 from './QuestionComponents/Question11';
+import SimilarProduct from './SimilarProduct/SimilarProduct';
 
 import './Quiz.scss';
 
@@ -18,22 +19,44 @@ class Quiz extends Component {
     super();
     this.state = {
       questionId: 1,
-      answer: {},
+      answer: [],
+      similarProduct: [],
     };
+  }
+
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+    const { questionId, answer, similarProduct } = this.state;
+    if (questionId === 12 && similarProduct.length === 0) {
+      fetch('http://10.58.2.178:8000/recommendation', {
+        method: 'POST',
+        headers: {
+          Authorization: sessionStorage.getItem('access_token'),
+        },
+        body: JSON.stringify({
+          answer: answer,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          console.log('similar', res);
+          this.setState({
+            similarProduct: res.data,
+          });
+        });
+    }
   }
 
   handleSubmit = (data, questionId) => {
     const { answer } = this.state;
     this.setState({
-      answer: Object.assign(answer, data),
+      // answer: Object.assign(answer, data),
+      answer: answer.concat({ id: questionId, ...data }),
     });
+    console.log('questionId', questionId);
 
     this.handleNextQuestion(questionId);
   };
-
-  // handlePreviousQuestion = id => {
-  //   this.setState({ questionId: id - 1 });
-  // };
 
   handleNextQuestion = id => {
     this.setState({ questionId: id + 1 });
@@ -41,74 +64,24 @@ class Quiz extends Component {
 
   render() {
     console.log(this.state);
-    const { questionId } = this.state;
+    const { questionId, similarProduct } = this.state;
     const quiz_obj = {
-      1: (
-        <Question1
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      2: (
-        <Question2
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      3: (
-        <Question3
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      4: (
-        <Question4
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      5: (
-        <Question5
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      6: (
-        <Question6
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      7: (
-        <Question7
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      8: (
-        <Question8
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      9: (
-        <Question9
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
+      1: <Question1 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      2: <Question2 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      3: <Question3 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      4: <Question4 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      5: <Question5 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      6: <Question6 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      7: <Question7 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      8: <Question8 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      9: <Question9 questionId={questionId} handleSubmit={this.handleSubmit} />,
       10: (
-        <Question10
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
+        <Question10 questionId={questionId} handleSubmit={this.handleSubmit} />
       ),
       11: (
-        <Question11
-          questionId={this.state.questionId}
-          handleSubmit={this.handleSubmit}
-        />
+        <Question11 questionId={questionId} handleSubmit={this.handleSubmit} />
       ),
+      12: <SimilarProduct similarProduct={similarProduct} />,
     };
 
     return (

@@ -5,11 +5,11 @@ class Question10 extends Component {
   constructor() {
     super();
     this.state = {
-      allergySoy: false,
-      allergyNuts: false,
-      allergyMilk: false,
-      allergyWheat: false,
-      allergyFish: false,
+      soy: false,
+      nuts: false,
+      milk: false,
+      wheat: false,
+      fish: false,
     };
   }
   handleInputValue = event => {
@@ -19,26 +19,21 @@ class Question10 extends Component {
     });
   };
   render() {
-    const {
-      allergySoy,
-      allergyNuts,
-      allergyMilk,
-      allergyWheat,
-      allergyFish,
-    } = this.state;
+    const { soy, nuts, milk, wheat, fish } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
         <h5 className="question-count">Question10</h5>
         <h2 className="qustion-title">Do you have any allergies?</h2>
+        <p>Multiple choose</p>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergySoy}
+                value={soy}
                 defaultChecked={false}
-                name="allergySoy"
+                name="soy"
                 onChange={this.handleInputValue}
               />
               Soy
@@ -48,9 +43,9 @@ class Question10 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyNuts}
+                value={nuts}
                 defaultChecked={false}
-                name="allergyNuts"
+                name="nuts"
                 onChange={this.handleInputValue}
               />
               Nuts
@@ -60,9 +55,9 @@ class Question10 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyMilk}
+                value={milk}
                 defaultChecked={false}
-                name="allergyMilk"
+                name="milk"
                 onChange={this.handleInputValue}
               />
               Milk
@@ -72,9 +67,9 @@ class Question10 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyWheat}
+                value={wheat}
                 defaultChecked={false}
-                name="allergyWheat"
+                name="wheat"
                 onChange={this.handleInputValue}
               />
               Wheat
@@ -84,9 +79,9 @@ class Question10 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={allergyFish}
+                value={fish}
                 defaultChecked={false}
-                name="allergyFish"
+                name="fish"
                 onChange={this.handleInputValue}
               />
               Fish

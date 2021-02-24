@@ -22,6 +22,7 @@ class Question2 extends Component {
       <div className="Question">
         <h5 className="question-count">Question2</h5>
         <h2 className="qustion-title">What is your gender?</h2>
+        <p>Choose one</p>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">

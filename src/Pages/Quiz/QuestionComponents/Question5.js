@@ -27,6 +27,7 @@ class Question5 extends Component {
       <div className="Question">
         <h5 className="question-count">Question5</h5>
         <h2 className="qustion-title">How often do you workout in a week?</h2>
+        <p>Choose one</p>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">

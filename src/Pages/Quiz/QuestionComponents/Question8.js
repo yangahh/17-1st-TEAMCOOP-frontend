@@ -5,14 +5,14 @@ class Question8 extends Component {
   constructor() {
     super();
     this.state = {
-      immunity: false,
-      brain: false,
-      energy: false,
-      eyes: false,
-      heart: false,
-      digestion: false,
-      bones: false,
-      fitness: false,
+      Immunity: false,
+      Brain: false,
+      Energy: false,
+      Eyes: false,
+      Heart: false,
+      Digestion: false,
+      Bones: false,
+      Fitness: false,
     };
   }
   handleInputValue = event => {
@@ -23,28 +23,29 @@ class Question8 extends Component {
   };
   render() {
     const {
-      immunity,
-      brain,
-      energy,
-      eyes,
-      heart,
-      digestion,
-      bones,
-      fitness,
+      Immunity,
+      Brain,
+      Energy,
+      Eyes,
+      Heart,
+      Digestion,
+      Bones,
+      Fitness,
     } = this.state;
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
         <h5 className="question-count">Question8</h5>
         <h2 className="qustion-title">What is your health goal?</h2>
+        <p>Choose maximum two</p>
         <ul className="qustion-answer-wrap">
           <li>
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={immunity}
+                value={Immunity}
                 defaultChecked={false}
-                name="immunity"
+                name="Immunity"
                 onChange={this.handleInputValue}
               />
               Immunity
@@ -54,9 +55,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={brain}
+                value={Brain}
                 defaultChecked={false}
-                name="brain"
+                name="Brain"
                 onChange={this.handleInputValue}
               />
               Brain
@@ -66,9 +67,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={energy}
+                value={Energy}
                 defaultChecked={false}
-                name="energy"
+                name="Energy"
                 onChange={this.handleInputValue}
               />
               Energy
@@ -78,9 +79,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={eyes}
+                value={Eyes}
                 defaultChecked={false}
-                name="eyes"
+                name="Eyes"
                 onChange={this.handleInputValue}
               />
               Eyes
@@ -90,9 +91,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={heart}
+                value={Heart}
                 defaultChecked={false}
-                name="heart"
+                name="Heart"
                 onChange={this.handleInputValue}
               />
               Heart
@@ -102,9 +103,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={digestion}
+                value={Digestion}
                 defaultChecked={false}
-                name="digestion"
+                name="Digestion"
                 onChange={this.handleInputValue}
               />
               Digestion
@@ -114,9 +115,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={bones}
+                value={Bones}
                 defaultChecked={false}
-                name="bones"
+                name="Bones"
                 onChange={this.handleInputValue}
               />
               Bones
@@ -126,9 +127,9 @@ class Question8 extends Component {
             <label className="checkbox-label">
               <input
                 type="checkbox"
-                value={fitness}
+                value={Fitness}
                 defaultChecked={false}
-                name="fitness"
+                name="Fitness"
                 onChange={this.handleInputValue}
               />
               Fitness
