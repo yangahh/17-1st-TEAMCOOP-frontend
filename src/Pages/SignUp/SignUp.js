@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CheckList from './CheckList';
 import './SignUp.scss';
-
+import {signupAPI,smsAPI,checkAPI} from "../../config";
 class SignUp extends Component {
   constructor() {
     super();
@@ -11,15 +11,15 @@ class SignUp extends Component {
       id: '',
       pw: '',
       confirm: '',
-      confirmNum:true,
-      pw_again:'',
+      confirmNum: true,
+      pw_again: '',
       pwAlert: true,
       numberValid: true,
       allChecked: false,
       checked0: false,
       checked1: true,
       checked2: false,
-      checkList:[],
+      checkList: [],
     };
   }
 
@@ -27,38 +27,36 @@ class SignUp extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    const {number} = this.state;
-    const checkNumber = !isNaN(number)&& number.length>=9 ;
+    const { number } = this.state;
+    const checkNumber = !isNaN(number) && number.length >= 9;
 
-    
     this.setState({
-    numberValid: checkNumber? false: true,
+      numberValid: checkNumber? false: true
     });
   };
 
   handleAllChecked = () => {
-    const {allChecked} =this.state;
+    const { allChecked } = this.state;
 
     this.setState({
-      allChecked:!allChecked,
+      allChecked: !allChecked,
       checked0: !allChecked,
       checked1: !allChecked,
       checked2: !allChecked,
-    })
+    });
   };
 
-//   handleChecked = (idx) => {
-//     this.setState({
-//       idx:!this.state[`checked$(idx)`]
-//     })
-// console.log(idx);
-//   }
-
+  //   handleChecked = (idx) => {
+  //     this.setState({
+  //       idx:!this.state[`checked$(idx)`]
+  //     })
+  // console.log(idx);
+  //   }
 
   isAllValid = event => {
-    fetch('http://10.58.5.21:8003/user/signup', {
+    fetch({signupAPI}, {
       method: 'POST',
-        body: JSON.stringify({
+      body: JSON.stringify({
         name: this.state.name_box,
         email: this.state.id,
         number: this.state.number,
@@ -77,11 +75,11 @@ class SignUp extends Component {
   };
   sendSMS = e => {
     e.preventDefault();
-    this.setState ({
-      confirmNum: !this.state.confirmNum
-    })
-  
-    fetch('http://10.58.5.21:8003/user/sms', {
+    this.setState({
+      confirmNum: !this.state.confirmNum,
+    });
+
+    fetch({smsAPI}, {
       method: 'POST',
       body: JSON.stringify({
         phone_number: this.state.number,
@@ -89,7 +87,7 @@ class SignUp extends Component {
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
+        alert('SMS sent!');
         // if (result.message === 'SUCCESS') {
         //   // this.props.history.push('/login');
         //   // alert('회원가입 완료');
@@ -97,10 +95,10 @@ class SignUp extends Component {
         //   alert('실패');
         // }
       });
-  }
+  };
 
   checkCode = e => {
-    fetch('http://10.58.5.21:8003/user/sms-validation', {
+    fetch({checkAPI}, {
       method: 'POST',
       body: JSON.stringify({
         phone_number: this.state.number,
@@ -117,41 +115,38 @@ class SignUp extends Component {
         //   alert('실패');
         // }
       });
-  }
+  };
 
-   isValidPw = (e) => {
-     e.preventDefault();
-     const{pw, pw_again} = this.state;
-     const checkPwSame = pw === pw_again;
+  isValidPw = e => {
+    e.preventDefault();
+    const { pw, pw_again } = this.state;
+    const checkPwSame = pw === pw_again;
 
-     this.setState({
-       pwAlert: checkPwSame? true: false,
-     })
-   }
-
+    this.setState({
+      pwAlert: checkPwSame ? true : false,
+    });
+  };
 
   render() {
-    const {pwAlert}= this.state;
-    console.log(this.state.numberValid);
+    const { pwAlert, numberValid, allChecked } = this.state;
     return (
-      
-      <div className="sign_up">
+      <div className="SignUp">
         <header>
-          <span>Sign Up</span>
+          <title>Sign Up</title>
         </header>
         <div className="signup_form">
           <div className="first_content">
-             <form className="name_form"> 
+            <form className="name_form">
               <label>Name</label>
               <input
                 onChange={this.handleInputValue}
                 name="name_box"
                 className="name_box"
-                type="text" 
+                type="text"
                 placeholder="Enter your name"
                 required
               />
-              </form>
+            </form>
             <form className="phone_form">
               <label>Phone number</label>
               <div className="with_button">
@@ -159,11 +154,17 @@ class SignUp extends Component {
                   onKeyPress={this.handleInputValue}
                   name="number"
                   className="number_box"
-                  type="tel" 
+                  type="tel"
                   placeholder="Enter your phone number"
                   required
                 />
-                <button disabled={this.state.numberValid} onClick={this.sendSMS} className="send">Send</button>
+                <button
+                  disabled={numberValid}
+                  onClick={this.sendSMS}
+                  className="send"
+                >
+                  Send
+                </button>
               </div>
             </form>
             <form className="confirm_form">
@@ -173,10 +174,12 @@ class SignUp extends Component {
                   onChange={this.handleInputValue}
                   name="confirm"
                   className="confirm_box"
-                  type="text" 
+                  type="text"
                   placeholder="Enter authentication number"
                 />
-                <button onClick={this.checkCode} className="confirm">Confirm</button>
+                <button onClick={this.checkCode} className="confirm">
+                  Confirm
+                </button>
               </div>
             </form>
           </div>
@@ -188,7 +191,7 @@ class SignUp extends Component {
                 onChange={this.handleInputValue}
                 name="id"
                 className="id_box"
-                type="text" 
+                type="text"
                 placeholder="Enter your ID"
               />
             </form>
@@ -199,7 +202,7 @@ class SignUp extends Component {
                 onChange={this.handleInputValue}
                 name="pw"
                 className="pw_box"
-                type="text" 
+                type="text"
                 placeholder="Enter your password"
               />
             </form>
@@ -208,13 +211,15 @@ class SignUp extends Component {
               <br />
               <input
                 onChange={this.handleInputValue}
-                onKeyUp= {this.isValidPw}
+                onKeyUp={this.isValidPw}
                 name="pw_again"
                 className="pw_box"
-                type="text" 
+                type="text"
                 placeholder="Enter your password"
               />
-              <span className={pwAlert? "pw_confirm": "pw_not_confirm" }>Different password.</span>
+              <span className={pwAlert ? 'pw_confirm' : 'pw_not_confirm'}>
+                Different password.
+              </span>
             </form>
           </div>
         </div>
@@ -222,19 +227,25 @@ class SignUp extends Component {
           <div className="agree_all_terms">
             <input
               onClick={this.handleAllChecked}
-              checked={this.state.allChecked}
+              checked={allChecked}
               type="checkbox"
               className="agree_all"
               id="agree_all"
             />
             <label for="agree_all">AGREE ALL TERMS</label>
           </div>
-          
+
           <div className="termsview">
-          {CHECKLIST_ARR.map((term,idx) => {
-                return (
-                <CheckList term={term} idx={idx} onClick={this.handleChecked} checked={`this.state.checked${idx}`}/>)
-              })}
+            {CHECKLIST_ARR.map((term, idx) => {
+              return (
+                <CheckList
+                  term={term}
+                  idx={idx}
+                  onClick={this.handleChecked}
+                  checked={`this.state.checked${idx}`}
+                />
+              );
+            })}
           </div>
         </div>
         <div>
@@ -250,6 +261,10 @@ class SignUp extends Component {
   }
 }
 
-const CHECKLIST_ARR = ["Agree terms view", "Agree Privacy Policy", "Agreeing To Recieve Marketing (optional)"]
+const CHECKLIST_ARR = [
+  'Agree terms view',
+  'Agree Privacy Policy',
+  'Agreeing To Recieve Marketing (optional)',
+];
 
 export default SignUp;

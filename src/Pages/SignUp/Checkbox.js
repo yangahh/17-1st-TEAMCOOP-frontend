@@ -12,10 +12,10 @@ class CheckList extends Component {
                 type="checkbox"
                 className="input-checkbox1"
               />
-              <label for="termsService">Agree terms view</label>
+              <label>Agree terms view</label>
               <a href="https://takecareof.com">View Details</a>
             </div>
-    );
+    );//for="termsService"
   }
 }
 
