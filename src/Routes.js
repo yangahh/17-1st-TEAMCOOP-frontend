@@ -7,6 +7,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import ProductList from "./Pages/ProductList/ProductList";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 import Nav from "./Components/Nav/Nav"
+import MyPage from "./Pages/MyPage/MyPage";
 
 class Routes extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class Routes extends React.Component {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/productlist" component={ProductList} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
+          <Route exact path="/mypage" component={MyPage} />
         </Switch>
       </Router>
     );
