@@ -84,6 +84,16 @@ class ProductList extends Component {
   }
 
   getAddedItem = () => {
+    // fetch(`${SERVER}/order/mycart`, {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: sessionStorage.getItem('access_token'),
+    //   },
+    // })
+    //   .then(response => response.json())
+    //   // .then(res => console.log(res));
+    //   .then(res => this.saveAddedItem(res.data.carts));
+
     fetch(`${SERVER}/order/mycart`, {
       method: 'GET',
       headers: {
@@ -91,23 +101,41 @@ class ProductList extends Component {
       },
     })
       .then(response => response.json())
-      // .then(res => console.log(res));
-      .then(res => this.saveAddedItem(res.data.carts));
+      .then(res => this.saveAddedItem(res));
+    // .then(res => console.log(res.message));
   };
 
-  saveAddedItem = addedItemArr => {
-    console.log(addedItemArr);
+  saveAddedItem = res => {
+    if (res.message === 'EMPTY') {
+      this.setState({ addedItemIdArr: [1994] });
+    } else {
+      console.log(res.data.carts);
 
-    let addedItemIdArr = [];
+      let addedItemIdArr = [];
 
-    addedItemArr.map(item => {
-      addedItemIdArr.push(item.productId);
-    });
+      res.data.carts.map(item => {
+        addedItemIdArr.push(item.productId);
+      });
 
-    console.log(addedItemIdArr);
+      console.log(addedItemIdArr);
 
-    this.setState({ addedItemIdArr });
+      this.setState({ addedItemIdArr });
+    }
   };
+
+  // saveAddedItem = addedItemArr => {
+  //   console.log(addedItemArr);
+
+  //   let addedItemIdArr = [];
+
+  //   addedItemArr.map(item => {
+  //     addedItemIdArr.push(item.productId);
+  //   });
+
+  //   console.log(addedItemIdArr);
+
+  //   this.setState({ addedItemIdArr });
+  // };
 
   handleCategory = target => {
     this.setState({ currentCategory: target });
