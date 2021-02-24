@@ -107,7 +107,51 @@ class ProductList extends Component {
     // .then(res => console.log(res.message));
   };
 
+  //원래버전 21.02.25/12:08
+  // saveAddedItem = res => {
+  //   if (res.message === 'EMPTY') {
+  //     this.setState({ addedItemIdArr: [1994] });
+  //   } else {
+  //     console.log(res.data.carts);
+
+  //     let addedItemIdArr = [];
+
+  //     res.data.carts.map(item => {
+  //       addedItemIdArr.push(item.productId);
+  //     });
+
+  //     console.log(addedItemIdArr);
+
+  //     this.setState({ addedItemIdArr });
+  //   }
+  // };
+
+  //두번째 수정 버전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+  // saveAddedItem = res => {
+  //   if (res.message === 'SUCCESS') {
+  //     console.log(res.data.carts);
+
+  //     let addedItemIdArr = [];
+  //     res.data.carts.map(item => {
+  //       addedItemIdArr.push(item.productId);
+  //     });
+
+  //     console.log(addedItemIdArr);
+
+  //     this.setState({ addedItemIdArr });
+  //   } else {
+  //     //장바구니가 비어있는 회원과 로그인이 안된 유저 처리
+  //     this.setState({ addedItemIdArr: [1994] });
+  //   }
+  // };
+
+  //세번째 수정 버전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   saveAddedItem = res => {
+    if (!sessionStorage.getItem('access_token')) {
+      this.setState({ addedItemIdArr: [1994] });
+      return;
+    }
+
     if (res.message === 'EMPTY') {
       this.setState({ addedItemIdArr: [1994] });
     } else {

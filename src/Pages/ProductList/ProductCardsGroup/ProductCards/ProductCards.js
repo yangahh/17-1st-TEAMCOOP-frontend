@@ -20,6 +20,11 @@ class ProductCards extends Component {
   };
 
   goToCart = item => {
+    if (!sessionStorage.getItem('access_token')) {
+      alert('Please Login to add the product in to cart 🛍');
+      return;
+    }
+
     fetch(`${SERVER}/product/tocart`, {
       method: 'POST',
       headers: {
