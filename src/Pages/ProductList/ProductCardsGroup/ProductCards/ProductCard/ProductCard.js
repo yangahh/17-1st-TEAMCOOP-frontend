@@ -5,10 +5,7 @@ class ProductCard extends Component {
     const { item, outOfStock } = this.props;
 
     return (
-      <div
-        className="productCard__bottom"
-        onClick={() => this.props.goToCart(item)}
-      >
+      <div className="productCard__bottom">
         <p>${item.displayPrice[0]}</p>
         {outOfStock ? (
           <button disabled type="button">
@@ -16,6 +13,7 @@ class ProductCard extends Component {
           </button>
         ) : (
           <button
+            onClick={() => this.props.goToCart(item)}
             type="button"
             disabled={this.props.addedItemIdArr.includes(item.id)}
           >

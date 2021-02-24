@@ -84,6 +84,8 @@ class ProductList extends Component {
   }
 
   getAddedItem = () => {
+    console.log('호출!');
+
     // fetch(`${SERVER}/order/mycart`, {
     //   method: 'GET',
     //   headers: {
@@ -247,6 +249,7 @@ class ProductList extends Component {
               }
             />
             <ProductCardsGroup
+              updateAddedBtn={this.getAddedItem}
               addedItemIdArr={this.state.addedItemIdArr}
               productDatas={productDatas}
               powderDatas={powderDatas}

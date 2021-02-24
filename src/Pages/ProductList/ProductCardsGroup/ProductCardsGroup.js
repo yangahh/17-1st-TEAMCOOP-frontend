@@ -12,6 +12,7 @@ class ProductCardsGroup extends Component {
         {productDatas.map(cardInfo => {
           return (
             <ProductCards
+              updateAddedBtn={this.props.updateAddedBtn}
               addedItemIdArr={this.props.addedItemIdArr}
               cardInfo={cardInfo}
             />
@@ -22,6 +23,7 @@ class ProductCardsGroup extends Component {
         {powderDatas.map(cardInfo => {
           return (
             <ProductCards
+              updateAddedBtn={this.props.updateAddedBtn}
               getAddedItem={this.props.getAddedItem}
               addedItemIdArr={this.props.addedItemIdArr}
               cardInfo={cardInfo}
