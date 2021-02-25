@@ -143,6 +143,10 @@
         color: $main-color;
       }
     }
+
+    &:disabled {
+      background-color: gray;
+    }
   }
 
   input[type='text'],

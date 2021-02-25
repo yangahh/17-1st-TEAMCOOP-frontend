@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 
 class CheckList extends Component {
   render() {
-    console.log(this.state);
-
-    const { content, idx, checked, name, handleClick, handleAllChecked } = this.props;
+    const { content, idx, checked, onClick } = this.props;
     return (
       <div key={idx}>
         <label>
           <input
-            //  checked={`this.state.check${idx}`}
             checked={checked}
             type="checkbox"
-            name={name}
-            onClick={handleClick}
+            name={checked}
+            onClick={onClick}
           />
           {content}
         </label>

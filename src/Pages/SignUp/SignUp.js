@@ -24,31 +24,35 @@ class SignUp extends Component {
   }
 
   handleAllChecked = () => {
-    const { allChecked, check0, check1, check2 } = this.state;
-    if (!allChecked) {
+    const {allChecked} = this.state;
+
+    if(allChecked === false) {
       this.setState({
-        check0: !check0,
-        check1: !check1,
-        check2: !check2,
-      });
+        allChecked:true,
+        check0: true,
+        check1: true,
+        check2: true,
+      })
+    } else {
+      this.setState({
+        allChecked:false,
+        check0: false,
+        check1: false,
+        check2: false,
+      })
     }
   };
 
-  handleClick = e => {
-    console.log(e.target.checked);
-    this.setState(
-      {
-        [e.target.name]: e.target.checked,
-      },
-      console.log('check', e.target.checked),
-    );
-  };
+  handleChecked =(idx) => {
+    this.setState({
+      [`check${idx}`]: !this.state[`check${idx}`],
+    },() => {
+      this.setState({
+        allChecked: this.state.check0 && this.state.check1 && this.state.check2
+      })
+    })
+  }
 
-  // componentDidUpdate() {
-  //   if(!this.state.check0 && !this.state.check1 && !this.state.check2) {
-  //     console.log("check!");
-  //   }
-  // }
 
   handleInputValue = e => {
     this.setState({
@@ -146,10 +150,7 @@ class SignUp extends Component {
     });
   };
 
-  test = e => {
-    console.log(e.target.name);
-  };
-
+  
   render() {
     const { pwAlert, numberValid, allChecked } = this.state;
 
@@ -251,11 +252,12 @@ class SignUp extends Component {
           <div className="agree_all_terms">
             <input
               onClick={this.handleAllChecked}
-              checked={allChecked}
+              // onChange={this.handleAllChecked}
+              checked={this.state.allChecked}
               type="checkbox"
               className="agree_all"
               id="agree_all"
-              name="allChecked"
+              // name="allChecked"
             />
             <label for="agree_all">AGREE ALL TERMS</label>
           </div>
@@ -264,19 +266,17 @@ class SignUp extends Component {
             {CHECKLIST_ARR.map((checkBox, idx) => {
               return (
                 <CheckList
-                  test={this.test}
                   content={checkBox.content}
-                  idx={idx}
-                  handleClick={this.handleClick}
+                  key={idx}
                   checked={this.state[checkBox.name]}
-                  name={checkBox.name}
+                  onClick={()=> this.handleChecked(idx)}
                 />
               );
             })}
           </div>
         </div>
         <div>
-          <button onClick={this.isAllValid} className="signup_btn">
+          <button disabled={!this.state.allChecked} onClick={this.isAllValid} className="signup_btn">
             <span>Sign Up</span>
           </button>
         </div>
