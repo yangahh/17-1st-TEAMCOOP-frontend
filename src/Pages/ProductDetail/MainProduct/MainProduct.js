@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './MainProduct.scss';
-
 class MainProduct extends Component {
   constructor() {
     super();
@@ -9,71 +8,72 @@ class MainProduct extends Component {
       isBtnActivite: true,
     };
   }
-
   handleProductPrice = event => {
+    const { value } = event.target;
     this.setState({
-      powderProductSize: event.target.value,
+      powderProductSize: value,
       isBtnActivite: true,
     });
   };
 
-  powdersGoToCart = (id, powderProductSize) => {
-    const { isBtnActivite } = this.state;
-    const { productPrice } = this.props;
-    if (isBtnActivite) {
-      fetch('http://10.58.6.180:8000/product/tocart', {
-        method: 'POST',
-        headers: {
-          Authorization: sessionStorage.getItem('access_token'),
-        },
-        body: JSON.stringify({
-          productId: id,
-          productSize: powderProductSize,
-          productPrice: productPrice[powderProductSize],
-        }),
-      })
-        .then(response => response.json())
-        .then(res => {
-          if (res.message === 'SUCCESS') {
-            alert('In Cart');
-            this.setState({
-              isBtnActivite: false,
-            });
-          }
-        });
+  goToCart = () => {
+    const { isBtnActivite, powderProductSize } = this.state;
+    const { id, productPrice, category } = this.props;
+    if (category === 'powders') {
+      if (isBtnActivite) {
+        fetch('http://10.58.6.165:8000/product/tocart', {
+          method: 'POST',
+          headers: {
+            Authorization: sessionStorage.getItem('access_token'),
+          },
+          body: JSON.stringify({
+            productId: id,
+            productSize: powderProductSize,
+            productPrice: productPrice[powderProductSize],
+          }),
+        })
+          .then(response => response.json())
+          .then(res => {
+            if (res.message === 'SUCCESS') {
+              alert('In Cart');
+              this.setState({
+                isBtnActivite: false,
+              });
+            }
+          });
+      } else {
+        alert('Already in cart');
+      }
     } else {
-      alert('Already in cart');
-    }
-  };
-
-  vitaminsGoToCart = (id, productPrice) => {
-    const { isBtnActivite } = this.state;
-    if (isBtnActivite) {
-      fetch('http://10.58.6.180:8000/product/tocart', {
-        method: 'POST',
-        headers: {
-          Authorization: sessionStorage.getItem('access_token'),
-        },
-        body: JSON.stringify({
-          productId: id,
-          productPrice: productPrice,
-        }),
-      })
-        .then(response => response.json())
-        .then(res => {
-          if (res.message === 'SUCCESS') {
-            alert('In Cart');
-            this.setState({
-              isBtnActivite: false,
-            });
-          }
-        });
-    } else {
-      alert('Already in card');
+      if (isBtnActivite) {
+        fetch('http://10.58.6.165:8000/product/tocart', {
+          method: 'POST',
+          headers: {
+            Authorization: sessionStorage.getItem('access_token'),
+          },
+          body: JSON.stringify({
+            productId: id,
+            productPrice: productPrice,
+          }),
+        })
+          .then(response => response.json())
+          .then(res => {
+            console.log(res);
+            if (res.message === 'SUCCESS') {
+              alert('In Cart');
+              this.setState({
+                isBtnActivite: false,
+              });
+            }
+          });
+      } else {
+        alert('Already in card');
+      }
     }
   };
 
   render() {
+    const { powderProductSize, isBtnActivite } = this.state;
     const {
       id,
       title,
@@ -88,8 +88,6 @@ class MainProduct extends Component {
       productPrice,
       isSoldOut,
     } = this.props;
-    const { powderProductSize, isBtnActivite } = this.state;
-
     return (
       <div className="MainProduct">
         <section className="main-product-container">
@@ -145,10 +143,7 @@ class MainProduct extends Component {
                   <option value="5 Packets">5 Packets</option>
                 </select>
                 {isBtnActivite ? (
-                  <button
-                    className="add-cart-btn"
-                    onClick={() => this.powdersGoToCart(id, powderProductSize)}
-                  >
+                  <button className="add-cart-btn" onClick={this.goToCart}>
                     Add
                     <span className="btn-line" />$
                     {productPrice[powderProductSize]}
@@ -159,10 +154,12 @@ class MainProduct extends Component {
                 )}
               </div>
             ) : isBtnActivite ? (
-              <button
-                className="add-cart-btn"
-                onClick={() => this.vitaminsGoToCart(id, productPrice)}
-              >
+              // <button
+              //   className="add-cart-btn"
+              //   onClick={() => this.vitaminsGoToCart(id, productPrice)}
+              // >
+
+              <button className="add-cart-btn" onClick={this.goToCart}>
                 Add
                 <span className="btn-line" />$ {productPrice}
                 {isSoldOut ? <br> SOLD OUT </br> : ''}
@@ -176,5 +173,4 @@ class MainProduct extends Component {
     );
   }
 }
-
 export default MainProduct;

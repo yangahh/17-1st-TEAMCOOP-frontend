@@ -25,7 +25,7 @@ class ProductDetail extends Component {
   }
 
   getProductDetailData = () => {
-    fetch(`http://10.58.6.180:8000/product/${this.props.match.params.id}`)
+    fetch(`http://10.58.6.165:8000/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -35,11 +35,11 @@ class ProductDetail extends Component {
   };
 
   render() {
-    const { detailData, productSize } = this.state;
+    const { detailData } = this.state;
     return (
       <div className="ProductDetail">
         <MainProduct
-          id={detailData.productId}
+          id={detailData.id}
           title={detailData.title}
           subTitle={detailData.subTitle}
           isVegan={detailData.isVegan}
@@ -51,7 +51,7 @@ class ProductDetail extends Component {
           category={detailData.category}
           productPrice={detailData.productPrice}
           isSoldOut={detailData.isSoldOut}
-          productSize={productSize}
+          productSize={detailData.productSize}
         />
         <QualityBadges dietaryHabitList={detailData.dietaryHabitList} />
         <Overview
