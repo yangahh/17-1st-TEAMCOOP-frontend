@@ -1,0 +1,29 @@
+@import '../../../Styles/common.scss';
+
+.SimilarProdcut {
+  .similar-product-container {
+    padding: 160px 0;
+    text-align: center;
+
+    h1 {
+      display: block;
+      font-family: 'Newsreader', serif;
+      font-size: 88px;
+      line-height: 113px;
+    }
+
+    h2 {
+      color: #7f848b;
+      font-family: 'Newsreader', serif;
+      font-size: 24px;
+      line-height: 40px;
+    }
+
+    .product-card-container {
+      display: flex;
+      justify-content: center;
+      width: auto;
+      margin: 100px 0 0 220px;
+    }
+  }
+}

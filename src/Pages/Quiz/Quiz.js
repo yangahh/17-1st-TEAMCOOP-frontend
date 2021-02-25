@@ -21,7 +21,7 @@ class Quiz extends Component {
   constructor() {
     super();
     this.state = {
-      questionId: 5,
+      questionId: 1,
       answer: [],
       similarProduct: [],
     };

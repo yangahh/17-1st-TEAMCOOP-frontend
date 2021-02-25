@@ -3,10 +3,16 @@ import './Button.scss';
 
 class Button extends Component {
   render() {
-    const { handleSubmit, questionId, answer, isResetState } = this.props;
+    const { handleSubmit, questionId, answer, handleResetState } = this.props;
     return (
       <div className="Button">
-        <button onClick={() => handleSubmit(answer, questionId)} type="button">
+        <button
+          onClick={() => {
+            handleSubmit(answer, questionId);
+            handleResetState();
+          }}
+          type="button"
+        >
           {this.props.children}
         </button>
       </div>

@@ -3,24 +3,21 @@ import InputText from '../Components/InputText';
 import InputCheck from '../Components/InputCheck';
 import Button from '../Components/Button';
 import './QuestionForm.scss';
-
 class QuestionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isResetState: false,
+      // isResetState: false,
     };
   }
 
   componentDidUpdate() {
-    this.setState();
     this.handleInputValue;
   }
 
-  handleResetState = isResetState => {
-    if (isResetState === false) {
-      this.setState({ isResetState: true });
-    }
+  handleResetState = () => {
+    console.log('reset');
+    this.setState({});
   };
 
   handleInputValue = (name, value) => {
@@ -30,6 +27,7 @@ class QuestionForm extends Component {
   };
 
   render() {
+    console.log('FORM', this.state);
     const { QuestionData, questionId, handleSubmit, isResetState } = this.props;
     return (
       <div className="QuestionForm">
