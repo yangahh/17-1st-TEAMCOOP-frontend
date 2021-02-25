@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CheckList from './CheckList';
 import './SignUp.scss';
-import {signupAPI,smsAPI,checkAPI} from "../../config";
+import { signupAPI, smsAPI, checkAPI } from '../../config';
 class SignUp extends Component {
   constructor() {
     super();
@@ -15,13 +15,39 @@ class SignUp extends Component {
       pw_again: '',
       pwAlert: true,
       numberValid: true,
-      allChecked: false,
-      checked0: false,
-      checked1: true,
-      checked2: false,
       checkList: [],
+      allChecked: false,
+      check0: false,
+      check1: false,
+      check2: false,
     };
   }
+
+  handleAllChecked = () => {
+    const { allChecked } = this.state;
+
+    if (!this.state.check0 && !this.state.check1 && !this.state.check2) {
+      this.setState({
+        allChecked: !allChecked,
+      });
+    }
+  };
+
+  handleClick = e => {
+    console.log(e.target.checked);
+    this.setState(
+      {
+        [e.target.name]: e.target.checked,
+      },
+      console.log('check', e.target.checked),
+    );
+  };
+
+  // componentDidUpdate() {
+  //   if(!this.state.check0 && !this.state.check1 && !this.state.check2) {
+  //     console.log("check!");
+  //   }
+  // }
 
   handleInputValue = e => {
     this.setState({
@@ -31,38 +57,23 @@ class SignUp extends Component {
     const checkNumber = !isNaN(number) && number.length >= 9;
 
     this.setState({
-      numberValid: checkNumber? false: true
+      numberValid: checkNumber ? false : true,
     });
   };
-
-  handleAllChecked = () => {
-    const { allChecked } = this.state;
-
-    this.setState({
-      allChecked: !allChecked,
-      checked0: !allChecked,
-      checked1: !allChecked,
-      checked2: !allChecked,
-    });
-  };
-
-  //   handleChecked = (idx) => {
-  //     this.setState({
-  //       idx:!this.state[`checked$(idx)`]
-  //     })
-  // console.log(idx);
-  //   }
 
   isAllValid = event => {
-    fetch({signupAPI}, {
-      method: 'POST',
-      body: JSON.stringify({
-        name: this.state.name_box,
-        email: this.state.id,
-        number: this.state.number,
-        password: this.state.pw,
-      }),
-    })
+    fetch(
+      { signupAPI },
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          name: this.state.name_box,
+          email: this.state.id,
+          number: this.state.number,
+          password: this.state.pw,
+        }),
+      },
+    )
       .then(response => response.json())
       .then(result => {
         if (result.message === 'SUCCESS') {
@@ -73,18 +84,22 @@ class SignUp extends Component {
         }
       });
   };
+
   sendSMS = e => {
     e.preventDefault();
     this.setState({
       confirmNum: !this.state.confirmNum,
     });
 
-    fetch({smsAPI}, {
-      method: 'POST',
-      body: JSON.stringify({
-        phone_number: this.state.number,
-      }),
-    })
+    fetch(
+      { smsAPI },
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          phone_number: this.state.number,
+        }),
+      },
+    )
       .then(response => response.json())
       .then(result => {
         alert('SMS sent!');
@@ -98,13 +113,16 @@ class SignUp extends Component {
   };
 
   checkCode = e => {
-    fetch({checkAPI}, {
-      method: 'POST',
-      body: JSON.stringify({
-        phone_number: this.state.number,
-        auth_number: this.state.confirm,
-      }),
-    })
+    fetch(
+      { checkAPI },
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          phone_number: this.state.number,
+          auth_number: this.state.confirm,
+        }),
+      },
+    )
       .then(response => response.json())
       .then(result => {
         console.log(result);
@@ -127,8 +145,13 @@ class SignUp extends Component {
     });
   };
 
+  test = e => {
+    console.log(e.target.name);
+  };
+
   render() {
     const { pwAlert, numberValid, allChecked } = this.state;
+
     return (
       <div className="SignUp">
         <header>
@@ -231,18 +254,21 @@ class SignUp extends Component {
               type="checkbox"
               className="agree_all"
               id="agree_all"
+              name="allChecked"
             />
             <label for="agree_all">AGREE ALL TERMS</label>
           </div>
 
           <div className="termsview">
-            {CHECKLIST_ARR.map((term, idx) => {
+            {CHECKLIST_ARR.map((checkBox, idx) => {
               return (
                 <CheckList
-                  term={term}
+                  test={this.test}
+                  content={checkBox.content}
                   idx={idx}
-                  onClick={this.handleChecked}
-                  checked={`this.state.checked${idx}`}
+                  handleClick={this.handleClick}
+                  checked={this.state[checkBox.name]}
+                  name={checkBox.name}
                 />
               );
             })}
@@ -260,11 +286,9 @@ class SignUp extends Component {
     );
   }
 }
-
 const CHECKLIST_ARR = [
-  'Agree terms view',
-  'Agree Privacy Policy',
-  'Agreeing To Recieve Marketing (optional)',
+  { content: 'Agree terms view', name: 'check0' },
+  { content: 'Agree Privacy Policy', name: 'check1' },
+  { content: 'Agreeing To Recieve Marketing (optional)', name: 'check2' },
 ];
-
 export default SignUp;
