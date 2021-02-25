@@ -79,15 +79,11 @@ class ProductList extends Component {
     if (res.message === 'EMPTY') {
       this.setState({ addedItemIdArr: [1994] });
     } else {
-      console.log(res.data.carts);
-
       let addedItemIdArr = [];
 
       res.data.carts.map(item => {
         addedItemIdArr.push(item.productId);
       });
-
-      console.log(addedItemIdArr);
 
       this.setState({ addedItemIdArr });
     }
@@ -100,9 +96,6 @@ class ProductList extends Component {
 
   //카테고리별 페치함수 호출
   fetchCategory = category => {
-    console.log(`${category.path}/${category.id}`);
-    console.log(`${SERVER}/product?sort=${category.query}`);
-
     if (category.path === 'category') {
       fetch(`${SERVER}/product?sort=${category.query}`, {
         method: 'GET',
