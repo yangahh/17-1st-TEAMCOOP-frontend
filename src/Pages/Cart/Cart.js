@@ -139,8 +139,13 @@ class Cart extends Component {
   };
 
   placeOrder = () => {
-    if (this.state.address.length < 1 || this.state.zip.length < 1) {
-      alert('Please fill out the form!');
+    if (
+      this.state.address.length < 1 ||
+      this.state.zip.length < 1 ||
+      this.state.email.length < 1 ||
+      this.state.phoneNumber.length < 1
+    ) {
+      alert('Please fill out the form 📝');
 
       return;
     }
