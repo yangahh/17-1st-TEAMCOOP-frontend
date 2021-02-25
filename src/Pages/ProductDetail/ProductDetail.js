@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import MainProduct from './MainProduct/MainProduct';
 import QualityBadges from './QualityBadges/QualityBadges';
 import Overview from './Overview/Overview';
 import SimilarProduct from './SimilarProduct/SimilarProduct';
 import './ProductDetail.scss';
+=======
+>>>>>>> main
 
 class ProductDetail extends Component {
   constructor() {

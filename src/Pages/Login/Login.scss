@@ -1,1 +1,108 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+.Login {
+  @extend %flex-column-center;
+  width: 570px;
+  height: 450px;
+  margin: 80px auto 0;
+
+  .existing_customer {
+    height: 46px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: center;
+
+    span {
+      border-bottom: 2px solid red;
+      font-size: 12.5px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 1px;
+    }
+  }
+
+  .login_form {
+    .Invalid {
+      display: block;
+      width: 580px;
+      height: 50px;
+      padding-top: 35px;
+      background-color: #f5f1ed;
+      text-align: center;
+      text-indent: 2px;
+      color: black;
+      font-size: 15px;
+      font-family: 'Lato', sans-serif;
+    }
+    .valid {
+      display: none;
+    }
+
+    .id_form,
+    .pw_form {
+      font-size: 12px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 1px;
+
+      label {
+        margin-top: 30px;
+        font-weight: 700;
+        float: left;
+
+        .id_box,
+        .pw_box {
+          width: 570px;
+          height: 45px;
+          margin-top: 3px;
+          padding: 0 10px;
+          border: 3px solid #f5f1ed;
+          font-size: 17px;
+        }
+      }
+    }
+
+    .check_box {
+      margin-top: 15px;
+      font-size: 12px;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 1px;
+      float: left;
+      font-weight: 700;
+
+      label {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .login_btn {
+      width: 570px;
+      height: 54px;
+      margin-top: 25px;
+      border: 2px solid $main-color;
+      border-radius: 25px;
+      color: white;
+      background-color: $main-color;
+      font-size: 16px;
+      letter-spacing: 1px;
+      all: reset;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: $main-color;
+      }
+    }
+
+    .forget_pw {
+      margin-top: 25px;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: $main-color;
+        font-size: 20px;
+      }
+    }
+  }
+}
