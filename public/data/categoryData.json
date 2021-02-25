@@ -6,27 +6,32 @@
       {
         "id": 1,
         "subcategory": "Letter Vitamins",
-        "path": "category"
+        "path": "category",
+        "query": "lettervitamins"
       },
       {
         "id": 2,
         "subcategory": "Minerals",
-        "path": "category"
+        "path": "category",
+        "query": "minerals"
       },
       {
         "id": 3,
         "subcategory": "Herbs",
-        "path": "category"
+        "path": "category",
+        "query": "herbs"
       },
       {
         "id": 4,
         "subcategory": "Probiotics",
-        "path": "category"
+        "path": "category",
+        "query": "probiotics"
       },
       {
         "id": 5,
         "subcategory": "Specialty",
-        "path": "category"
+        "path": "category",
+        "query": "specialty"
       }
     ]
   },
@@ -37,17 +42,20 @@
       {
         "id": 6,
         "subcategory": "Collagen",
-        "path": "category"
+        "path": "category",
+        "query": "collagen"
       },
       {
         "id": 7,
         "subcategory": "Protein",
-        "path": "category"
+        "path": "category",
+        "query": "protein"
       },
       {
         "id": 8,
         "subcategory": "Boosts",
-        "path": "category"
+        "path": "category",
+        "query": "boosts"
       }
     ]
   }

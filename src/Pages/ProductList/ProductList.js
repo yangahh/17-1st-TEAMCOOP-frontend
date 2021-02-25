@@ -38,32 +38,12 @@ class ProductList extends Component {
       });
   };
 
-  //mock-data fetch
-  // getVitaminDetailData = () => {
-  //   fetch('/data/vitaminDetailData.json')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         productDatas: data,
-  //       });
-  //     });
-  // };
-
-  // getPowderDetailData = () => {
-  //   fetch('/data/powderDetailData.json')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({
-  //         powderDatas: data,
-  //       });
-  //     });
-  // };
-
   fetchShowAll = () => {
-    fetch(`${SERVER}/product`, {
+    fetch(`${SERVER}/product?sort=all`, {
       method: 'GET',
     })
       .then(response => response.json())
+      // .then(res => console.log(res));
       .then(res => {
         this.setState({
           powderDatas: res.data.splice(5, 8),
@@ -77,25 +57,9 @@ class ProductList extends Component {
     this.gethealthGoalData();
     this.fetchShowAll();
     this.getAddedItem();
-
-    //mock-data fetch
-    // this.getVitaminDetailData();
-    // this.getPowderDetailData();
   }
 
   getAddedItem = () => {
-    console.log('호출!');
-
-    // fetch(`${SERVER}/order/mycart`, {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: sessionStorage.getItem('access_token'),
-    //   },
-    // })
-    //   .then(response => response.json())
-    //   // .then(res => console.log(res));
-    //   .then(res => this.saveAddedItem(res.data.carts));
-
     fetch(`${SERVER}/order/mycart`, {
       method: 'GET',
       headers: {
@@ -104,48 +68,8 @@ class ProductList extends Component {
     })
       .then(response => response.json())
       .then(res => this.saveAddedItem(res));
-    // .then(res => console.log(res.message));
   };
 
-  //원래버전 21.02.25/12:08
-  // saveAddedItem = res => {
-  //   if (res.message === 'EMPTY') {
-  //     this.setState({ addedItemIdArr: [1994] });
-  //   } else {
-  //     console.log(res.data.carts);
-
-  //     let addedItemIdArr = [];
-
-  //     res.data.carts.map(item => {
-  //       addedItemIdArr.push(item.productId);
-  //     });
-
-  //     console.log(addedItemIdArr);
-
-  //     this.setState({ addedItemIdArr });
-  //   }
-  // };
-
-  //두번째 수정 버전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-  // saveAddedItem = res => {
-  //   if (res.message === 'SUCCESS') {
-  //     console.log(res.data.carts);
-
-  //     let addedItemIdArr = [];
-  //     res.data.carts.map(item => {
-  //       addedItemIdArr.push(item.productId);
-  //     });
-
-  //     console.log(addedItemIdArr);
-
-  //     this.setState({ addedItemIdArr });
-  //   } else {
-  //     //장바구니가 비어있는 회원과 로그인이 안된 유저 처리
-  //     this.setState({ addedItemIdArr: [1994] });
-  //   }
-  // };
-
-  //세번째 수정 버전ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
   saveAddedItem = res => {
     if (!sessionStorage.getItem('access_token')) {
       this.setState({ addedItemIdArr: [1994] });
@@ -169,20 +93,6 @@ class ProductList extends Component {
     }
   };
 
-  // saveAddedItem = addedItemArr => {
-  //   console.log(addedItemArr);
-
-  //   let addedItemIdArr = [];
-
-  //   addedItemArr.map(item => {
-  //     addedItemIdArr.push(item.productId);
-  //   });
-
-  //   console.log(addedItemIdArr);
-
-  //   this.setState({ addedItemIdArr });
-  // };
-
   handleCategory = target => {
     this.setState({ currentCategory: target });
     this.fetchShowAll();
@@ -191,9 +101,10 @@ class ProductList extends Component {
   //카테고리별 페치함수 호출
   fetchCategory = category => {
     console.log(`${category.path}/${category.id}`);
+    console.log(`${SERVER}/product?sort=${category.query}`);
 
     if (category.path === 'category') {
-      fetch(`${SERVER}/product/${category.path}/${category.id}`, {
+      fetch(`${SERVER}/product?sort=${category.query}`, {
         method: 'GET',
       })
         .then(response => response.json())
@@ -204,7 +115,7 @@ class ProductList extends Component {
           });
         });
     } else if (category.path === 'goal') {
-      fetch(`${SERVER}/product/${category.path}/${category.id}`, {
+      fetch(`${SERVER}/product?sort=${category.query}`, {
         method: 'GET',
       })
         .then(response => response.json())
@@ -229,10 +140,11 @@ class ProductList extends Component {
   };
 
   fetchNewItem = () => {
-    fetch(`${SERVER}/product/category/99999`, {
+    fetch(`${SERVER}/product?sort=new`, {
       method: 'GET',
     })
       .then(response => response.json())
+      // .then(res => console.log(res));
       .then(res => {
         const goalData = [
           {
