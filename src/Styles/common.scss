@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400&display=swap'); //serif
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap'); //sans
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap'); //sans
 
 $main-color: #f1574b;
 $white-color: #ffffff;
 $black-color: #272c2f;
 $lightSky-color: #e1eaf4;
 $mustard-color: #edd596;
-$beige-color: #f6f1ed;
+$beige-color: #fef4ec;
 $navy-color: #2e394d;
 $dimGray-color: #6e737b;
 $green-color: #44b149;
+$dimbeige-color: #efcfba;
 
 %flex-center {
   display: flex;
@@ -20,4 +21,10 @@ $green-color: #44b149;
 %flex-space-between {
   display: flex;
   justify-content: space-between;
+}
+
+%flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

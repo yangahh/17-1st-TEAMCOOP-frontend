@@ -25,9 +25,16 @@
       }
     }
   }
+<<<<<<< HEAD
   .right_content {
     width: 750px;
     margin-left: 24px;
+=======
+
+  .right_content {
+    width: 750px;
+    margin-left: 60px;
+>>>>>>> main
 
     header {
       p {
@@ -37,6 +44,7 @@
         color: #333;
       }
     }
+<<<<<<< HEAD
     .user_id {
       padding-top: 38px;
       width: 116px;
@@ -44,5 +52,15 @@
       font-weight: 700;
       vertical-align: top;
     }
+=======
+  }
+
+  .write_review {
+    width: 80%;
+    height: 250px;
+    margin-top: 40px;
+    border: 3px solid #cdcdcd;
+    border-radius: 10px;
+>>>>>>> main
   }
 }

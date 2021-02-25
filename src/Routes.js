@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Main from "./Pages/Main/Main";
 import Login from "./Pages/Login/Login";
@@ -23,6 +23,8 @@ class Routes extends React.Component {
           <Route exact path="/productdetail/:id" component={ProductDetail} />
           <Route exact path="/mypage" component={Mypage} />
           <Route exact path="/review" component={Review} />
+          <Route exact path="/product/:id" component={ProductDetail} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       </Router>
     );

@@ -1,1 +1,203 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+.SignUp {
+  width: 670px;
+  height: 330px;
+  margin: 0 auto;
+  margin-top: 100px;
+
+  header {
+    margin-bottom: 45px;
+    span {
+      border-bottom: 2px solid red;
+      padding-bottom: 5px;
+      color: black;
+      letter-spacing: 1px;
+      font-size: 24px;
+      font-weight: 400;
+      font-family: 'Lato', sans-serif;
+    }
+  }
+
+  .signup_form {
+    margin-top: 14px;
+
+    .first_content {
+      width: 676px;
+      padding: 16px 0;
+
+      .name_form {
+        margin-bottom: 10px;
+      }
+
+      .phone_form {
+        .with_button {
+          display: flex;
+          input {
+            margin-right: 10px;
+          }
+          button {
+            &:disabled {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+      .confirm_form {
+        .with_button {
+          display: flex;
+          input {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .second_content {
+      width: 676px;
+      border-top: 1px solid #d7d7d7;
+      padding: 15px 0;
+
+      .id_form {
+        margin-bottom: 10px;
+      }
+
+      .pw_form {
+        margin-bottom: 10px;
+      }
+
+      .pw_again_form {
+        margin-bottom: 10px;
+      }
+
+      .pw_confirm {
+        display: none;
+      }
+
+      .pw_not_confirm {
+        color: red;
+        font-size: 12px;
+      }
+    }
+  }
+  .third_content {
+    input {
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+    }
+    .agree_all_terms {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+
+      label {
+        color: #333;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        margin-left: 3px;
+      }
+    }
+    .termsview {
+      margin: 15px 0;
+      border-top: 1px solid #d7d7d7;
+      padding: 15px 0;
+
+      & > div {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-bottom: 10px;
+
+        & > * {
+          margin: 0;
+        }
+
+        input {
+          margin-right: 10px;
+        }
+
+        a {
+          position: absolute;
+          right: 0;
+          color: red;
+        }
+      }
+    }
+  }
+
+  .signup_btn {
+    width: 100%;
+    height: 54px;
+    margin-bottom: 200px;
+    border: none;
+    border-radius: 25px;
+    padding: 0 36px;
+    background-color: #ff5c35;
+    color: #fff;
+    font-size: 16px;
+    &:hover {
+      border: 2px solid $main-color;
+      background-color: white;
+      span {
+        color: $main-color;
+      }
+    }
+
+    &:disabled {
+      background-color: gray;
+    }
+  }
+
+  input[type='text'],
+  input[type='tel'] {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    border: 3px solid #f5f1ed;
+    border-radius: 5px;
+    padding: 0 16px;
+  }
+  ::placeholder {
+    color: #999999;
+    letter-spacing: 1px;
+    font-weight: lighter;
+  }
+  label,
+  a {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 13.5px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .phone {
+    width: 200px;
+  }
+
+  button {
+    width: 98px;
+    height: 42px;
+    margin: auto;
+    border: none;
+    border-radius: 25px;
+    padding-left: 4px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+  }
+  .copyright {
+    width: 670px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #999999;
+    font-size: 13px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+  }
+}
