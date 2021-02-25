@@ -1,1 +1,49 @@
-@import "../../Styles/common.scss";
+@import '../../Styles/common.scss';
+
+.productList {
+  width: 100%;
+
+  .banner {
+    @extend %flex-center;
+    flex-direction: column;
+    height: 420px;
+    background-color: #a8ced8;
+    font-family: 'Lato';
+    letter-spacing: 0.4px;
+
+    h3 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    p {
+      width: 730px;
+      font-size: 18px;
+      text-align: center;
+
+      &:nth-child(2) {
+        margin-top: 30px;
+        line-height: 24px;
+      }
+
+      &:nth-child(3) {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  section {
+    @extend %flex-center;
+
+    .wrapper {
+      @extend %flex-center;
+      align-items: start;
+      width: 1200px;
+
+      .productCardsGroup {
+        width: 900px;
+      }
+    }
+  }
+}
