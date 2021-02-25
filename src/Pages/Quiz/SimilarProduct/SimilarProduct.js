@@ -10,9 +10,9 @@ class SimilarProduct extends Component {
   //   };
   // }
 
-  // componentDidMount() {
-  //   this.getSimilarProductData;
-  // }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   // getSimilarProductData = () => {
   //   fetch('http://10.58.2.178:8000/product/tocart', {

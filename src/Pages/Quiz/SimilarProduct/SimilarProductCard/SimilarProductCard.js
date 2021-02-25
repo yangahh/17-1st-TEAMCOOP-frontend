@@ -20,7 +20,7 @@ class SimilarProductCard extends Component {
     console.log({ productId: id, productSize: size, productPrice: price });
 
     if (isBtnActivite) {
-      fetch('http://10.58.2.178:8000/product/tocart', {
+      fetch('http://10.58.6.165:8000/product/tocart', {
         method: 'POST',
         headers: {
           Authorization: sessionStorage.getItem('access_token'),

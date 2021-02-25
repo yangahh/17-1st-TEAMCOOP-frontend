@@ -28,7 +28,7 @@ class Question1 extends Component {
             name="name"
             value={name}
             type="text"
-            maxLength="4"
+            maxLength="8"
             required
           />
           <button

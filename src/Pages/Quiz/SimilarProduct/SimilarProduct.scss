@@ -23,11 +23,11 @@
 
     .product-card-container {
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      justify-content: flex-center;
+      align-content: center;
       width: 1500px;
       padding-bottom: 50px;
-      margin: 100px 150px 200px;
+      margin: 150px 200px 150px;
       overflow: auto;
     }
   }
