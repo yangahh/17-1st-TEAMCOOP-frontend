@@ -6,11 +6,7 @@ import { SERVER } from '../../../../config';
 class CartItem extends Component {
   constructor() {
     super();
-    this.state = {
-      // vitaminQuantity: 1,
-      // powderQuantity: 1,
-      // powderSize: '5 Packets',
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -29,19 +25,15 @@ class CartItem extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //여기서 셋스테이트하면 무한,,,,, 업데이트....
     const { target, productStockId } = this.state;
 
     if (this.state !== prevState) {
-      //이걸로 무한렌더링은 해결!
       target === 'powders' && this.updatePowderCart(productStockId);
       target === 'vitamins' && this.updateVitaminCart(productStockId);
     }
   }
 
   updatePowderCart = productStockId => {
-    console.log(`파우더 변경 ${productStockId}`);
-
     fetch(`${SERVER}/order/cart/${productStockId}`, {
       method: 'POST',
       headers: {
@@ -65,8 +57,6 @@ class CartItem extends Component {
   };
 
   updateVitaminCart = productStockId => {
-    console.log(`비타민 변경 ${productStockId}`);
-
     fetch(`${SERVER}/order/cart/${productStockId}`, {
       method: 'POST',
       headers: {
@@ -90,8 +80,6 @@ class CartItem extends Component {
 
   handlePowderOption = (itemInfo, event, stockId) => {
     const { name, value } = event.target;
-
-    console.log(name, value);
 
     name === 'productSize' &&
       this.setState({

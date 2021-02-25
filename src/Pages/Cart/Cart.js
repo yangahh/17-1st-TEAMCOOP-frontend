@@ -24,13 +24,8 @@ class Cart extends Component {
       phoneNumber: '',
       zip: '',
       address: '',
-      // orderModal: true,
     };
   }
-
-  refreshCartList = () => {
-    this.getCartList();
-  };
 
   componentDidMount() {
     this.getCartList();
@@ -64,6 +59,18 @@ class Cart extends Component {
     }
   };
 
+  refreshCartList = () => {
+    this.getCartList();
+  };
+
+  componentDidUpdate() {
+    if (!this.state.carts.length) {
+      return;
+    }
+
+    this.testTOTAL();
+  }
+
   testTOTAL = () => {
     let priceArr = [];
 
@@ -78,14 +85,6 @@ class Cart extends Component {
 
     this.state.subtotal !== subtotal && this.setState({ subtotal });
   };
-
-  componentDidUpdate() {
-    if (!this.state.carts.length) {
-      return;
-    }
-
-    this.testTOTAL();
-  }
 
   deleteItem = deletedItem => {
     const remainItem = this.state.carts.filter(item => {
@@ -155,7 +154,6 @@ class Cart extends Component {
     })
       .then(res => res.json())
       .then(res => this.activeModal(res));
-    // .then(res => console.log(res));
   };
 
   activeModal = res => {
@@ -230,7 +228,6 @@ class Cart extends Component {
                     onChange={e => this.handleInput(e)}
                     name="name"
                     type="text"
-                    // value="SaemsolYoo"
                     value={this.state.name}
                     disabled
                   />
