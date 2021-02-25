@@ -6,7 +6,7 @@ class Button extends Component {
     const { handleSubmit, questionId, answer } = this.props;
     return (
       <div className="Button">
-        <button onClick={() => handleSubmit(answer, questionId)}>
+        <button onClick={() => handleSubmit(answer, questionId)} type="button">
           {this.props.children}
         </button>
       </div>

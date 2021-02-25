@@ -19,7 +19,8 @@ class InputCheck extends Component {
               type={type}
               defaultChecked={false}
               name={name}
-              value={value}
+              // value={value}
+              // checked={value}
               onChange={this.handleInputField}
             />
             {innerHtml}

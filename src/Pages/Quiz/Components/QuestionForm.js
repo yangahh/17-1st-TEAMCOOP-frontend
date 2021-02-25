@@ -15,11 +15,9 @@ class QuestionForm extends Component {
   }
 
   handleInputValue = (name, value) => {
-    // const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
-    console.log(this.state);
   };
 
   render() {
@@ -36,7 +34,7 @@ class QuestionForm extends Component {
             {QuestionData.inputData.map((data, index) => {
               return (
                 <InputText
-                  key={index}
+                  key={data.index}
                   type={data.type}
                   name={data.name}
                   value={data.value}
@@ -46,7 +44,6 @@ class QuestionForm extends Component {
               );
             })}
             <Button
-              type="button"
               handleSubmit={handleSubmit}
               questionId={questionId}
               answer={this.state}
@@ -75,7 +72,6 @@ class QuestionForm extends Component {
               );
             })}
             <Button
-              type="button"
               handleSubmit={handleSubmit}
               questionId={questionId}
               answer={this.state}
@@ -104,7 +100,6 @@ class QuestionForm extends Component {
               })}
             </ul>
             <Button
-              type="button"
               handleSubmit={handleSubmit}
               questionId={questionId}
               answer={this.state}

@@ -30,7 +30,7 @@ class Quiz extends Component {
   componentDidUpdate() {
     const { questionId, answer, similarProduct } = this.state;
     if (questionId === 12 && similarProduct.length === 0) {
-      fetch('http://10.58.6.165:8000/recommendation', {
+      fetch('http://10.58.6.184:8000/recommendation', {
         method: 'POST',
         headers: {
           Authorization: sessionStorage.getItem('access_token'),
@@ -69,14 +69,6 @@ class Quiz extends Component {
   handleNextQuestion = id => {
     this.setState({ questionId: id + 1 });
   };
-
-  // handleInputValue = (name, value) => {
-  //   // const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  //   console.log(this.state);
-  // };
 
   render() {
     console.log(this.state);
@@ -119,15 +111,47 @@ class Quiz extends Component {
           handleSubmit={this.handleSubmit}
         />
       ),
-      6: <Question6 questionId={questionId} handleSubmit={this.handleSubmit} />,
-      7: <Question7 questionId={questionId} handleSubmit={this.handleSubmit} />,
-      8: <Question8 questionId={questionId} handleSubmit={this.handleSubmit} />,
-      9: <Question9 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      6: (
+        <QuestionForm
+          QuestionData={QuestionData.Question6}
+          questionId={questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
+      7: (
+        <QuestionForm
+          QuestionData={QuestionData.Question7}
+          questionId={questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
+      8: (
+        <QuestionForm
+          QuestionData={QuestionData.Question8}
+          questionId={questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
+      9: (
+        <QuestionForm
+          QuestionData={QuestionData.Question9}
+          questionId={questionId}
+          handleSubmit={this.handleSubmit}
+        />
+      ),
       10: (
-        <Question10 questionId={questionId} handleSubmit={this.handleSubmit} />
+        <QuestionForm
+          QuestionData={QuestionData.Question10}
+          questionId={questionId}
+          handleSubmit={this.handleSubmit}
+        />
       ),
       11: (
-        <Question11 questionId={questionId} handleSubmit={this.handleSubmit} />
+        <QuestionForm
+          QuestionData={QuestionData.Question11}
+          questionId={questionId}
+          handleSubmit={this.handleSubmit}
+        />
       ),
       12: <SimilarProduct similarProduct={similarProduct} />,
     };
