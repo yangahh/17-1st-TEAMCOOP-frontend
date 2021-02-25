@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class ProductDetail extends Component {
   render() {
-    return <div></div>;
+    console.log(this.props);
+    return <div>Detail Page</div>;
   }
 }
 
