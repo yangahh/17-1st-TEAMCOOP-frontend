@@ -6,13 +6,7 @@ import './QuestionForm.scss';
 class QuestionForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // isResetState: false,
-    };
-  }
-
-  componentDidUpdate() {
-    this.handleInputValue;
+    this.state = {};
   }
 
   handleResetState = () => {
@@ -26,6 +20,13 @@ class QuestionForm extends Component {
     });
   };
 
+  // handleInputValue = event => {
+  //   const { name, checked } = event.target;
+  //   this.setState({
+  //     [name]: checked,
+  //   });
+  // };
+
   render() {
     console.log('FORM', this.state);
     const { QuestionData, questionId, handleSubmit, isResetState } = this.props;
@@ -37,10 +38,11 @@ class QuestionForm extends Component {
         {QuestionData.inputData.length === 1 &&
         QuestionData.inputData[0].type === 'text' ? (
           <form className="textbox">
-            {QuestionData.inputData.map((data, index) => {
+            {QuestionData.inputData.map(data => {
               return (
                 <InputText
-                  key={data.index}
+                  key={data.id}
+                  id={data.id}
                   type={data.type}
                   name={data.name}
                   value={data.value}
@@ -110,7 +112,6 @@ class QuestionForm extends Component {
               handleSubmit={handleSubmit}
               questionId={questionId}
               answer={this.state}
-              isResetState={isResetState}
               handleResetState={this.handleResetState}
             >
               NEXT

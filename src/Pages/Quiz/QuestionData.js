@@ -45,18 +45,21 @@ const QuestionData = {
     chooseCount: 'Choose one',
     inputData: [
       {
+        id: 6,
         type: 'checkbox',
         name: 'workoutLess3hours',
         value: false,
         innerHtml: 'less than 3hours',
       },
       {
+        id: 7,
         type: 'checkbox',
         name: 'workoutLess6hours',
         value: false,
         innerHtml: '3~6hours',
       },
       {
+        id: 8,
         type: 'checkbox',
         name: 'workoutMore6hours',
         value: false,
@@ -70,12 +73,14 @@ const QuestionData = {
     chooseCount: 'Choose one',
     inputData: [
       {
+        id: 9,
         type: 'checkbox',
         name: 'yesSmoke',
         value: false,
         innerHtml: 'YES',
       },
       {
+        id: 10,
         type: 'checkbox',
         name: 'noSmoke',
         value: false,

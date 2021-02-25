@@ -3,31 +3,36 @@ import React, { Component } from 'react';
 
 class InputCheck extends Component {
   componentDidMount() {
-    // console.log('CDM');
+    console.log('cdm');
+    const { handleInputValue } = this.props;
+    const fieldName = this.props.name;
+    handleInputValue([fieldName], false);
   }
-
   handleInputField = event => {
     const { name, checked } = event.target;
     const { handleInputValue } = this.props;
     const fieldName = name;
     const fieldValue = checked;
-    handleInputValue(fieldName, fieldValue);
-    // console.log('ddddd', checked);
+    handleInputValue([fieldName], fieldValue);
+    // this.props.handleInputValue(event);
+    // event.stopPropagation();
   };
 
   render() {
-    const { type, name, value, innerHtml } = this.props;
+    const { type, name, value, innerHtml, id, checked } = this.props;
     return (
       <div className="InputCheck">
         <li>
           <label className="checkbox-label">
             <input
-              type={type}
+              onChange={this.handleInputField}
+              id={id}
+              type="checkbox"
               defaultChecked={false}
               name={name}
-              // value={value}
-              // checked={value}
-              onChange={this.handleInputField}
+              value={name}
+              data-only="null"
+              // checked={!name || false}
             />
             {innerHtml}
           </label>

@@ -9,7 +9,6 @@ class Button extends Component {
         <button
           onClick={() => {
             handleSubmit(answer, questionId);
-            handleResetState();
           }}
           type="button"
         >
