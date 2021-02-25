@@ -60,7 +60,7 @@ class ProductList extends Component {
   }
 
   getAddedItem = () => {
-    fetch(`${SERVER}/order/mycart`, {
+    fetch(`${SERVER}/order/cart`, {
       method: 'GET',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),

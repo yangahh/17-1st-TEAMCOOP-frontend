@@ -36,7 +36,7 @@ class Cart extends Component {
       return;
     }
 
-    fetch(`${SERVER}/order/mycart`, {
+    fetch(`${SERVER}/order/cart`, {
       method: 'GET',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),

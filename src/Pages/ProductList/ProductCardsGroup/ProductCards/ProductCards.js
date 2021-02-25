@@ -25,7 +25,7 @@ class ProductCards extends Component {
       return;
     }
 
-    fetch(`${SERVER}/product/tocart`, {
+    fetch(`${SERVER}/order/cart`, {
       method: 'POST',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
