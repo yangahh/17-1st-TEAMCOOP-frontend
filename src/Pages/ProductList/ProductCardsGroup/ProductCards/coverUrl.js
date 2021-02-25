@@ -1,23 +1,23 @@
 const coverUrl = {
   'Letter Vitamins':
-    'https://images.ctfassets.net/t9x0u6p47op0/2BxevJTKlY8eieW84SSYOG/d305d0104a1c8f33fc21b0ad29925129/img_product_category_vitamin.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/dd9cd0c2-7126-43be-980f-50d685403545/covers-22.png',
 
   Minerals:
-    'https://images.ctfassets.net/t9x0u6p47op0/1cdBabMQgA8scyyeCkgEEQ/674b971a57e9d709ff45bb375bff6957/img_product_category_minerals.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/f6214bb1-4fb0-4553-8a09-2551663b1a79/covers-23.png',
 
   Herbs:
-    'https://images.ctfassets.net/t9x0u6p47op0/3qR5oW7aNO6awGCaA6Gay0/d960ea94da88a37cadc82f07b39a714a/img_product_category_herbals.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/2ef970b4-6192-4263-9c2c-583823acedbb/covers-25.png',
 
   Probiotics:
-    'https://images.ctfassets.net/t9x0u6p47op0/6XgbvjjdCguIoMGISQsSeI/e4fc891b62b71524ac0d13e4d5352f30/img_product_category_probiotic.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/46deabf8-f446-42d8-bbd0-09c207a5d058/covers-24.png',
   Specialty:
-    'https://images.ctfassets.net/t9x0u6p47op0/4oqx9Sps8oyOgcu42k44AQ/27d74e33b3d0ac8c63e7b300c4a959ea/img_product_category_specialty.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/b9e7f486-0cd5-437b-91a2-b849ac54bac1/specialty-31.png',
   Collagens:
-    'https://images.ctfassets.net/t9x0u6p47op0/1pwwhQFVjGFPHRGtFNJJUJ/e34a4e81e1c3da83e377b01e28d25d4d/img_pattern_unflavored2.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/d2868df9-c494-4e4d-b7e0-23d9d35931f3/covers-26.png',
   Protein:
-    'https://images.ctfassets.net/t9x0u6p47op0/4ki4METng55MWBHsKzBmm/e8aeed28256b4ea3859a2b6ebf45eb5a/img_product_category_whey.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/d75a5b33-f214-4503-8c40-c73d05d17142/covers-27.png',
   Boosts:
-    'https://images.ctfassets.net/t9x0u6p47op0/6ZrGHkeY4p6XaHt6YZaVDj/120ec38a0ed9fb439609fff56caf1cfb/img_product_category_boost.jpg?fit=fill&fl=progressive&fm=jpg&w=1400',
+    'https://media.vlpt.us/images/saemsol/post/bb8e0a46-f1db-4898-87d2-a0fb839ba6d5/covers-28.png',
 };
 
 export default coverUrl;

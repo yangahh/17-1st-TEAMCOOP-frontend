@@ -120,21 +120,7 @@ class ProductList extends Component {
       })
         .then(response => response.json())
         .then(res => {
-          const goalData = [
-            {
-              id: 100,
-              subcategory: {
-                title: '',
-                description: '',
-              },
-              item: res.data,
-            },
-          ];
-
-          this.setState({
-            productDatas: goalData,
-            powderDatas: [],
-          });
+          this.setGoalDatas(res);
         });
     }
   };
@@ -144,24 +130,27 @@ class ProductList extends Component {
       method: 'GET',
     })
       .then(response => response.json())
-      // .then(res => console.log(res));
       .then(res => {
-        const goalData = [
-          {
-            id: 100,
-            subcategory: {
-              title: '',
-              description: '',
-            },
-            item: res.data,
-          },
-        ];
-
-        this.setState({
-          productDatas: goalData,
-          powderDatas: [],
-        });
+        this.setGoalDatas(res);
       });
+  };
+
+  setGoalDatas = res => {
+    const goalData = [
+      {
+        id: 100,
+        subcategory: {
+          title: '',
+          description: '',
+        },
+        item: res.data,
+      },
+    ];
+
+    this.setState({
+      productDatas: goalData,
+      powderDatas: [],
+    });
   };
 
   componentDidUpdate() {
