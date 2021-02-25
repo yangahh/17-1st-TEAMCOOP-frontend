@@ -7,6 +7,7 @@ import SignUp from './Pages/SignUp/SignUp';
 import ProductList from './Pages/ProductList/ProductList';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
 import Quiz from './Pages/Quiz/Quiz';
+import Cart from './Pages/Cart/Cart';
 import Nav from './Components/Nav/Nav';
 
 class Routes extends React.Component {
@@ -21,6 +22,8 @@ class Routes extends React.Component {
           <Route exact path="/productlist" component={ProductList} />
           <Route exact path="/productdetail/:id" component={ProductDetail} />
           <Route exact path="/quiz" component={Quiz} />
+          <Route exact path="/cart" component={Cart} />
+          <Route exact path="/product/:id" component={ProductDetail} />
         </Switch>
       </Router>
     );
