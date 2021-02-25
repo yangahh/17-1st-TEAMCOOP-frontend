@@ -4,7 +4,7 @@ class CheckList extends Component {
   render() {
     console.log(this.state);
 
-    const { content, idx, checked, name, handleClick } = this.props;
+    const { content, idx, checked, name, handleClick, handleAllChecked } = this.props;
     return (
       <div key={idx}>
         <label>

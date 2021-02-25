@@ -24,11 +24,12 @@ class SignUp extends Component {
   }
 
   handleAllChecked = () => {
-    const { allChecked } = this.state;
-
-    if (!this.state.check0 && !this.state.check1 && !this.state.check2) {
+    const { allChecked, check0, check1, check2 } = this.state;
+    if (!allChecked) {
       this.setState({
-        allChecked: !allChecked,
+        check0: !check0,
+        check1: !check1,
+        check2: !check2,
       });
     }
   };
