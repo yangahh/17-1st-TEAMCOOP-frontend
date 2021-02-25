@@ -29,6 +29,7 @@ class Question3 extends Component {
             value={age}
             type="text"
             maxLength="2"
+            required
           />
           <button
             type="button"

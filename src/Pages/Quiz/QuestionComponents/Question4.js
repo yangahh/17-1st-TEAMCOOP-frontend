@@ -18,7 +18,6 @@ class Question4 extends Component {
 
   render() {
     const { height, weight } = this.state;
-    const bmi = { bmi: Math.round(weight / ((height / 100) * (height / 100))) };
     const { questionId, handleSubmit } = this.props;
     return (
       <div className="Question">
@@ -33,6 +32,7 @@ class Question4 extends Component {
               value={height}
               type="text"
               maxLength="3"
+              required
             />
           </label>
           <label>
@@ -46,7 +46,10 @@ class Question4 extends Component {
               required
             />
           </label>
-          <button type="button" onClick={() => handleSubmit(bmi, questionId)}>
+          <button
+            type="button"
+            onClick={() => handleSubmit(this.state, questionId)}
+          >
             NEXT
           </button>
         </form>

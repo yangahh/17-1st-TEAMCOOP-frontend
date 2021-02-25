@@ -3,33 +3,9 @@ import SimilarProductCard from './SimilarProductCard/SimilarProductCard';
 import './SimilarProduct.scss';
 
 class SimilarProduct extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     similarProduct: [],
-  //   };
-  // }
-
   componentDidMount() {
     window.scrollTo(0, 0);
   }
-
-  // getSimilarProductData = () => {
-  //   fetch('http://10.58.2.178:8000/product/tocart', {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: sessionStorage.getItem('access_token'),
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log('similar', res);
-  //       this.setState({
-  //         similarProduct: res.data,
-  //       });
-  //     });
-  // };
-
   render() {
     const { similarProduct } = this.props;
     return (

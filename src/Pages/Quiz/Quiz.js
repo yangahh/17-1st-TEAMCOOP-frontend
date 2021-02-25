@@ -11,10 +11,6 @@ import Question9 from './QuestionComponents/Question9';
 import Question10 from './QuestionComponents/Question10';
 import Question11 from './QuestionComponents/Question11';
 import SimilarProduct from './SimilarProduct/SimilarProduct';
-
-import QuestionForm from './Components/QuestionForm';
-import QuestionData from './QuestionData';
-
 import './Quiz.scss';
 
 class Quiz extends Component {
@@ -41,7 +37,6 @@ class Quiz extends Component {
       })
         .then(res => res.json())
         .then(res => {
-          console.log('similar', res);
           this.setState({
             similarProduct: res.data,
           });
@@ -51,16 +46,7 @@ class Quiz extends Component {
 
   handleSubmit = (data, questionId) => {
     const { answer } = this.state;
-    if (answer.length === 0) {
-      this.setState({
-        answer: answer.concat({ id: questionId, ...data }),
-      });
-    } else {
-      for (let i in answer[answer.length - 1]) {
-        delete data[i];
-      }
-      this.setState({ answer: answer.concat({ id: questionId, ...data }) });
-    }
+    this.setState({ answer: answer.concat({ id: questionId, ...data }) });
     this.handleNextQuestion(questionId);
   };
 
@@ -69,98 +55,29 @@ class Quiz extends Component {
   };
 
   render() {
-    // console.log(this.state);
-    console.log('부모 state', this.state);
     const { questionId, similarProduct } = this.state;
     const quiz_obj = {
-      // 1: <Question1 questionId={questionId} handleSubmit={this.handleSubmit} />,
-      1: (
-        <QuestionForm
-          QuestionData={QuestionData.Question1}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      // 2: <Question2 questionId={questionId} handleSubmit={this.handleSubmit} />,
-      2: (
-        <QuestionForm
-          QuestionData={QuestionData.Question2}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      3: (
-        <QuestionForm
-          QuestionData={QuestionData.Question3}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      4: (
-        <QuestionForm
-          QuestionData={QuestionData.Question4}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      5: (
-        <QuestionForm
-          QuestionData={QuestionData.Question5}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      6: (
-        <QuestionForm
-          QuestionData={QuestionData.Question6}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      7: (
-        <QuestionForm
-          QuestionData={QuestionData.Question7}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      8: (
-        <QuestionForm
-          QuestionData={QuestionData.Question8}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
-      9: (
-        <QuestionForm
-          QuestionData={QuestionData.Question9}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
-      ),
+      1: <Question1 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      2: <Question2 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      3: <Question3 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      4: <Question4 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      5: <Question5 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      6: <Question6 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      7: <Question7 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      8: <Question8 questionId={questionId} handleSubmit={this.handleSubmit} />,
+      9: <Question9 questionId={questionId} handleSubmit={this.handleSubmit} />,
       10: (
-        <QuestionForm
-          QuestionData={QuestionData.Question10}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
+        <Question10 questionId={questionId} handleSubmit={this.handleSubmit} />
       ),
       11: (
-        <QuestionForm
-          QuestionData={QuestionData.Question11}
-          questionId={questionId}
-          handleSubmit={this.handleSubmit}
-        />
+        <Question11 questionId={questionId} handleSubmit={this.handleSubmit} />
       ),
       12: <SimilarProduct similarProduct={similarProduct} />,
     };
 
     return (
       <div className="Quiz">
-        <div className="quiz-container">
-          {/* <h1>Quiz</h1> */}
-          {quiz_obj[questionId]}
-        </div>
+        <div className="quiz-container">{quiz_obj[questionId]}</div>
       </div>
     );
   }
