@@ -1,0 +1,50 @@
+@import '../../Styles/common.scss';
+
+.Mypage {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+  font-family: 'Lato', sans-serif;
+
+  .left_content {
+    width: 160px;
+    margin-left: 10px;
+
+    h3 {
+      border-top: 1px solid #adadad;
+      border-bottom: 1px solid #adadad;
+      padding: 25px 0;
+      text-align: center;
+      font-weight: bolder;
+      font-size: 16px;
+      color: #333;
+
+      li {
+        display: block;
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .right_content {
+    width: 750px;
+    margin-left: 60px;
+
+    header {
+      p {
+        line-height: 40px;
+        font-size: 28px;
+        font-weight: 400;
+        color: #333;
+      }
+    }
+  }
+
+  .write_review {
+    width: 80%;
+    height: 250px;
+    margin-top: 40px;
+    border: 3px solid #cdcdcd;
+    border-radius: 10px;
+  }
+}
