@@ -102,7 +102,7 @@ class CartItem extends Component {
 
   render() {
     const { itemInfo, pruducts, deleteItem } = this.props;
-    console.log(itemInfo);
+
     return (
       <div
         className={`cartItem item ${pruducts.length > 3 && 'grid'}`}

@@ -39,8 +39,6 @@ class ProductCards extends Component {
       .then(response => response.json())
       .then(res => alert('Added to your cart! 🛒🛍'))
       .then(this.props.updateAddedBtn);
-
-    console.log(item);
   };
 
   added = () => {

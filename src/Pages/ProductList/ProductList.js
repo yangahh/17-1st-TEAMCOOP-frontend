@@ -43,7 +43,6 @@ class ProductList extends Component {
       method: 'GET',
     })
       .then(response => response.json())
-      // .then(res => console.log(res));
       .then(res => {
         this.setState({
           powderDatas: res.data.splice(5, 8),
