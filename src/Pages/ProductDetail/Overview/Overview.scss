@@ -1,0 +1,96 @@
+@import '../../../Styles/common.scss';
+
+.Overview {
+  .overview-container {
+    position: relative;
+    padding: 200px 0;
+
+    .overview-header {
+      margin: 0px 0px 35px 120px;
+      font-size: 68px;
+      font-family: 'Newsreader', serif;
+      line-height: 87px;
+    }
+
+    .accordion-container {
+      margin-left: 180px;
+      max-width: 35%;
+
+      .accordion {
+        .accordion__item {
+          &:first-child {
+            border-top: 1px solid $black-color;
+          }
+
+          &:last-child {
+            border: none;
+          }
+
+          .accordion__button {
+            padding: 36px 0;
+            border-bottom: 1px solid $black-color;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 5px;
+            cursor: pointer;
+
+            &:before {
+              display: inline-block;
+              content: '';
+              height: 10px;
+              width: 10px;
+              margin: 0 20px;
+              border-bottom: 2px solid currentColor;
+              border-right: 2px solid currentColor;
+              transform: rotate(-45deg);
+              transition: all 0.3s ease 0s;
+            }
+
+            &[aria-expanded='true']::before,
+            &[aria-selected='true']::before {
+              transform: rotate(45deg);
+              transition: all 0.3s ease 0s;
+            }
+          }
+
+          .accordion__panel {
+            padding: 60px 60px 60px 0px;
+            border-bottom: 1px solid black;
+            font-family: 'Newsreader', serif;
+            font-size: 24px;
+            text-transform: capitalize;
+            line-height: 40px;
+            animation: fadein 0.35s ease-in;
+
+            &:first-child {
+              border: none;
+            }
+
+            .nutrition-link {
+              display: inline-block;
+              border-bottom: 1px solid black;
+              color: $black-color;
+              text-decoration: none;
+              font-family: 'Lato';
+              font-size: 16px;
+              line-height: 28px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    .overview-image {
+      position: absolute;
+      top: 150px;
+      right: 0;
+      height: auto;
+      width: 770px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
