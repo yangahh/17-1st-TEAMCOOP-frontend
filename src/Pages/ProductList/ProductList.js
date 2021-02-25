@@ -39,7 +39,7 @@ class ProductList extends Component {
   };
 
   fetchShowAll = () => {
-    fetch(`${SERVER}/product?sort=all`, {
+    fetch(`${SERVER}/product?sort=`, {
       method: 'GET',
     })
       .then(response => response.json())
