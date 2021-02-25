@@ -139,6 +139,12 @@ class Cart extends Component {
   };
 
   placeOrder = () => {
+    if (this.state.address.length < 1 || this.state.zipcode.length < 1) {
+      alert('Please fill out the form!');
+
+      return;
+    }
+
     fetch(`${SERVER}/order/checkout/${this.state.orderNumber}`, {
       method: 'POST',
       headers: {
