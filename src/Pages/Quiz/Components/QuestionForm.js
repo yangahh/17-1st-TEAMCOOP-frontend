@@ -7,12 +7,21 @@ import './QuestionForm.scss';
 class QuestionForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isResetState: false,
+    };
   }
 
   componentDidUpdate() {
+    this.setState();
     this.handleInputValue;
   }
+
+  handleResetState = isResetState => {
+    if (isResetState === false) {
+      this.setState({ isResetState: true });
+    }
+  };
 
   handleInputValue = (name, value) => {
     this.setState({
@@ -21,8 +30,7 @@ class QuestionForm extends Component {
   };
 
   render() {
-    const { QuestionData, questionId, handleSubmit } = this.props;
-    // console.log(this.props);
+    const { QuestionData, questionId, handleSubmit, isResetState } = this.props;
     return (
       <div className="QuestionForm">
         <h5 className="question-count">Question{QuestionData.count}</h5>
@@ -87,6 +95,7 @@ class QuestionForm extends Component {
           <div>
             <ul className="qustion-answer-wrap">
               {QuestionData.inputData.map((data, index) => {
+                console.log();
                 return (
                   <InputCheck
                     key={index}
@@ -103,6 +112,8 @@ class QuestionForm extends Component {
               handleSubmit={handleSubmit}
               questionId={questionId}
               answer={this.state}
+              isResetState={isResetState}
+              handleResetState={this.handleResetState}
             >
               NEXT
             </Button>

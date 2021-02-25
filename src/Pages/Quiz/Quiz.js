@@ -21,7 +21,7 @@ class Quiz extends Component {
   constructor() {
     super();
     this.state = {
-      questionId: 1,
+      questionId: 5,
       answer: [],
       similarProduct: [],
     };
@@ -51,7 +51,6 @@ class Quiz extends Component {
 
   handleSubmit = (data, questionId) => {
     const { answer } = this.state;
-
     if (answer.length === 0) {
       this.setState({
         answer: answer.concat({ id: questionId, ...data }),
@@ -62,7 +61,6 @@ class Quiz extends Component {
       }
       this.setState({ answer: answer.concat({ id: questionId, ...data }) });
     }
-
     this.handleNextQuestion(questionId);
   };
 
@@ -71,7 +69,8 @@ class Quiz extends Component {
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
+    console.log('부모 state', this.state);
     const { questionId, similarProduct } = this.state;
     const quiz_obj = {
       // 1: <Question1 questionId={questionId} handleSubmit={this.handleSubmit} />,
