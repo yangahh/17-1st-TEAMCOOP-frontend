@@ -1,0 +1,26 @@
+[
+  {
+    "userName": "JIEUN",
+    "title": "This vitamins are super awesome they…",
+    "content": "This vitamins are super awesome they keep me on the game all day long and the quality is amazing, it took a time until i got mine but it was worth it.",
+    "date": "JAN 04",
+    "img": "//images.ctfassets.net/t9x0u6p47op0/73JZd4vmQgcudRwseKATT4/5358657c0ca0b0d812460f6a7b3995e7/img_bisected_magnesium2_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+    "star": 5
+  },
+  {
+    "userName": "SAEMSOL",
+    "title": "Vitamins, Protein powder and Apps!",
+    "content": "I truly love everything that I’ve tried with the Care/of vitamins. They continue to work wonderfully and the protein powder has been a savior paired with my daily workouts. The only thing I wish was possible is a problem within the app. When tracking your daily intake of vitamins through the app if you forget to track it that day but you’ve taken your vitamins, it doesn’t let you go back and track it. It just automatically assumes you didn’t take them since you didn’t track it. My days get pretty chaotic and sometimes I don’t remember to get into the app until late at night even though I took my vitamins that afternoon. Just a little update would be helpful!",
+    "date": "JAN 24",
+    "img": "//images.ctfassets.net/t9x0u6p47op0/73JZd4vmQgcudRwseKATT4/5358657c0ca0b0d812460f6a7b3995e7/img_bisected_magnesium2_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+    "star": 3
+  },
+  {
+    "userName": "JiYeon",
+    "title": "Love this company! LOVE LOVE LOVE",
+    "content": "Love this company. Amazingly easy to use, from the quiz, to ordering, to the app to adjusting and managing shipping. Receive just the right amount of emails and notifications. Absolutely love the convenience of Care/of vitamins and the compostable packaging.",
+    "date": "FEB 22",
+    "img": "//images.ctfassets.net/t9x0u6p47op0/73JZd4vmQgcudRwseKATT4/5358657c0ca0b0d812460f6a7b3995e7/img_bisected_magnesium2_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=340",
+    "star": 3
+  }
+]
