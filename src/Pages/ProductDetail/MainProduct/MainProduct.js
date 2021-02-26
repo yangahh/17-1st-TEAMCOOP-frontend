@@ -17,7 +17,12 @@ class MainProduct extends Component {
     });
   };
 
-  goToCart = () => {
+  goToCart = isSoldOut => {
+    if (isSoldOut) {
+      alert('Sorry.. Sold Out ');
+      return;
+    }
+
     if (!sessionStorage.getItem('access_token')) {
       alert('Please Login to add the product in to cart 🛍');
       return;
@@ -64,7 +69,6 @@ class MainProduct extends Component {
         })
           .then(response => response.json())
           .then(res => {
-            console.log(res);
             if (res.message === 'SUCCESS') {
               alert('Added to your cart! 🛒🛍');
               this.setState({
@@ -165,10 +169,13 @@ class MainProduct extends Component {
               //   onClick={() => this.vitaminsGoToCart(id, productPrice)}
               // >
 
-              <button className="add-cart-btn" onClick={this.goToCart}>
+              <button
+                className="add-cart-btn"
+                onClick={this.goToCart(isSoldOut)}
+              >
                 Add
                 <span className="btn-line" />$ {productPrice}
-                {isSoldOut ? <br> SOLD OUT </br> : ''}
+                {isSoldOut ? ' SOLD OUT' : ''}
               </button>
             ) : (
               <button className="already-cart-btn">In your cart</button>

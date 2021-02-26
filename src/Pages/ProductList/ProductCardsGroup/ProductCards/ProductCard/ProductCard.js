@@ -7,7 +7,7 @@ class ProductCard extends Component {
     return (
       <div className="productCard__bottom">
         <p>${item.displayPrice[0]}</p>
-        {outOfStock ? (
+        {item.isSoldout ? (
           <button disabled type="button">
             Out of stock
           </button>

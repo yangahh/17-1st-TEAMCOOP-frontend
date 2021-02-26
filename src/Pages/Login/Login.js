@@ -42,7 +42,7 @@ class Login extends Component {
         .then(response => response.json())
         .then(result => {
           if (result.message === 'SUCCESS') {
-            sessionStorage.setItem('access_token', result.ACCESS_TOKEN);
+            sessionStorage.setItem('access_token', result.access_token);
             this.props.history.push('/');
             alert('로그인 성공');
           } else {

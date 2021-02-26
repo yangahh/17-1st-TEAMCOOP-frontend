@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CheckList from './CheckList';
 import './SignUp.scss';
-import { signupAPI, smsAPI, checkAPI } from '../../config';
+import { SERVER, signupAPI, checkAPI } from '../../config';
 class SignUp extends Component {
   constructor() {
     super();
@@ -24,35 +24,38 @@ class SignUp extends Component {
   }
 
   handleAllChecked = () => {
-    const {allChecked} = this.state;
+    const { allChecked } = this.state;
 
-    if(allChecked === false) {
+    if (allChecked === false) {
       this.setState({
-        allChecked:true,
+        allChecked: true,
         check0: true,
         check1: true,
         check2: true,
-      })
+      });
     } else {
       this.setState({
-        allChecked:false,
+        allChecked: false,
         check0: false,
         check1: false,
         check2: false,
-      })
+      });
     }
   };
 
-  handleChecked =(idx) => {
-    this.setState({
-      [`check${idx}`]: !this.state[`check${idx}`],
-    },() => {
-      this.setState({
-        allChecked: this.state.check0 && this.state.check1 && this.state.check2
-      })
-    })
-  }
-
+  handleChecked = idx => {
+    this.setState(
+      {
+        [`check${idx}`]: !this.state[`check${idx}`],
+      },
+      () => {
+        this.setState({
+          allChecked:
+            this.state.check0 && this.state.check1 && this.state.check2,
+        });
+      },
+    );
+  };
 
   handleInputValue = e => {
     this.setState({
@@ -67,18 +70,15 @@ class SignUp extends Component {
   };
 
   isAllValid = event => {
-    fetch(
-      { signupAPI },
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          name: this.state.name_box,
-          email: this.state.id,
-          number: this.state.number,
-          password: this.state.pw,
-        }),
-      },
-    )
+    fetch(`${SERVER}/user/signup`, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: this.state.name_box,
+        email: this.state.id,
+        number: this.state.number,
+        password: this.state.pw,
+      }),
+    })
       .then(response => response.json())
       .then(result => {
         if (result.message === 'SUCCESS') {
@@ -96,18 +96,15 @@ class SignUp extends Component {
       confirmNum: !this.state.confirmNum,
     });
 
-    fetch(
-      { smsAPI },
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          phone_number: this.state.number,
-        }),
-      },
-    )
+    fetch(`${SERVER}/user/sms`, {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: this.state.number,
+      }),
+    })
       .then(response => response.json())
       .then(result => {
-        alert('SMS sent!');
+        // alert('SMS sent!');
         // if (result.message === 'SUCCESS') {
         //   // this.props.history.push('/login');
         //   // alert('회원가입 완료');
@@ -118,25 +115,24 @@ class SignUp extends Component {
   };
 
   checkCode = e => {
-    fetch(
-      { checkAPI },
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          phone_number: this.state.number,
-          auth_number: this.state.confirm,
-        }),
-      },
-    )
+    e.preventDefault();
+
+    fetch(`${SERVER}/user/sms-validation`, {
+      method: 'POST',
+      body: JSON.stringify({
+        phone_number: this.state.number,
+        auth_number: this.state.confirm,
+      }),
+    })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
-        // if (result.message === 'SUCCESS') {
-        //   this.props.history.push('/login');
-        //   alert('회원가입 완료');
-        // } else {
-        //   alert('실패');
-        // }
+        if (result.message === 'SUCCESS') {
+          alert('인증확인');
+          // this.props.history.push('/login');
+          // alert('회원가입 완료');
+        } else {
+          alert('실패');
+        }
       });
   };
 
@@ -150,7 +146,6 @@ class SignUp extends Component {
     });
   };
 
-  
   render() {
     const { pwAlert, numberValid, allChecked } = this.state;
 
@@ -176,7 +171,7 @@ class SignUp extends Component {
               <label>Phone number</label>
               <div className="with_button">
                 <input
-                  onKeyPress={this.handleInputValue}
+                  onKeyUp={this.handleInputValue}
                   name="number"
                   className="number_box"
                   type="tel"
@@ -269,14 +264,18 @@ class SignUp extends Component {
                   content={checkBox.content}
                   key={idx}
                   checked={this.state[checkBox.name]}
-                  onClick={()=> this.handleChecked(idx)}
+                  onClick={() => this.handleChecked(idx)}
                 />
               );
             })}
           </div>
         </div>
         <div>
-          <button disabled={!this.state.allChecked} onClick={this.isAllValid} className="signup_btn">
+          <button
+            disabled={!this.state.allChecked}
+            onClick={this.isAllValid}
+            className="signup_btn"
+          >
             <span>Sign Up</span>
           </button>
         </div>
