@@ -34,7 +34,7 @@ class SimilarProductCard extends Component {
         .then(response => response.json())
         .then(res => {
           if (res.message === 'SUCCESS') {
-            alert('In Cart');
+            alert('Added to your cart! 🛒🛍');
             this.setState({
               isBtnActivite: false,
             });
