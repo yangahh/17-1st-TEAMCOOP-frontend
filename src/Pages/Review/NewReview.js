@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Star from '../../images/star.png';
-import Star2 from '../../images/star2.png';
 
 class NewReview extends Component {
   render() {
