@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import './SimilarProductCard.scss';
+import { SERVER } from '../../../../config';
 
 class SimilarProductCard extends Component {
   constructor() {
@@ -17,10 +18,9 @@ class SimilarProductCard extends Component {
   goToCart = () => {
     const { isBtnActivite } = this.state;
     const { id, price, size } = this.props;
-    console.log({ productId: id, productSize: size, productPrice: price });
 
     if (isBtnActivite) {
-      fetch('http://10.58.6.165:8000/product/tocart', {
+      fetch(`${SERVER}/order/cart`, {
         method: 'POST',
         headers: {
           Authorization: sessionStorage.getItem('access_token'),
@@ -33,7 +33,6 @@ class SimilarProductCard extends Component {
       })
         .then(response => response.json())
         .then(res => {
-          console.log(res);
           if (res.message === 'SUCCESS') {
             alert('In Cart');
             this.setState({
