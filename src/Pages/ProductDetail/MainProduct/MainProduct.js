@@ -153,25 +153,23 @@ class MainProduct extends Component {
                   <option value="5 Packets">5 Packets</option>
                 </select>
                 {isBtnActivite ? (
-                  <button className="add-cart-btn" onClick={this.goToCart}>
+                  <button
+                    className="add-cart-btn"
+                    onClick={() => this.goToCart(isSoldOut[powderProductSize])}
+                  >
                     Add
                     <span className="btn-line" />$
                     {productPrice[powderProductSize]}
-                    {isSoldOut[powderProductSize] ? <br> SOLD OUT </br> : ''}
+                    {isSoldOut[powderProductSize] ? '    SOLD OUT' : ''}
                   </button>
                 ) : (
                   <button className="already-cart-btn">In your cart</button>
                 )}
               </div>
             ) : isBtnActivite ? (
-              // <button
-              //   className="add-cart-btn"
-              //   onClick={() => this.vitaminsGoToCart(id, productPrice)}
-              // >
-
               <button
                 className="add-cart-btn"
-                onClick={this.goToCart(isSoldOut)}
+                onClick={() => this.goToCart(isSoldOut)}
               >
                 Add
                 <span className="btn-line" />$ {productPrice}
