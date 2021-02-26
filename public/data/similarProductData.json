@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Superberry",
+    "subTitle": "The Antioxidant Ace",
+    "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/1ReuOjAUsTkok8hrrI45QY/2024684fe7fc1a70696f63bdaf1bb7b8/img_ginseng_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=800",
+    "healthGoal": ["Immunity", "herat", "skin"],
+    "price": [5.0],
+    "size": []
+  },
+  {
+    "id": 2,
+    "title": "powder",
+    "subTitle": "The Antioxidant Ace",
+    "imageUrl": "https://images.ctfassets.net/t9x0u6p47op0/6l0hrDHrC8amsQs8Cuy6W/58903b46dfc03b2e00f05b2784010460/img_garlic_expert.jpg?fit=fill&fl=progressive&fm=jpg&w=800",
+    "healthGoal": ["Immunity", "herat", "skin"],
+    "price": [5.0, 12.0],
+    "size": ["15 Serving Tub", "5 Packets"]
+  }
+]
