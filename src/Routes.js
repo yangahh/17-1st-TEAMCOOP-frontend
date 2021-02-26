@@ -6,11 +6,11 @@ import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import ProductList from './Pages/ProductList/ProductList';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
-import Quiz from './Pages/Quiz/Quiz';
-import Cart from './Pages/Cart/Cart';
 import Nav from './Components/Nav/Nav';
 import Mypage from './Pages/MyPage/Mypage';
 import Review from './Pages/Review/Review';
+import Cart from './Pages/Cart/Cart';
+import Quiz from './Pages/Quiz/Quiz';
 
 class Routes extends React.Component {
   render() {

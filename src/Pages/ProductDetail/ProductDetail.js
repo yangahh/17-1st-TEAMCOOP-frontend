@@ -3,6 +3,7 @@ import MainProduct from './MainProduct/MainProduct';
 import QualityBadges from './QualityBadges/QualityBadges';
 import Overview from './Overview/Overview';
 import SimilarProduct from './SimilarProduct/SimilarProduct';
+import { SERVER } from '../../config';
 import './ProductDetail.scss';
 
 class ProductDetail extends Component {
@@ -18,6 +19,8 @@ class ProductDetail extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    window.scrollTo(0, 0);
+
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.getProductDetailData();
       window.scrollTo(0, 0);
@@ -25,7 +28,7 @@ class ProductDetail extends Component {
   }
 
   getProductDetailData = () => {
-    fetch(`http://10.58.6.165:8000/product/${this.props.match.params.id}`)
+    fetch(`${SERVER}/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({

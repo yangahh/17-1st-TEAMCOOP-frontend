@@ -34,12 +34,13 @@ class CartItem extends Component {
   }
 
   updatePowderCart = productStockId => {
-    fetch(`${SERVER}/order/cart/${productStockId}`, {
-      method: 'POST',
+    fetch(`${SERVER}/order/cart`, {
+      method: 'PATCH',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
       },
       body: JSON.stringify({
+        productStockId: productStockId,
         productId: this.state.productId,
         productSize: this.state.powderSize,
         productQuantity: this.state.powderQuantity - 0,
@@ -57,12 +58,13 @@ class CartItem extends Component {
   };
 
   updateVitaminCart = productStockId => {
-    fetch(`${SERVER}/order/cart/${productStockId}`, {
-      method: 'POST',
+    fetch(`${SERVER}/order/cart`, {
+      method: 'PATCH',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
       },
       body: JSON.stringify({
+        productStockId: productStockId,
         productId: this.state.productId,
         productQuantity: this.state.vitaminQuantity - 0,
       }),

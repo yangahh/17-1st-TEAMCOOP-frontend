@@ -12,6 +12,7 @@ import Question10 from './QuestionComponents/Question10';
 import Question11 from './QuestionComponents/Question11';
 import SimilarProduct from './SimilarProduct/SimilarProduct';
 import './Quiz.scss';
+import { SERVER } from '../../config';
 
 class Quiz extends Component {
   constructor() {
@@ -26,7 +27,7 @@ class Quiz extends Component {
   componentDidUpdate() {
     const { questionId, answer, similarProduct } = this.state;
     if (questionId === 12 && similarProduct.length === 0) {
-      fetch('http://10.58.6.184:8000/recommendation', {
+      fetch(`${SERVER}/recommendation`, {
         method: 'POST',
         headers: {
           Authorization: sessionStorage.getItem('access_token'),

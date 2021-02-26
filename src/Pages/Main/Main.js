@@ -15,6 +15,10 @@ class Main extends Component {
     this.getContentCardData();
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   getContentCardData = () => {
     fetch('/data/content-card-data.json')
       .then(res => res.json())

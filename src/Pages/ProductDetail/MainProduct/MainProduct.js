@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { SERVER } from '../../../config';
 import './MainProduct.scss';
 class MainProduct extends Component {
   constructor() {
@@ -16,12 +17,22 @@ class MainProduct extends Component {
     });
   };
 
-  goToCart = () => {
+  goToCart = isSoldOut => {
+    if (isSoldOut) {
+      alert('Sorry.. Sold Out ');
+      return;
+    }
+
+    if (!sessionStorage.getItem('access_token')) {
+      alert('Please Login to add the product in to cart 🛍');
+      return;
+    }
+
     const { isBtnActivite, powderProductSize } = this.state;
     const { id, productPrice, category } = this.props;
     if (category === 'powders') {
       if (isBtnActivite) {
-        fetch('http://10.58.6.165:8000/product/tocart', {
+        fetch(`${SERVER}/order/cart`, {
           method: 'POST',
           headers: {
             Authorization: sessionStorage.getItem('access_token'),
@@ -35,7 +46,7 @@ class MainProduct extends Component {
           .then(response => response.json())
           .then(res => {
             if (res.message === 'SUCCESS') {
-              alert('In Cart');
+              alert('Added to your cart! 🛒🛍');
               this.setState({
                 isBtnActivite: false,
               });
@@ -46,7 +57,7 @@ class MainProduct extends Component {
       }
     } else {
       if (isBtnActivite) {
-        fetch('http://10.58.6.165:8000/product/tocart', {
+        fetch(`${SERVER}/order/cart`, {
           method: 'POST',
           headers: {
             Authorization: sessionStorage.getItem('access_token'),
@@ -58,9 +69,8 @@ class MainProduct extends Component {
         })
           .then(response => response.json())
           .then(res => {
-            console.log(res);
             if (res.message === 'SUCCESS') {
-              alert('In Cart');
+              alert('Added to your cart! 🛒🛍');
               this.setState({
                 isBtnActivite: false,
               });
@@ -159,10 +169,13 @@ class MainProduct extends Component {
               //   onClick={() => this.vitaminsGoToCart(id, productPrice)}
               // >
 
-              <button className="add-cart-btn" onClick={this.goToCart}>
+              <button
+                className="add-cart-btn"
+                onClick={this.goToCart(isSoldOut)}
+              >
                 Add
                 <span className="btn-line" />$ {productPrice}
-                {isSoldOut ? <br> SOLD OUT </br> : ''}
+                {isSoldOut ? ' SOLD OUT' : ''}
               </button>
             ) : (
               <button className="already-cart-btn">In your cart</button>

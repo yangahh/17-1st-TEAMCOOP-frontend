@@ -43,7 +43,6 @@ class ProductList extends Component {
       method: 'GET',
     })
       .then(response => response.json())
-      // .then(res => console.log(res));
       .then(res => {
         this.setState({
           powderDatas: res.data.splice(5, 8),
@@ -60,7 +59,7 @@ class ProductList extends Component {
   }
 
   getAddedItem = () => {
-    fetch(`${SERVER}/order/mycart`, {
+    fetch(`${SERVER}/order/cart`, {
       method: 'GET',
       headers: {
         Authorization: sessionStorage.getItem('access_token'),
