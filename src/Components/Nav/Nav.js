@@ -54,6 +54,14 @@ class Nav extends Component {
     });
   };
 
+  logout = () => {
+    sessionStorage.removeItem('access_token');
+
+    this.setState({
+      isLogin: false,
+    });
+  };
+
   render() {
     const {
       isNavTransparent,
@@ -106,9 +114,21 @@ class Nav extends Component {
             <div className="logo">core/of</div>
           </Link>
           <ul className="right-container">
-            <Link to="/signup">
-              <li>SIGN IN</li>
-            </Link>
+            {!sessionStorage.getItem('access_token') && (
+              <Link to="/signup">
+                <li>SIGN IN</li>
+              </Link>
+            )}
+            {!sessionStorage.getItem('access_token') ? (
+              <Link to="/login">
+                <li>LOG IN</li>
+              </Link>
+            ) : (
+              <Link to="/">
+                <li onClick={this.logout}>LOG OUT</li>
+              </Link>
+            )}
+
             {iconData.map(icon => {
               return (
                 <Link to={icon.link}>
