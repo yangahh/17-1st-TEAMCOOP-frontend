@@ -19,6 +19,8 @@ class ProductDetail extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    window.scrollTo(0, 0);
+
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.getProductDetailData();
       window.scrollTo(0, 0);
