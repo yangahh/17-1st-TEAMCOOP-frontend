@@ -31,6 +31,7 @@ class ProductDetail extends Component {
     fetch(`${SERVER}/product/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
+        console.log(res.data);
         this.setState({
           detailData: res.data,
         });
